@@ -1,0 +1,54 @@
+/* 전체 패널 중앙 정렬 */
+.oauthBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+/* 헤더 스타일 유지 및 약간의 여백 추가 */
+.header {
+    font-size: 1.7em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #083349;
+}
+
+/* OAuth 버튼 가로 정렬 및 반응형 간격 조정 */
+.oauthPanel {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* 이미지 버튼 바깥 테두리 */
+.logoOutborder{
+    margin-top: 20px;
+    background-color: #dfdfdf;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+/* 이미지 버튼 스타일 */
+.imageButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease; /* 클릭 시 약간의 확대 효과 */
+}
+
+.imageButton img {
+    width: 70px;
+    height: auto;
+    transition: transform 0.2s ease;
+    margin: 5px;
+}
+
+.imageButton:hover img {
+    transform: scale(1.1);
+}

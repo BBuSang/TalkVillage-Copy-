@@ -1,0 +1,93 @@
+.hangmanContainer {
+    position: relative;
+    width: 200px;
+    height: 270px;
+    margin: 0 auto;
+  }
+  
+  /* "7" 모양 기둥 */
+  .verticalPole {
+    position: absolute;
+    width: 10px;
+    height: 250px;
+    left: 20px;
+    top: 0;
+    background-color: black;
+  }
+  
+  .horizontalPole {
+    position: absolute;
+    width: 120px;
+    height: 10px;
+    left: 20px;
+    top: 0;
+    background-color: black;
+  }
+  
+  .rope {
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    left: 130px;
+    top: 10px;
+    background-color: black;
+  }
+  
+  /* 각 행맨 파트 */
+  .head, .body, .armLeft, .armRight, .legLeft, .legRight {
+    position: absolute;
+    background-color: black;
+    visibility: hidden; /* 초기 상태에서 숨김 */
+  }
+  
+  .visible {
+    visibility: visible;
+  }
+  
+  .head {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: 50px;
+    left: 115px;
+  }
+  
+  .body {
+    width: 5px;
+    height: 60px;
+    top: 80px;
+    left: 127px;
+  }
+  
+  .armLeft {
+    width: 40px;
+    height: 5px;
+    top: 100px;
+    left: 90px;
+    transform: rotate(-30deg);
+  }
+  
+  .armRight {
+    width: 40px;
+    height: 5px;
+    top: 100px;
+    left: 127px;
+    transform: rotate(30deg);
+  }
+  
+  .legLeft {
+    width: 40px;
+    height: 5px;
+    top: 150px;
+    left: 100px;
+    transform: rotate(120deg);
+  }
+  
+  .legRight {
+    width: 40px;
+    height: 5px;
+    top: 150px;
+    left: 120px;
+    transform: rotate(-120deg);
+  }
+  

@@ -1,0 +1,168 @@
+.fileUploadContainer {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.loadingMessage {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #666;
+}
+
+.errorMessage {
+    color: #dc3545;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f8d7da;
+    border-radius: 4px;
+}
+
+.dataViewSection {
+    margin-top: 20px;
+}
+
+.tabs {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.tabButton {
+    padding: 8px 16px;
+    border: 1px solid #dee2e6;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+    text-transform: capitalize;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.tabButton:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.tabButton.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.actionButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background-color: #6c757d;
+    color: white;
+    min-width: 150px;
+}
+
+.actionButton:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.actionButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.actionButton.sync {
+    background-color: #28a745;
+}
+
+.actionButton.sync:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.tableContainer {
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.tableContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableContainer th,
+.tableContainer td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.tableContainer th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.tableContainer tr:hover {
+    background-color: #f5f5f5;
+}
+
+.progressBar {
+    margin: 10px 0;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progressText {
+    padding: 8px;
+    text-align: center;
+    color: #666;
+    z-index: 1;
+    position: relative;
+}
+
+.progressFill {
+    height: 4px;
+    background-color: #28a745;
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .tabButton {
+        width: 100%;
+    }
+
+    .actionButtons {
+        flex-direction: column;
+    }
+
+    .actionButton {
+        width: 100%;
+    }
+}

@@ -1,0 +1,225 @@
+.gameContainer {
+  background-color: #e0eefa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+}
+.startContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hangmantitle1 {
+  display: flex;
+  height: 5vw;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  color: red;
+  -webkit-text-stroke: 1px black; 
+}
+
+.hangmantitle2 {
+  display: flex;
+  height: 3vw;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: red;
+  -webkit-text-stroke: 1px black; 
+  margin-bottom: 5vw;
+}
+
+.startButton{
+  display: flex;
+  height: 100px;
+  width: 200px;
+  background-color: gray;
+  border-radius: 15px;
+  font-size: 40px;
+  color: aliceblue;
+  -webkit-text-stroke: 2px black; 
+  margin-top: 5vw;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.startButton:hover{
+  background-color: darkgray;
+}
+
+.displayBox {
+  justify-content: center;
+  position: relative;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.remainingBox {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 25vw;
+  top: 20vh;
+}
+
+.displayWord {
+  font-size: 50px;
+  align-self: center;
+  letter-spacing: 10px;
+}
+
+.remainingText {
+  align-self: center;
+  margin-right: 10px;
+}
+
+.remainingTries {
+  font-size: 30px;
+  align-self: center;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.button {
+  margin: 5px;
+  padding: 15px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: skyblue;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gameOverBox{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 15vw;
+  right: 7vw;
+}
+.gameOver {
+  color: red;
+  font-size: 20px;
+}
+.newbutton {
+  height: 40px;
+  width: 90px;
+  background-color: gray;
+  border-radius: 15px;
+  color: aliceblue;
+  font-size: 16px;
+  margin: 20px;
+}
+.disnewbutton{
+  display: none;
+}
+.regamemessage{
+  font-size: 14px;
+  color: #818181;
+}
+
+.newbutton:hover {
+  background-color: darkgray;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.usedLetter {
+  background-color: green;
+}
+
+.clickedLetter {
+  background-color: red;
+}
+
+
+
+.wordbox {
+  width: 100%;
+  max-width: 900px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wordbox .buttonRow {
+  margin: 5px 0;
+}
+
+.buttonRow .button {
+  font-size: 18px;
+  width: 55px;
+  height: 55px;
+}
+
+@media (max-width: 768px) {
+
+  /* 작은 화면에서 버튼 크기 및 레이아웃 조정 */
+  .buttonRow .button {
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .remainingBox {
+    left: 5vw;
+    top: 5vh;
+  }
+
+  .displayWord {
+    font-size: 40px;
+  }
+
+  .remainingText,
+  .remainingTries {
+    font-size: 20px;
+  }
+
+  .newbutton {
+    width: 100px;
+    height: 50px;
+    font-size: 14px;
+  }
+}
+
+.categoryBox {
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+.categoryText {
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+}
+.backButton{
+  background-color: gray;
+  border-radius: 15px;
+  color: aliceblue;
+  font-size: 16px;
+  height: 50px;
+  padding: 10px 20px;
+}
+.backButton:hover{
+  background-color: darkgray;
+}

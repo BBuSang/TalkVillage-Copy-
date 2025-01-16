@@ -1,0 +1,68 @@
+@import '../../components/ScssSetting/default';
+
+.coinContainer {
+    background-color: $backgroundColorOpacity;
+    border-radius: ptr(50);
+    position: relative;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    .coinContainerInside {
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      width: 95%;
+      .coinIconBox {
+        width: ptr(15);
+        height: ptr(15);
+        background-color: $backgroundColorOpacity2;
+        border-radius: ptr(15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        .coin {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+  
+          canvas {
+            width: 80%;
+          }
+        }
+      }
+  
+      .coinAmountBox {
+        width: 100%;
+        background-color: rgba(249, 253, 255, 0.8);
+        border-radius: ptr(15);
+        display: flex;
+        align-items: center;
+  
+        .coinAmountBoxInside {
+          display: grid;
+          grid-template-columns: 10fr 1fr 1fr;
+          gap: ptr(2);
+  
+          .coinAmount {
+            display: flex;
+            justify-content: end;
+            color: $brandOceanColor2;
+            font-weight: 800;
+            font-size: ptr(10);
+          }
+  
+          .coinToks {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            color: $brandOceanColor2;
+            font-weight: 800;
+            font-size: ptr(10);
+          }
+        }
+      }
+    }
+  }
+  

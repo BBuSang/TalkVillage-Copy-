@@ -1,0 +1,105 @@
+header {
+    display: block;
+    width: 100%;
+    height: 88px;
+    background: #fff;
+    border-bottom: 1px solid #e1e1e1;
+    margin: 0; /* No margin */
+    padding: 0; /* No padding */
+}
+
+.dictionary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 1050px; /* Fixed width */
+    height: 63px;
+    margin: 0 auto; /* Center the header by using auto margins */
+    padding-top: 15px; /* Optional padding for top */
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+  
+  .logo-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-text {
+    font-weight: bold;
+    font-size: 18px;
+    color: #0073e6;
+    margin-right: 5px;
+  }
+  
+  .header-title {
+    padding-left: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1px;
+  }
+  
+  .nav-links a {
+    color: #000;
+    text-decoration: none;
+    float: left;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 900;
+  }
+  
+  .nav-links a:hover {
+    color: black;
+    text-decoration: underline;
+  }
+  
+  .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .login-button {
+    font-size: 14px;
+    color: #333;
+    background: none;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .icon-menu {
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+  }
+
+
+  .nav-links {
+    float: left;
+    padding: 1px 14px 0 12px;
+    font-family: 'Spoqa Han Sans', Apple SD Gothic Neo, MS PGothic, 'Nanum Barun Gothic YetHangul', sans-serif;
+    font-size: 16px;
+    color: #697272;
+}
+.txt_bar {
+  color: #ccc;
+  font-size: 22px;
+  padding: 0 5px;
+}
+
+.logo-img{
+    height: 22px;
+    height: 55px;
+}

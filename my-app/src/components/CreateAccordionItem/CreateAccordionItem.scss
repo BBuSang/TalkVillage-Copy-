@@ -1,0 +1,124 @@
+@import '../ScssSetting/default';
+
+.selection {
+    // border-radius: ptr(10);
+    // transition: background-color 0.3s ease;
+    border-top-right-radius: ptr(20);
+    border-bottom-right-radius: ptr(20);
+    background-color: $backgroundColor;
+    color : $fontColor;
+    
+    &.active {
+        background-color: $backgroundColor; // 클릭된 상태의 배경색
+        border-top: ptr(3) solid $brandOceanColor2 !important;
+        border-right: ptr(3) solid $brandOceanColor2 !important;
+        border-bottom: ptr(3) solid $brandOceanColor2 !important;
+        border-bottom: ptr(3) solid $brandOceanColor ;
+        
+        border-left: none;
+        background-color: $brandOceanColor;
+        color : $brandWhiteColor;
+        z-index: 200;
+    }
+    
+    .mainSelection {
+        cursor: pointer;
+        display: grid;
+        grid-template-columns: 1fr auto; /* 텍스트와 아이콘의 칸 비율을 설정 */
+        align-items: center;
+        .AccordionButton {
+            font-weight: bold;
+            width: 100%;
+            font-size: $smallerFontSize !important;
+            display: grid;
+            grid-template-columns: 1fr auto; /* 텍스트와 아이콘을 분리하는 두 개의 칸 생성 */
+            align-items: center;
+            padding: ptr(10) !important; /* 필요에 따라 0으로 고정 */
+            margin: 0 !important; /* 필요에 따라 0으로 고정 */
+
+        }
+    }
+    
+    .sideSelection {
+        display : flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 !important; /* 필요에 따라 0으로 고정 */
+        margin: 0 !important; /* 필요에 따라 0으로 고정 */
+        .secondSelections { 
+            // padding-top: ptr(10);
+            padding-bottom: ptr(10);
+            display : flex;
+            flex-direction: column;
+            gap : ptr(10);
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            .secondSelection {
+                display : flex;
+                justify-content: center;
+                align-items: center;
+                width : ptr(70);
+                background-color: $brandWhiteColorOpacity;
+                padding : ptr(5);
+                border-radius: ptr(40);
+                cursor: pointer;
+                &:hover,
+                &.hovered  {
+                    background-color: $fontColor;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+    /* 반응형 스타일 추가 */
+@media (max-width:1000px) or (max-height : 720px) {
+    .selection {
+        border-top-right-radius: ptr(15); /* 크기 축소 */
+        border-bottom-right-radius: ptr(15);
+
+        .mainSelection {
+            .AccordionButton {
+                font-size: ptr(8) !important; /* 폰트 크기 축소 */
+                padding: ptr(8) !important;
+            }
+        }
+
+        .sideSelection {
+            .secondSelections {
+                gap: ptr(8); /* 간격 축소 */
+                .secondSelection {
+                    width: ptr(70); /* 크기 축소 */
+                    padding: ptr(4);
+                }
+            }
+        }
+    }
+}
+
+// @media (max-width: 480px) {
+//     .selection {
+//         border-top-right-radius: ptr(10); /* 더 작은 화면에서 추가 축소 */
+//         border-bottom-right-radius: ptr(10);
+
+//         .mainSelection {
+//             .AccordionButton {
+//                 font-size: ptr(2) !important; /* 폰트 크기 더 축소 */
+//                 padding: ptr(6) !important;
+//             }
+//         }
+
+//         .sideSelection {
+//             .secondSelections {
+//                 gap: ptr(5);
+//                 .secondSelection {
+//                     width: ptr(40); /* 더 작은 크기 */
+//                     padding: ptr(3);
+//                 }
+//             }
+//         }
+//     }
+// }
+
+  

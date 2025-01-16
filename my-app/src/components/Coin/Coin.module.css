@@ -1,0 +1,69 @@
+html {
+  font-size: 16px;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.coinContainer {
+  background-color: rgba(224, 238, 250, 0.4);
+  border-radius: 3.125rem;
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.coinContainer .coinContainerInside {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  width: 95%;
+}
+.coinContainer .coinContainerInside .coinIconBox {
+  width: 0.9375rem;
+  height: 0.9375rem;
+  background-color: rgba(224, 238, 250, 0.8);
+  border-radius: 0.9375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.coinContainer .coinContainerInside .coinIconBox .coin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.coinContainer .coinContainerInside .coinIconBox .coin canvas {
+  width: 80%;
+}
+.coinContainer .coinContainerInside .coinAmountBox {
+  width: 100%;
+  background-color: rgba(249, 253, 255, 0.8);
+  border-radius: 0.9375rem;
+  display: flex;
+  align-items: center;
+}
+.coinContainer .coinContainerInside .coinAmountBox .coinAmountBoxInside {
+  display: grid;
+  grid-template-columns: 10fr 1fr 1fr;
+  gap: 0.125rem;
+}
+.coinContainer .coinContainerInside .coinAmountBox .coinAmountBoxInside .coinAmount {
+  display: flex;
+  justify-content: end;
+  color: rgb(60, 76, 95);
+  font-weight: 800;
+  font-size: 0.625rem;
+}
+.coinContainer .coinContainerInside .coinAmountBox .coinAmountBoxInside .coinToks {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  color: rgb(60, 76, 95);
+  font-weight: 800;
+  font-size: 0.625rem;
+}

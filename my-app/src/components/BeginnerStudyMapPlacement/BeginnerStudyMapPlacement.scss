@@ -1,0 +1,162 @@
+@import '../../components/ScssSetting/default';
+
+.mapImage {
+    width : 100%;
+    height : 100%;
+    position: relative;
+}
+
+.coins {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width : 100%;
+    height : 100%;
+    display :flex;
+    .mapGrid {
+        position: absolute;
+        width : 100%;
+        height: 100%;
+        padding-top: ptr(23.5);
+        padding-left: ptr(50);
+        padding-right: ptr(35);
+        padding-bottom: ptr(30);
+    
+        .coinMap {
+            width : 100%;
+            height : 100%;
+            display: grid;
+            grid-template-columns: repeat(110, 1fr); // 27개의 동일한 열
+            grid-template-rows: repeat(50, 1fr);    // 12개의 동일한 행
+            .chapter{
+                grid-column:  5 / span 14;
+                // outline: ptr(2.5) solid $backgroundColorOpacity;
+                grid-row: 4 / span 3;
+                position: relative;
+                z-index: 100;
+                cursor: pointer;
+                border-radius: ptr(50);
+                .menuButtonContainer {
+                    height : 90%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            .userContainer {
+                outline: ptr(2.5) solid $backgroundColorOpacity;
+                border-radius: ptr(15);
+                grid-column: 5 / span 14;
+                grid-row: 8 / span 20;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: ptr(2);
+                .userContainerInside {
+                    padding-top: ptr(20);
+                    width : 100%;
+                    height : 100%;
+                    border-radius: ptr(14);
+                    background-color: $backgroundColorOpacity3;
+                    .userImageContainerOutside {
+                        display: flex;
+                        justify-content: center;
+                        .userImageContainerInside {
+                            width : ptr(80);
+                            height : ptr(80);
+                            border-radius: 50%;
+                            outline: ptr(2.5) solid $backgroundColorOpacity;
+                            padding: ptr(2);
+                            .userImageContainer {
+                                width: 100%;
+                                height:100%;
+                                background-color: $backgroundColorOpacity2;
+                                border-radius: 50%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                overflow: hidden;
+                                div {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    canvas {
+                                        width : 70%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .userStateContainerOutside {
+                        padding-top: ptr(10);
+                        .userStateContainer {
+                            display: flex;
+                            justify-content: center;
+                            padding-top: ptr(5);
+                        }
+                        .userStateContainerInsideTop,
+                        .userStateContainerInsideBottom {
+                            width : ptr(100);
+                            height : ptr(25);
+                            background-color: $backgroundColorOpacity2;
+                            border-radius: ptr(25);
+                            justify-content: center;
+                            align-items: center;
+                            display: flex;
+                            .userName,
+                            .userStageInfo {
+                                font-size: ptr(12);
+                                font-weight: 700;
+                                color : $fontColor;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+
+            /* 공통 스타일 */
+            @mixin coin-style {
+                position: relative;
+                z-index: 100;
+                cursor: pointer;
+                font-size: ptr(12);
+            }
+            @mixin coin-position($index, $col, $row) {
+            grid-column: $col / span 4;
+            grid-row: $row / span 4;
+              }
+              
+            @for $chapter from 1 through 5 {
+            @for $coin from 1 through 10 {
+                .coin#{$chapter}_#{$coin} {
+                    @include coin-style;
+                @if $coin == 1 {
+                    @include coin-position($coin, 32, 25); // 1-1, 2-1, 3-1... 위치
+                } @else if $coin == 2 {
+                    @include coin-position($coin, 37, 18); // 1-2, 2-2, 3-2... 위치
+                } @else if $coin == 3 {
+                    @include coin-position($coin, 47, 15); // 1-3, 2-3, 3-3... 위치
+                } @else if $coin == 4 {
+                    @include coin-position($coin, 57, 17); // 1-4, 2-4, 3-4... 위치
+                } @else if $coin == 5 {
+                    @include coin-position($coin, 67, 21); // 1-5, 2-5, 3-5... 위치
+                } @else if $coin == 6 {
+                    @include coin-position($coin, 77, 19); // 1-6, 2-6, 3-6... 위치
+                } @else if $coin == 7 {
+                    @include coin-position($coin, 79, 26); // 1-7, 2-7, 3-7... 위치
+                } @else if $coin == 8 {
+                    @include coin-position($coin, 68, 29); // 1-8, 2-8, 3-8... 위치
+                } @else if $coin == 9 {
+                    @include coin-position($coin, 57, 29); // 1-9, 2-9, 3-9... 위치
+                } @else if $coin == 10 {
+                    @include coin-position($coin, 46, 31); // 1-10, 2-10, 3-10... 위치
+                }
+                }
+            }
+            }
+              
+            
+        }
+    }
+}

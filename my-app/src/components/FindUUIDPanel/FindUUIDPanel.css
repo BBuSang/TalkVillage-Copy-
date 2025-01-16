@@ -1,0 +1,52 @@
+.searchUpContainer {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    width: 450px;
+}
+
+.searchUserContainer {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 30px;
+    width: 450px;
+    margin-bottom: 20px;
+}
+
+.searchUserTextarea {
+    resize: none;
+    height: 30px;
+    width: 150px;
+    margin-left: 10px;
+}
+
+.submitUsernameButton {
+    resize: none;
+    height: 30px;
+    width: 150px;
+    margin-left: 10px;
+}
+
+
+.getUUIDContainer {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 30px;
+    width: 450px;
+}
+
+.UUIDValue {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 30px;
+    width: 250px;
+    background-color: white;
+    margin-left: 10px;
+    font-size: 12px;
+    overflow: auto;
+}

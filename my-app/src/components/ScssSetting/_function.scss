@@ -1,0 +1,5 @@
+@import "_variable.scss";
+
+@function ptr($px:$defaultFontSize){
+    @return #{$px / $defaultFontSize}rem;
+}

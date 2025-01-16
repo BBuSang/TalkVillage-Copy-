@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #2d2f3b;
+}
+
+.panel {
+  width: 80%;
+  max-width: 600px;
+  padding: 30px;
+  background-color: #2d2f3b;
+  border-radius: 8px;
+  border: 1px solid #44475a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+.avatar {
+  width: auto;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 16px;
+}

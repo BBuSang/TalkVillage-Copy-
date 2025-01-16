@@ -1,0 +1,275 @@
+.inventoryPanel {
+  height: 100%;
+  padding: 20px;
+}
+
+.inventoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  overflow-y: auto;
+  max-height: calc(100vh - 300px);
+}
+
+.inventoryItem {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.itemHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.state {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.active {
+  background-color: #28a745;
+  color: white;
+}
+
+.inactive {
+  background-color: #dc3545;
+  color: white;
+}
+
+.itemInfo {
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.itemImageContainer {
+  width: 150px;
+  height: 200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f5f5f5;
+}
+
+.itemImageContainer img,
+.itemImageContainer > div {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.itemImageContainer :global(.background) {
+  width: 100%;
+  height: 100%;
+  transform: none;
+}
+
+.itemImageContainer :global(.namePlate) {
+  width: 90%;
+  height: auto;
+  min-height: 40px;
+  margin: auto;
+}
+
+.itemDetails {
+  flex: 1;
+}
+
+.itemDetails p {
+  margin: 5px 0;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.itemActions {
+  display: flex;
+  gap: 10px;
+}
+
+.deleteButton {
+  padding: 6px 12px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.deleteButton:hover {
+  background-color: #c82333;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #666;
+}
+
+.error {
+  color: #dc3545;
+  padding: 20px;
+  text-align: center;
+  background-color: #f8d7da;
+  border-radius: 4px;
+  margin: 20px;
+}
+
+/* 스크롤바 스타일링 */
+.inventoryGrid::-webkit-scrollbar, .storeGrid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.inventoryGrid::-webkit-scrollbar-track, .storeGrid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.inventoryGrid::-webkit-scrollbar-thumb, .storeGrid::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.inventoryGrid::-webkit-scrollbar-thumb:hover, .storeGrid::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} 
+.noItems {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .itemImage {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+    margin: 10px 0;
+  }
+  .invalidItem {
+    background-color: #fff3f3;
+    border: 1px solid #ffcdd2;
+  }
+  
+  .invalidItem h3 {
+    color: #d32f2f;
+  }
+
+.section {
+  margin-bottom: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.section h3 {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+
+.categoryFilter {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: white;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.categoryButton {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.categoryButton.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.storeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  max-height: calc(100vh - 300px);
+  overflow-y: auto;
+}
+
+.storeItem {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
+
+.giveButton {
+  padding: 6px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.giveButton:hover {
+  background-color: #218838;
+}
+
+.stateButton {
+  padding: 6px 12px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.stateButton.active {
+  background-color: #28a745;
+}
+
+.stateButton:hover {
+  opacity: 0.9;
+}

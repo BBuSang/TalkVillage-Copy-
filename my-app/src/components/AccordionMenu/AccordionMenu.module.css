@@ -1,0 +1,47 @@
+@charset "UTF-8";
+html {
+  font-size: 16px;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.insideMiddle {
+  display: block;
+  width: 6.25rem;
+  height: 95%;
+}
+.insideMiddle .selectionBoxes {
+  margin-top: 2.8125rem;
+  display: flex; /* Flexbox 사용 */
+  flex-direction: column; /* 수직 정렬 */
+  gap: 0.625rem; /* 요소 간 간격 설정 */
+}
+.insideMiddle .questionMarkContainer {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: end;
+  bottom: 1.25rem;
+  right: 0.1875rem;
+}
+.insideMiddle .questionMarkContainer .questionMark {
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 3.125rem;
+  outline: 0.15625rem solid rgb(41, 85, 132);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.insideMiddle .questionMarkContainer .questionMark button {
+  font-weight: 600;
+  color: rgb(41, 85, 132);
+  font-size: 1.25rem;
+}

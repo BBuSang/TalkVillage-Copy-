@@ -1,0 +1,116 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    background-color: #e0eefa;
+}
+.profileOutBox{
+    background-color: #F9FDFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 800px;
+    border-radius: 30px;
+    border: 1px solid #39485C;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 50px;
+}
+.character{
+    display: block;
+    margin-bottom: 5px;
+}
+.inputField {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    width: 300px; /* 입력창의 너비를 고정 */
+}
+.skinSelection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.skinSelection .skin {
+    width : 150px;
+    height : 150px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.skinSelection .skin img {
+    width : 70%;
+    height : auto;
+    -webkit-user-drag: none;
+}
+.skin.selected {
+    border:2px solid blue; /* 선택된 스킨 강조 */
+    background-color: #ccc;
+}
+
+.inputGroup {
+    margin-bottom: 20px;
+    width: 400px; /* 입력 필드 전체 폭 */
+    height: 80px;
+}
+
+.inputGroup label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.inputGroup input {
+    width: 100%; /* 입력 필드 전체 폭 */
+    padding: 8px;
+    font-size: 1rem;
+}
+
+.saveButton {
+    padding: 10px 20px;
+    background-color: #86B9E1;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.saveButton:hover{
+    background-color: #598DC4;  
+}
+.datePicker{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 400px;
+    background-color: white;
+    
+}
+.datePicker > select{
+    margin-right: 5px;
+}
+/* 에러 입력 스타일 */
+.errorInput {
+    border: 1px solid red;
+}
+
+/* 에러 메시지 */
+.errorText {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}

@@ -1,0 +1,120 @@
+.signupContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* 수직 중앙 정렬 */
+    height: 100vh; /* 전체 화면 높이를 차지 */
+    margin: 0; /* 기본 마진 제거 */
+    background-color: #e0eefa;
+}
+.signupBackground{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F9FDFF;
+    padding: 60px 20px;
+    height: 750px;
+    width: 600px;
+    border-radius: 30px;
+    border: 1px solid #39485C;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+.signupTitle {
+    font-size: 2.5rem; /* 회원가입 글씨 크기 크게 */
+    font-weight: bold;
+    color: #083349;
+    margin-bottom: 3vw;
+}
+
+.inputGroup {
+    display: flex;
+    align-items: self-start;
+    margin: 3px; /* 각 입력 그룹 간 간격 */
+    width: 450px;
+    height: 75px;
+}
+.inputGroup1{
+    display: flex;
+    align-items: self-start;
+    margin: 3px; /* 각 입력 그룹 간 간격 */
+    width: 450px;
+    height: 75px;
+    flex-direction: column;
+}
+
+.Input {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    width: 300px; /* 입력창의 너비를 고정 */
+}
+
+.passwordinput{
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    width: 440px;
+}
+
+.verifyButton {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #86B9E1;
+    color: #083349;
+    font-weight: 550;
+    cursor: pointer;
+    width: 130px;
+}
+
+.verifyButton:hover {
+    background-color: #598DC4;
+}
+
+.verifyButton:disabled{
+    background-color: #999;
+    font-weight: normal;
+    cursor: default;
+    color: #606060;
+}
+
+.createAccountButton {
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #86B9E1;
+    color: #083349;
+    cursor: pointer;
+    font-weight: 550;
+    margin-left: 10px;
+}
+
+.createAccountButton:disabled {
+    background-color: #999;
+    font-weight: normal;
+    cursor: default;
+    color: #606060;
+}
+
+.logo {
+    margin-top: 20px;
+    width: 200px;
+    height: auto;
+}
+
+.errorInput {
+    border: 2px solid red;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 10px;
+}

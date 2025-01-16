@@ -1,0 +1,53 @@
+html {
+  font-size: 16px;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.expContainer {
+  background-color: rgba(224, 238, 250, 0.4);
+  border-radius: 3.125rem;
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.expContainer .expContainerInside {
+  display: grid;
+  grid-template-columns: 1fr 5.5fr;
+  width: 95%;
+}
+.expContainer .expContainerInside .levelContainer {
+  width: 0.9375rem;
+  height: 0.9375rem;
+  background-color: rgba(224, 238, 250, 0.8);
+  border-radius: 0.9375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.expContainer .expContainerInside .levelContainer .level {
+  color: rgb(60, 76, 95);
+  font-weight: 800;
+  font-size: 0.625rem;
+}
+.expContainer .expContainerInside .expBox {
+  width: 100%;
+  background-color: rgba(249, 253, 255, 0.8);
+  border-radius: 0.9375rem;
+  display: flex;
+  align-items: center;
+}
+.expContainer .expContainerInside .expBox .segment {
+  flex: 1;
+  height: 70%;
+}
+.expContainer .expContainerInside .expBox .segment:last-child {
+  border-right: none !important;
+}

@@ -1,0 +1,269 @@
+@import '../ScssSetting/default';
+
+.popOver{
+    position : absolute;
+    width: 100%;
+    height : auto;
+    color : $brandOceanColor2;
+    font-weight: 600;
+    z-index: -100;
+    font-size: $smallerFontSize;
+	cursor: pointer;
+
+    .popOverInside{
+        position: relative;
+        background: $backgroundColor;
+        border-radius: ptr(5);
+        padding : ptr(5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: -2; /* 말풍선 뒤에 빛나는 효과 */
+        border: ptr(2.5) solid $brandOceanColor2;
+    }
+    &.active {
+        // color : $brandWhiteColor;
+        .popOverInside{
+            outline:ptr(2) solid $lightColor;
+            filter: drop-shadow(0 0 ptr(3) $lightColorOpacity)
+            drop-shadow(0 0 ptr(8) $lightColorOpacity)
+            drop-shadow(0 0 ptr(10) $lightColorOpacity);
+            background-color: $brandWhiteColor;
+        }
+        &.top:after {
+            border-bottom-color: $brandWhiteColor;
+        }
+        &.bottom:after {
+            border-top-color: $brandWhiteColor;
+        }
+        &.left:after {
+            border-right-color: $brandWhiteColor;
+        }
+        &.right:after {
+            border-left-color: $brandWhiteColor;
+        }
+    }
+}
+.popOver.bottom:after{
+    content: '';
+	position: absolute;
+	bottom: 0;
+	left: 40%;
+	width: 0;
+	height: 0;
+	border: 8px solid transparent;
+	border-top-color: $backgroundColor;
+	border-bottom: 0;
+	border-right: 0;
+	margin-left: ptr(-10);
+	margin-bottom: ptr(-5);
+    // box-shadow: 0 0 ptr(15) $brandWhiteColor, 0 0 ptr(30) rgba($brandWhiteColor, 0.5);
+    z-index: 10; /* 말풍선 뒤에 빛나는 효과 */
+}
+
+/* 삼각형 테두리 */
+.popOver.bottom:before {
+    // margin-bottom: ptr(-12); /* 위치 조정 */
+    content: '';
+	position: absolute;
+	bottom: 0;
+	left: 40%;
+	width: 0;
+	height: 0;
+    border: 12px solid transparent; /* 테두리 크기 */
+	border-top-color: $brandOceanColor2;
+	border-bottom: 0;
+	border-right: 0;
+	margin-left: ptr(-12);
+	margin-bottom: ptr(-10);
+    // box-shadow: 0 0 ptr(15) $brandWhiteColor, 0 0 ptr(30) rgba($brandWhiteColor, 0.5);
+    z-index: 10; /* 말풍선 뒤에 빛나는 효과 */
+    
+}
+
+.popOver.bottom.reversed:after{
+    content: '';
+	position: absolute;
+	bottom: 0;
+	left: 70%;
+	width: 0;
+	height: 0;
+	border: 8px solid transparent;
+	border-top-color: $backgroundColor;
+	border-bottom: 0;
+	border-left: 0;
+	margin-left: ptr(-10);
+	margin-bottom: ptr(-5);
+    // box-shadow: 0 0 ptr(15) $brandWhiteColor, 0 0 ptr(30) rgba($brandWhiteColor, 0.5);
+    z-index: 10; /* 말풍선 뒤에 빛나는 효과 */
+}
+
+/* 삼각형 테두리 */
+.popOver.bottom.reversed:before {
+    // margin-bottom: ptr(-12); /* 위치 조정 */
+    content: '';
+	position: absolute;
+	bottom: 0;
+	left: 70%;
+	width: 0;
+	height: 0;
+    border: 12px solid transparent; /* 테두리 크기 */
+	border-top-color: $brandOceanColor2;
+	border-bottom: 0;
+	border-left: 0;
+	margin-left: ptr(-12);
+	margin-bottom: ptr(-10);
+    // box-shadow: 0 0 ptr(15) $brandWhiteColor, 0 0 ptr(30) rgba($brandWhiteColor, 0.5);
+    z-index: 10; /* 말풍선 뒤에 빛나는 효과 */
+    
+}
+
+.popOver.top:after{
+    content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 8px solid transparent;
+	border-bottom-color: $backgroundColor;
+	border-top: 0;
+	border-left: 0;
+	margin-left: ptr(2);
+	margin-top: ptr(-5);
+    z-index: 10; 
+}
+
+/* 삼각형 테두리 */
+.popOver.top:before {
+    content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+    border: 12px solid transparent; /* 테두리 크기 */
+	border-bottom-color: $brandOceanColor2;
+	border-top: 0;
+	border-left: 0;
+	margin-left: ptr(0);
+	margin-top: ptr(-10);
+    z-index: 10; 
+}
+
+.popOver.top.reversed:after{
+    content: '';
+	position: absolute;
+	top: 0;
+	left: 30%;
+	width: 0;
+	height: 0;
+	border: 8px solid transparent;
+	border-bottom-color: $backgroundColor;
+	border-top: 0;
+	border-right: 0;
+	margin-left: ptr(2);
+	margin-top: ptr(-5);
+    z-index: 10; 
+}
+
+/* 삼각형 테두리 */
+.popOver.top.reversed:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 30%;
+	width: 0;
+	height: 0;
+    border: 12px solid transparent; /* 테두리 크기 */
+	border-bottom-color: $brandOceanColor2;
+	border-top: 0;
+	border-right: 0;
+	margin-left: ptr(0);
+	margin-top: ptr(-10);
+    z-index: 10; 
+    
+}
+
+.popOver.left:after{
+    content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 8px solid transparent;
+	border-right-color: $backgroundColor;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: ptr(-6);
+	margin-left: ptr(-5);
+    z-index: 10;
+}
+
+/* 삼각형 테두리 */
+.popOver.left:before {
+    content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 0;
+	height: 0;
+    border: 12px solid transparent; /* 테두리 크기 */
+	border-right-color: $brandOceanColor2;
+	border-left: 0;
+	border-bottom: 0;
+	margin-left: ptr(-10);
+	margin-top: ptr(-8);
+    z-index: 10; 
+}
+
+.popOver.left.reversed:after{
+    content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 8px solid transparent;
+	border-right-color: $backgroundColor;
+	border-left: 0;
+	border-top: 0;
+	margin-top: ptr(-6);
+	margin-left: ptr(-5);
+    z-index: 10;
+}
+
+/* 삼각형 테두리 */
+.popOver.left.reversed:before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 0;
+	height: 0;
+    border: 12px solid transparent; /* 테두리 크기 */
+	border-right-color: $brandOceanColor2;
+	border-left: 0;
+	border-top: 0;
+	margin-left: ptr(-10);
+	margin-top: ptr(-8);
+    z-index: 10; 
+    
+}
+
+
+// .popOver.right:after{
+//     content: '';
+// 	position: absolute;
+// 	right: 0;
+// 	top: 50%;
+// 	width: 0;
+// 	height: 0;
+// 	border: 20px solid transparent;
+// 	border-left-color: #00aabb;
+// 	border-right: 0;
+// 	border-bottom: 0;
+// 	margin-top: -10px;
+// 	margin-right: -20px;
+// }

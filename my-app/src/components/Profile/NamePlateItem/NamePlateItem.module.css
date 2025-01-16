@@ -1,0 +1,48 @@
+.namePlate {
+    height: 60px;
+    border-radius: 8px;
+    position: relative;
+    transition: transform 0.2s ease;
+    border: 2px solid;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.solidStyle {
+    opacity: 0.9;
+}
+
+.gradientStyle {
+    background: linear-gradient(45deg, var(--background-color), transparent);
+}
+
+.glassStyle {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+
+
+@keyframes shimmerEffect {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+        opacity: 0.3;
+    }
+}

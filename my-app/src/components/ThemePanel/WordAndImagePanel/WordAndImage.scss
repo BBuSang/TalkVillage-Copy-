@@ -1,0 +1,51 @@
+// WordAndImage.scss
+
+.container {
+    text-align: center;
+    padding: 20px 0;
+    height: 60vh;
+  }
+  
+  .heading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .errorText {
+    color: #e53e3e; // Chakra의 red.500 색상
+    margin-bottom: 20px;
+  }
+  
+  .imageGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .imageBox {
+    text-align: center;
+    padding: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Chakra의 boxShadow="md"에 해당
+    border-radius: 8px;
+    background-color: #2d3748; // Chakra의 gray.700 색상
+  }
+  
+  .imagePrompt {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .imageResult {
+    color: #a0aec0; // Chakra의 gray.300 색상
+  }
+  

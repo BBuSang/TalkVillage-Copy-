@@ -1,0 +1,539 @@
+@charset "UTF-8";
+html {
+  font-size: 16px;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.mapImage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.coins {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.coins .mapGrid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding-top: 1.46875rem;
+  padding-left: 3.125rem;
+  padding-right: 2.1875rem;
+  padding-bottom: 1.875rem;
+}
+.coins .mapGrid .coinMap {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(110, 1fr);
+  grid-template-rows: repeat(50, 1fr);
+  /* 공통 스타일 */
+}
+.coins .mapGrid .coinMap .chapter {
+  grid-column: 5/span 14;
+  grid-row: 4/span 3;
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  border-radius: 3.125rem;
+}
+.coins .mapGrid .coinMap .chapter .menuButtonContainer {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.coins .mapGrid .coinMap .userContainer {
+  position: absolute;
+  top: 3%;
+  left: -2.5%;
+  width: 250px;
+  height: auto;
+  background-color: transparent;
+  overflow: hidden;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userContainer > div {
+  width: 100%;
+  aspect-ratio: 4/5;
+  transform: scale(0.6);
+  transform-origin: center;
+}
+.coins .mapGrid .coinMap .userContainer .userContainerInside {
+  padding-top: 1.25rem;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.875rem;
+  background-color: rgba(224, 238, 250, 0.2);
+}
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userImageContainerOutside {
+  display: flex;
+  justify-content: center;
+}
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userImageContainerOutside .userImageContainerInside {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  outline: 0.15625rem solid rgba(224, 238, 250, 0.4);
+  padding: 0.125rem;
+}
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userImageContainerOutside .userImageContainerInside .userImageContainer {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(224, 238, 250, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userImageContainerOutside .userImageContainerInside .userImageContainer div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userImageContainerOutside .userImageContainerInside .userImageContainer div canvas {
+  width: 70%;
+}
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userStateContainerOutside {
+  padding-top: 0.625rem;
+}
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userStateContainerOutside .userStateContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.3125rem;
+}
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userStateContainerOutside .userStateContainerInsideTop,
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userStateContainerOutside .userStateContainerInsideBottom {
+  width: 6.25rem;
+  height: 1.5625rem;
+  background-color: rgba(224, 238, 250, 0.8);
+  border-radius: 1.5625rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userStateContainerOutside .userStateContainerInsideTop .userName,
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userStateContainerOutside .userStateContainerInsideTop .userStageInfo,
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userStateContainerOutside .userStateContainerInsideBottom .userName,
+.coins .mapGrid .coinMap .userContainer .userContainerInside .userStateContainerOutside .userStateContainerInsideBottom .userStageInfo {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #083349;
+}
+.coins .mapGrid .coinMap .coin1_1 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 32/span 4;
+  grid-row: 25/span 4;
+}
+.coins .mapGrid .coinMap .coin1_2 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 37/span 4;
+  grid-row: 18/span 4;
+}
+.coins .mapGrid .coinMap .coin1_3 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 47/span 4;
+  grid-row: 15/span 4;
+}
+.coins .mapGrid .coinMap .coin1_4 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 57/span 4;
+  grid-row: 17/span 4;
+}
+.coins .mapGrid .coinMap .coin1_5 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 67/span 4;
+  grid-row: 21/span 4;
+}
+.coins .mapGrid .coinMap .coin1_6 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 77/span 4;
+  grid-row: 19/span 4;
+}
+.coins .mapGrid .coinMap .coin1_7 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 79/span 4;
+  grid-row: 26/span 4;
+}
+.coins .mapGrid .coinMap .coin1_8 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 68/span 4;
+  grid-row: 29/span 4;
+}
+.coins .mapGrid .coinMap .coin1_9 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 57/span 4;
+  grid-row: 29/span 4;
+}
+.coins .mapGrid .coinMap .coin1_10 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 46/span 4;
+  grid-row: 31/span 4;
+}
+.coins .mapGrid .coinMap .coin2_1 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 32/span 4;
+  grid-row: 25/span 4;
+}
+.coins .mapGrid .coinMap .coin2_2 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 37/span 4;
+  grid-row: 18/span 4;
+}
+.coins .mapGrid .coinMap .coin2_3 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 47/span 4;
+  grid-row: 15/span 4;
+}
+.coins .mapGrid .coinMap .coin2_4 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 57/span 4;
+  grid-row: 17/span 4;
+}
+.coins .mapGrid .coinMap .coin2_5 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 67/span 4;
+  grid-row: 21/span 4;
+}
+.coins .mapGrid .coinMap .coin2_6 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 77/span 4;
+  grid-row: 19/span 4;
+}
+.coins .mapGrid .coinMap .coin2_7 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 79/span 4;
+  grid-row: 26/span 4;
+}
+.coins .mapGrid .coinMap .coin2_8 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 68/span 4;
+  grid-row: 29/span 4;
+}
+.coins .mapGrid .coinMap .coin2_9 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 57/span 4;
+  grid-row: 29/span 4;
+}
+.coins .mapGrid .coinMap .coin2_10 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 46/span 4;
+  grid-row: 31/span 4;
+}
+.coins .mapGrid .coinMap .coin3_1 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 32/span 4;
+  grid-row: 25/span 4;
+}
+.coins .mapGrid .coinMap .coin3_2 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 37/span 4;
+  grid-row: 18/span 4;
+}
+.coins .mapGrid .coinMap .coin3_3 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 47/span 4;
+  grid-row: 15/span 4;
+}
+.coins .mapGrid .coinMap .coin3_4 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 57/span 4;
+  grid-row: 17/span 4;
+}
+.coins .mapGrid .coinMap .coin3_5 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 67/span 4;
+  grid-row: 21/span 4;
+}
+.coins .mapGrid .coinMap .coin3_6 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 77/span 4;
+  grid-row: 19/span 4;
+}
+.coins .mapGrid .coinMap .coin3_7 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 79/span 4;
+  grid-row: 26/span 4;
+}
+.coins .mapGrid .coinMap .coin3_8 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 68/span 4;
+  grid-row: 29/span 4;
+}
+.coins .mapGrid .coinMap .coin3_9 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 57/span 4;
+  grid-row: 29/span 4;
+}
+.coins .mapGrid .coinMap .coin3_10 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 46/span 4;
+  grid-row: 31/span 4;
+}
+.coins .mapGrid .coinMap .coin4_1 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 32/span 4;
+  grid-row: 25/span 4;
+}
+.coins .mapGrid .coinMap .coin4_2 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 37/span 4;
+  grid-row: 18/span 4;
+}
+.coins .mapGrid .coinMap .coin4_3 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 47/span 4;
+  grid-row: 15/span 4;
+}
+.coins .mapGrid .coinMap .coin4_4 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 57/span 4;
+  grid-row: 17/span 4;
+}
+.coins .mapGrid .coinMap .coin4_5 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 67/span 4;
+  grid-row: 21/span 4;
+}
+.coins .mapGrid .coinMap .coin4_6 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 77/span 4;
+  grid-row: 19/span 4;
+}
+.coins .mapGrid .coinMap .coin4_7 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 79/span 4;
+  grid-row: 26/span 4;
+}
+.coins .mapGrid .coinMap .coin4_8 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 68/span 4;
+  grid-row: 29/span 4;
+}
+.coins .mapGrid .coinMap .coin4_9 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 57/span 4;
+  grid-row: 29/span 4;
+}
+.coins .mapGrid .coinMap .coin4_10 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 46/span 4;
+  grid-row: 31/span 4;
+}
+.coins .mapGrid .coinMap .coin5_1 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 32/span 4;
+  grid-row: 25/span 4;
+}
+.coins .mapGrid .coinMap .coin5_2 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 37/span 4;
+  grid-row: 18/span 4;
+}
+.coins .mapGrid .coinMap .coin5_3 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 47/span 4;
+  grid-row: 15/span 4;
+}
+.coins .mapGrid .coinMap .coin5_4 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 57/span 4;
+  grid-row: 17/span 4;
+}
+.coins .mapGrid .coinMap .coin5_5 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 67/span 4;
+  grid-row: 21/span 4;
+}
+.coins .mapGrid .coinMap .coin5_6 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 77/span 4;
+  grid-row: 19/span 4;
+}
+.coins .mapGrid .coinMap .coin5_7 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 79/span 4;
+  grid-row: 26/span 4;
+}
+.coins .mapGrid .coinMap .coin5_8 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 68/span 4;
+  grid-row: 29/span 4;
+}
+.coins .mapGrid .coinMap .coin5_9 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 57/span 4;
+  grid-row: 29/span 4;
+}
+.coins .mapGrid .coinMap .coin5_10 {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.75rem;
+  grid-column: 46/span 4;
+  grid-row: 31/span 4;
+}

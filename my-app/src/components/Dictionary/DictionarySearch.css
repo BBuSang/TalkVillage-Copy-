@@ -1,0 +1,127 @@
+.dictionary-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  height: 700px;
+  background-color: #F2F4F7;
+  justify-content: center;
+}
+
+.title {
+  font-size: 40px;
+  margin-bottom: 24px;
+  line-height: 40px;
+  font-weight: 700;
+  margin-top: 0;
+  text-align: center;
+  color: #000;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 24px; /* Space below the search container */
+}
+
+.input-icon-container {
+  position: relative; /* Positioning context for the icon */
+  width: 600px; /* Set to match input width */
+}
+
+.search-input {
+  padding: 10px;
+  padding-right: 40px; /* Add right padding to make space for the icon */
+  font-size: 16px;
+  border: 2px solid #ccc; /* Set default border thickness */
+  outline: none;
+  border-radius: 20px; /* Rounded corners */
+  width: 91%; /* Full width of the container */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, border-width 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #5B92FE; /* Change border color on focus */
+  border-width: 2px; /* Adjust thickness on focus */
+  box-shadow: 0 0 5px 2px rgba(91, 146, 254, 0.5); /* Add glow effect */
+}
+
+.search-icon {
+  position: absolute; /* Positioning the icon inside the input */
+  right: 10px; /* Space from the right edge */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust to align perfectly */
+  background-color: transparent; /* No background for button */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.search-icon-image {
+  width: 20px; /* Adjust icon size */
+  height: 20px;
+  color: black; /* Icon color */
+}
+
+.button-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  width: 100%;
+}
+
+.language-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.language-button {
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px; /* Slightly rounded corners */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.language-button.active {
+  background-color: #5B92FE; /* Blue color for active button */
+  border-color: #5B92FE; /* Border matches active color */
+  color: white;
+}
+
+.language-image {
+  width: 20px; /* Adjust icon size to fit within the button */
+  height: 20px;
+}
+
+.language-label {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+
+.clear-icon {
+  position: absolute; /* 아이콘을 입력 필드 안에 배치 */
+  right: 50px; /* 위치 조정 */
+  top: 53%; /* 세로 중앙 정렬 */
+  transform: translateY(-50%); /* 완벽한 정렬을 위한 조정 */
+  background-color: transparent; /* 배경 없음 */
+  border: none; /* 테두리 없음 */
+  cursor: pointer; /* 호버 시 포인터 커서 */
+}
+
+.clear-icon-image {
+  width: 20px; /* 아이콘 크기 조정 */
+  height: 20px; 
+  color: black; /* 아이콘 색상 */
+}

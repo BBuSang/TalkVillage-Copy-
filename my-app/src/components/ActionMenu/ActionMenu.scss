@@ -1,0 +1,49 @@
+@import '../../components/ScssSetting/default';
+/* ActionMenu.module.scss */
+
+.menuButton {
+  background-color: $backgroundColorOpacity2!important;
+  // background-color: rgb(255, 255, 255, 0)!important;
+  border-radius: ptr(50) !important;
+  font-size: ptr(14) !important;
+  outline: ptr(2.5) solid $backgroundColorOpacity !important;
+  height: 90% !important;
+  color: $fontColor !important;
+  /* Hover 상태 추가 */
+  &:hover, &[data-hover], &:active, &[data-active] {
+    background-color: $brandWhiteColor !important;
+    color: $fontColor !important;
+  }
+}
+
+.menuList {
+  display: flex; /* Flexbox로 설정하여 아이템 간 gap을 적용할 수 있게 함 */
+  flex-direction: column; /* 아이템을 세로로 배치 */
+  top: ptr(10);
+  width : ptr(122);
+  min-width: 100% !important;
+  outline: ptr(2.5) solid $backgroundColorOpacity !important;
+  background-color: rgb(255, 255, 255, 0) !important;
+  border-radius: ptr(15) !important;
+  border: none !important;
+  padding : ptr(2) !important;
+
+  .menuItem {
+    background-color: $backgroundColorOpacity !important;
+    // gap: ptr(5) !important; /* 각 아이템 사이의 간격 */
+    border-radius: ptr(50) !important;
+    color: $brandWhiteColor !important;
+    font-weight: 500 !important;
+    margin-bottom: ptr(3); /* 아이템 간 하단 여백 추가 */
+    display: flex;
+    justify-content: center;
+    height : ptr(25) !important;
+    &:hover {
+      background-color: $brandWhiteColor !important;
+      color: $fontColor !important;
+    }
+    &:last-child {
+        margin-bottom: 0 !important;
+    }
+  }
+}

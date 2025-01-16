@@ -1,0 +1,248 @@
+@charset "UTF-8";
+html {
+  font-size: 16px;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.popOver {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  color: rgb(60, 76, 95);
+  font-weight: 600;
+  z-index: -100;
+  font-size: 14;
+  cursor: pointer;
+}
+.popOver .popOverInside {
+  position: relative;
+  background: #e0eefa;
+  border-radius: 0.3125rem;
+  padding: 0.3125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -2; /* 말풍선 뒤에 빛나는 효과 */
+  border: 0.15625rem solid rgb(60, 76, 95);
+}
+.popOver.active .popOverInside {
+  outline: 0.125rem solid rgb(210, 245, 207);
+  filter: drop-shadow(0 0 0.1875rem rgba(210, 245, 207, 0.7)) drop-shadow(0 0 0.5rem rgba(210, 245, 207, 0.7)) drop-shadow(0 0 0.625rem rgba(210, 245, 207, 0.7));
+  background-color: rgb(249, 253, 255);
+}
+.popOver.active.top:after {
+  border-bottom-color: rgb(249, 253, 255);
+}
+.popOver.active.bottom:after {
+  border-top-color: rgb(249, 253, 255);
+}
+.popOver.active.left:after {
+  border-right-color: rgb(249, 253, 255);
+}
+.popOver.active.right:after {
+  border-left-color: rgb(249, 253, 255);
+}
+
+.popOver.bottom:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-top-color: #e0eefa;
+  border-bottom: 0;
+  border-right: 0;
+  margin-left: -0.625rem;
+  margin-bottom: -0.3125rem;
+  z-index: 10; /* 말풍선 뒤에 빛나는 효과 */
+}
+
+/* 삼각형 테두리 */
+.popOver.bottom:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent; /* 테두리 크기 */
+  border-top-color: rgb(60, 76, 95);
+  border-bottom: 0;
+  border-right: 0;
+  margin-left: -0.75rem;
+  margin-bottom: -0.625rem;
+  z-index: 10; /* 말풍선 뒤에 빛나는 효과 */
+}
+
+.popOver.bottom.reversed:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 70%;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-top-color: #e0eefa;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -0.625rem;
+  margin-bottom: -0.3125rem;
+  z-index: 10; /* 말풍선 뒤에 빛나는 효과 */
+}
+
+/* 삼각형 테두리 */
+.popOver.bottom.reversed:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 70%;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent; /* 테두리 크기 */
+  border-top-color: rgb(60, 76, 95);
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -0.75rem;
+  margin-bottom: -0.625rem;
+  z-index: 10; /* 말풍선 뒤에 빛나는 효과 */
+}
+
+.popOver.top:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-bottom-color: #e0eefa;
+  border-top: 0;
+  border-left: 0;
+  margin-left: 0.125rem;
+  margin-top: -0.3125rem;
+  z-index: 10;
+}
+
+/* 삼각형 테두리 */
+.popOver.top:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent; /* 테두리 크기 */
+  border-bottom-color: rgb(60, 76, 95);
+  border-top: 0;
+  border-left: 0;
+  margin-left: 0rem;
+  margin-top: -0.625rem;
+  z-index: 10;
+}
+
+.popOver.top.reversed:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 30%;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-bottom-color: #e0eefa;
+  border-top: 0;
+  border-right: 0;
+  margin-left: 0.125rem;
+  margin-top: -0.3125rem;
+  z-index: 10;
+}
+
+/* 삼각형 테두리 */
+.popOver.top.reversed:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 30%;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent; /* 테두리 크기 */
+  border-bottom-color: rgb(60, 76, 95);
+  border-top: 0;
+  border-right: 0;
+  margin-left: 0rem;
+  margin-top: -0.625rem;
+  z-index: 10;
+}
+
+.popOver.left:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-right-color: #e0eefa;
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -0.375rem;
+  margin-left: -0.3125rem;
+  z-index: 10;
+}
+
+/* 삼각형 테두리 */
+.popOver.left:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent; /* 테두리 크기 */
+  border-right-color: rgb(60, 76, 95);
+  border-left: 0;
+  border-bottom: 0;
+  margin-left: -0.625rem;
+  margin-top: -0.5rem;
+  z-index: 10;
+}
+
+.popOver.left.reversed:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-right-color: #e0eefa;
+  border-left: 0;
+  border-top: 0;
+  margin-top: -0.375rem;
+  margin-left: -0.3125rem;
+  z-index: 10;
+}
+
+/* 삼각형 테두리 */
+.popOver.left.reversed:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent; /* 테두리 크기 */
+  border-right-color: rgb(60, 76, 95);
+  border-left: 0;
+  border-top: 0;
+  margin-left: -0.625rem;
+  margin-top: -0.5rem;
+  z-index: 10;
+}

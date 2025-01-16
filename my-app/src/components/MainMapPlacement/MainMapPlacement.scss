@@ -1,0 +1,478 @@
+@import '../../components/ScssSetting/default';
+
+.mapImage {
+    width : 100%;
+    height : 100%;
+    
+}
+.birdAnimationContainer {
+position: absolute; /* 필요에 따라 relative로 변경 */
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 200;
+pointer-events: none; 
+}
+.cloudAnimationContainer {
+position: absolute; /* 필요에 따라 relative로 변경 */
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 300;
+pointer-events: none; 
+// opacity: 0.4;
+}
+
+.MainMapCanvas {
+width : 100%;
+position: relative;
+}
+
+.buildings {
+position: absolute;
+top: 0;
+left: 0;
+width : 100%;
+height : 100%;
+display :flex;
+    .mapGrid {
+        width : 100%;
+        padding-top: ptr(23.5);
+        padding-left: ptr(50);
+        padding-right: ptr(35);
+        padding-bottom: ptr(30);
+        //  gap: 5px;
+        .buildingsMap {
+        width : 100%;
+        height : 100%;
+        display: grid;
+        grid-template-columns: repeat(110, 1fr); // 27개의 동일한 열
+        grid-template-rows: repeat(50, 1fr);    // 12개의 동일한 행
+        
+            .boat1AnimationContainer {
+                grid-column:  93 / span 6;
+                grid-row: 25 / span 5;
+                width: 270%;
+                // height : 100%;
+                position: relative;
+                z-index: 100;
+                transform: scaleX(-1) rotate(-5deg);
+            }
+        
+            .boat2AnimationContainer {
+                grid-column:  10 / span 6;
+                grid-row: 28 / span 5;
+                width: 480%;
+                position: relative;
+                z-index: 100;
+                transform: rotate(-5deg);
+            }
+
+            .footPrintAnimationContainer {
+                grid-column:  87 / span 6;
+                grid-row: 15 / span 5;
+                width: 120%;
+                position: relative;
+                z-index: 100;
+                transform: rotate(-90deg);
+            }
+
+            .wave1AnimationContainer {
+                grid-column:  40 / span 6;
+                grid-row: 6 / span 5;
+                width: 180%;
+                position: relative;
+                z-index: 100;
+                // transform: rotate(-90deg);
+            }
+            
+            .wave2AnimationContainer {
+                grid-column:  35 / span 6;
+                grid-row: 33 / span 5;
+                width: 180%;
+                position: relative;
+                z-index: 100;
+                transform: scaleX(-1);
+            }
+
+            .wave3AnimationContainer {
+                grid-column:  78 / span 6;
+                grid-row: 25 / span 5;
+                width: 180%;
+                position: relative;
+                z-index: 100;
+                // transform: scaleX(-1);
+            }
+            
+            .wave4AnimationContainer {
+                grid-column:  70 / span 6;
+                grid-row: 5 / span 5;
+                width: 180%;
+                position: relative;
+                z-index: 100;
+                // transform: scaleX(-1);
+            }
+
+            .wave5AnimationContainer {
+                grid-column: 85 / span 6;
+                grid-row: 40 / span 5;
+                width: 180%;
+                position: relative;
+                z-index: 100;
+                transform: scaleX(-1);
+            }
+
+            .studyBuildingBeginner {
+                grid-column: 13 / span 6; // 위치 지정
+                grid-row: 5 / span 5;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 200%;
+                height : auto;
+                cursor: pointer;
+                }
+                .studyPopOverBeginner {
+                bottom: ptr(145); /* 빌딩 아래에 위치 */
+                right: ptr(40);
+                width: 200%; /* 필요하면 크기 조정 */
+                height: auto;
+                // z-index: 50;
+                }
+                .studyPortalBeginner{
+                    top: -150%; /* 빌딩 아래에 위치 */
+                    left: -10%;
+                    width: auto; /* 필요하면 크기 조정 */
+                    height: auto;
+                    z-index: -50;
+                }
+
+            }
+
+            .studyBuildingIntermediate {
+                grid-column: 17 / span 6; // 위치 지정
+                grid-row: 17 / span 5;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 190%;
+                height : auto;
+                cursor: pointer;
+                }
+                .studyPopOverIntermediate {
+                bottom: ptr(-5); /* 빌딩 아래에 위치 */
+                left: ptr(40);
+                width: 200%; /* 필요하면 크기 조정 */
+                height: auto;
+                // z-index: 50;
+                }
+                .studyPortalIntermediate {
+                top: -150%; /* 빌딩 아래에 위치 */
+                left: -20%;
+                width: auto; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: -50;
+                }
+            }
+
+            .studyBuildingAdvanced {
+                grid-column: 31 / span 4; // 위치 지정
+                grid-row: 10 / span 4;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 200%;
+                height : auto;
+                cursor: pointer;
+                }
+                .studyPopOverAdvanced {
+                bottom: ptr(15); /* 빌딩 아래에 위치 */
+                left: ptr(85);
+                width: 300%; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: 50;
+                }
+                .studyPortalAdvanced {
+                top: -180%; /* 빌딩 아래에 위치 */
+                left: -30%;
+                width: auto; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: -50;
+                transform: scale(1.4); /* 크기 비율로 확대 */
+                }
+            }
+
+            .studyBuildingMedia {
+                grid-column: 10 / span 4; // 위치 지정
+                grid-row: 21 / span 4;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 200%;
+                height : auto;
+                cursor: pointer;
+                }
+                .studyPopOverMedia {
+                bottom: ptr(110); /* 빌딩 아래에 위치 */
+                left: ptr(-60);
+                width: 300%; /* 필요하면 크기 조정 */
+                height: auto;
+                // z-index: 50;
+                }
+                .studyPortalMedia{
+                top: -110%; /* 빌딩 아래에 위치 */
+                left: -10%;
+                width: auto; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: -50;
+                }
+            }
+
+            .studyBuildingTheme {
+                grid-column: 25 / span 4; // 위치 지정
+                grid-row: 4 / span 4;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 200%;
+                height : auto;
+                cursor: pointer;
+                }
+                .studyPopOverTheme {
+                bottom: ptr(110); /* 빌딩 아래에 위치 */
+                left: ptr(20);
+                width: 300%; /* 필요하면 크기 조정 */
+                height: auto;
+                // z-index: 50;
+                }
+                .studyPortalTheme{
+                top: -110%; /* 빌딩 아래에 위치 */
+                left: -10%;
+                width: auto; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: -50;
+                }
+            }
+
+
+
+            .gameBuilding1 {
+                grid-column: 81 / span 4; // 위치 지정
+                grid-row: 12 / span 4;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 200%;
+                height : auto;
+                cursor: pointer;
+                }
+                .gamePopOver1 {
+                bottom: ptr(110); /* 빌딩 아래에 위치 */
+                left: ptr(-70);
+                width: 300%; /* 필요하면 크기 조정 */
+                height: auto;
+                // z-index: 50;
+                }
+                .gamePortal1{
+                top: -190%; /* 빌딩 아래에 위치 */
+                left: -60%;
+                width: 140%; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: -50;
+                }
+            }
+
+            .gameBuilding2 {
+                grid-column: 92 / span 4; // 위치 지정
+                grid-row: 13 / span 4;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 200%;
+                height : auto;
+                cursor: pointer;
+                }
+                .gamePopOver2 {
+                bottom: ptr(-20); /* 빌딩 아래에 위치 */
+                left: ptr(10);
+                width: 300%; /* 필요하면 크기 조정 */
+                height: auto;
+                // z-index: 50;
+                }
+                .gamePortal2{
+                top: -130%; /* 빌딩 아래에 위치 */
+                left: -40%;
+                width: 120%; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: -50;
+                }
+            }
+
+            .gameBuilding3 {
+                grid-column: 88 / span 4; // 위치 지정
+                grid-row: 6 / span 4;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 200%;
+                height : auto;
+                cursor: pointer;
+                }
+                .gamePopOver3 {
+                bottom: ptr(115); /* 빌딩 아래에 위치 */
+                left: ptr(10);
+                width: 300%; /* 필요하면 크기 조정 */
+                height: auto;
+                // z-index: 50;
+                }
+                .gamePortal3 {
+                top: -165%; /* 빌딩 아래에 위치 */
+                left: -50%;
+                width: 135%; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: -50;
+                }
+            }
+
+            .dictionaryBuilding {
+                grid-column: 48 / span 4; // 위치 지정
+                grid-row: 29 / span 4;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 240%;
+                height : auto;
+                cursor: pointer;
+                }
+                .dictionaryPopOver {
+                bottom: ptr(130); /* 빌딩 아래에 위치 */
+                left: ptr(-35);
+                width: 300%; /* 필요하면 크기 조정 */
+                height: auto;
+                // z-index: 50;
+                }
+                
+                .dictionaryPortal {
+                top: -215%; /* 빌딩 아래에 위치 */
+                left: -50%;
+                width: 145%; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: -50;
+                }
+            }
+
+            .myPageBuilding {
+                grid-column: 58 / span 4; // 위치 지정
+                grid-row: 33 / span 4;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 240%;
+                height : auto;
+                cursor: pointer;
+                }
+                .myPagePopOver {
+                bottom: ptr(-5); /* 빌딩 아래에 위치 */
+                left: ptr(-45);
+                width: 300%; /* 필요하면 크기 조정 */
+                height: auto;
+                // z-index: 50;
+                }
+                
+                .myPagePortal {
+                top: -230%; /* 빌딩 아래에 위치 */
+                left: -50%;
+                width: 155%; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: -50;
+                }
+            }
+            
+            .storeBuilding {
+                grid-column: 68 / span 4; // 위치 지정
+                grid-row: 35 / span 4;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 240%;
+                height : auto;
+                cursor: pointer;
+                }
+                .storePopOver {
+                bottom: ptr(30); /* 빌딩 아래에 위치 */
+                left: ptr(100);
+                width: 300%; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: 50;
+                }
+                
+                .storePortal {
+                top: -175%; /* 빌딩 아래에 위치 */
+                left: -45%;
+                width: 145%; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: -50;
+                }
+            }
+
+            .testBuilding {
+                grid-column: 66 / span 4; // 위치 지정
+                grid-row: 26 / span 4;
+                background-color: transparent; // 투명 배경
+                position: relative;
+                z-index: 100;
+                canvas {
+                width : 220%;
+                height : auto;
+                cursor: pointer;
+                }
+                .testPopOver {
+                bottom: ptr(125); /* 빌딩 아래에 위치 */
+                left: ptr(20);
+                width: 300%; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: 50;
+                }
+                
+                .testPortal {
+                top: -180%; /* 빌딩 아래에 위치 */
+                left: -55%;
+                width: 155%; /* 필요하면 크기 조정 */
+                height: auto;
+                z-index: -50;
+                }
+            }
+        }
+    }
+}
+
+/* 빌딩 hover 효과 */
+.studyBuildingBeginner.hovered,
+.studyBuildingIntermediate.hovered,
+.studyBuildingAdvanced.hovered,
+.studyBuildingMedia.hovered,
+.studyBuildingTheme.hovered,
+.gameBuilding1.hovered,
+.gameBuilding2.hovered,
+.gameBuilding3.hovered,
+.dictionaryBuilding.hovered,
+.myPageBuilding.hovered,
+.storeBuilding.hovered,
+.testBuilding.hovered
+{
+  transform: scale(1.06);
+  transition: transform 0.5s ease;
+}

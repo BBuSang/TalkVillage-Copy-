@@ -1,0 +1,55 @@
+
+.FindEmailAndPwContainer{
+    background-color: #e0eefa;
+    width: 100%;
+    height: 100vh; /* 전체 화면 높이 */
+}
+.findEmailAndPwBox {
+    display: flex;
+    flex-direction: column; /* 세로 정렬로 변경 */
+    align-items: center;
+    padding: 1vw;
+    margin: auto;
+    position: relative;
+    top: 27%;
+}
+
+.findBox {
+    display: flex; /* 가로로 정렬 */
+    align-items: stretch; /* 요소들이 같은 높이를 가지도록 설정 */
+    width: 100%;
+}
+
+.findEmail,
+.findPw {
+    flex: 1;
+    padding: 50px;
+    height: 350px;
+    margin: 25px 30px;
+    border-radius: 30px;
+    border: 1px solid #39485C;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    background-color: #F9FDFF;
+}
+
+.line {
+    width: 1px;
+    height: 400px;
+    background-color: black;
+}
+
+.backToLogin {
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    background-color: #86B9E1;
+    color: #083349;
+    font-weight: 550;
+    cursor: pointer;
+    align-self: center; /* 버튼을 컨테이너 중앙에 위치 */
+    width: 100px;
+    border-radius: 4px;
+}
+.backToLogin:hover {
+    background-color: #598DC4;
+}

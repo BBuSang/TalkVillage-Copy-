@@ -1,0 +1,56 @@
+@charset "UTF-8";
+html {
+  font-size: 16px;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ActionMenu.module.scss */
+.menuButton {
+  background-color: rgba(224, 238, 250, 0.8) !important;
+  border-radius: 3.125rem !important;
+  font-size: 0.875rem !important;
+  outline: 0.15625rem solid rgba(224, 238, 250, 0.4) !important;
+  height: 90% !important;
+  color: #083349 !important;
+  /* Hover 상태 추가 */
+}
+.menuButton:hover, .menuButton[data-hover], .menuButton:active, .menuButton[data-active] {
+  background-color: rgb(249, 253, 255) !important;
+  color: #083349 !important;
+}
+
+.menuList {
+  display: flex; /* Flexbox로 설정하여 아이템 간 gap을 적용할 수 있게 함 */
+  flex-direction: column; /* 아이템을 세로로 배치 */
+  top: 0.625rem;
+  width: 7.625rem;
+  min-width: 100% !important;
+  outline: 0.15625rem solid rgba(224, 238, 250, 0.4) !important;
+  background-color: rgba(255, 255, 255, 0) !important;
+  border-radius: 0.9375rem !important;
+  border: none !important;
+  padding: 0.125rem !important;
+}
+.menuList .menuItem {
+  background-color: rgba(224, 238, 250, 0.4) !important;
+  border-radius: 3.125rem !important;
+  color: rgb(249, 253, 255) !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.1875rem; /* 아이템 간 하단 여백 추가 */
+  display: flex;
+  justify-content: center;
+  height: 1.5625rem !important;
+}
+.menuList .menuItem:hover {
+  background-color: rgb(249, 253, 255) !important;
+  color: #083349 !important;
+}
+.menuList .menuItem:last-child {
+  margin-bottom: 0 !important;
+}

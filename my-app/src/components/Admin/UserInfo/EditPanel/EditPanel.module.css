@@ -1,0 +1,97 @@
+.rightSection {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.userInfoEditSection {
+  padding: 20px;
+  background-color: white;
+  height: 100%;
+}
+
+.userInfoEditSection h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 100%;
+}
+
+.formGrid label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.userInfoEditInput {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.userInfoEditInput:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* 전체 너비를 사용하는 요소들 */
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.saveButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.saveButton:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: #dc3545;
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* 스크롤바 스타일링 */
+.rightSection::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rightSection::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.rightSection::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.rightSection::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} 

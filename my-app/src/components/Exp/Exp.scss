@@ -1,0 +1,50 @@
+@import '../../components/ScssSetting/default';
+
+.expContainer {
+  background-color: $backgroundColorOpacity; // 기본 배경색
+  border-radius: ptr(50); // 둥근 모서리
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .expContainerInside {
+    display: grid;
+    grid-template-columns: 1fr 5.5fr;
+    width: 95%; // 내부 컨테이너 너비
+    // gap: ptr(5);
+    .levelContainer {
+      width: ptr(15);
+        height: ptr(15);
+        background-color: $backgroundColorOpacity2;
+        border-radius: ptr(15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      .level {
+        color: $brandOceanColor2;
+        font-weight: 800;
+        font-size: ptr(10);
+      }
+    }
+
+
+    .expBox {
+       width: 100%;
+        background-color: rgba(249, 253, 255, 0.8);
+        border-radius: ptr(15);
+        display: flex;
+        align-items: center;
+
+      .segment {
+        flex: 1; // 동일한 너비로 분할
+        height: 70%; // 세그먼트 높이
+      }
+
+      .segment:last-child {
+        border-right: none !important; // 마지막 세그먼트 점선 제거
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@charset "UTF-8";
+html {
+  font-size: 16px;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+@keyframes portal-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+.portalFrame {
+  --portal-color: white;
+  width: 220%;
+  position: absolute;
+  aspect-ratio: 1;
+  --portal-browserbugfix: perspective(20px) translateZ(-0.1px);
+  transform: var(--portal-browserbugfix) scaleY(0.4);
+  filter: contrast(5.75) drop-shadow(0 0 0.125rem rgba(210, 245, 207, 0.7)) drop-shadow(0 0 0.3125rem rgba(210, 245, 207, 0.7)) drop-shadow(0 0 0.9375rem rgba(210, 245, 207, 0.7));
+  overflow: hidden;
+}
+
+.portal,
+.portal::before {
+  position: absolute;
+  inset: 0;
+  animation: portal-spin 8s infinite linear;
+}
+
+.portal {
+  --portal-img: url(../../image/Portal/Portal.png);
+  --portal-mask: var(--portal-img) top left / 100% 100% no-repeat;
+  -webkit-mask: var(--portal-mask);
+  mask: var(--portal-mask);
+}
+
+.portal::before {
+  content: "";
+  animation-direction: reverse;
+  background: linear-gradient(rgb(210, 245, 207) 35%, transparent 50%, rgb(210, 245, 207) 75%), var(--portal-color);
+  mix-blend-mode: overlay; /* 포털 효과를 돋보이게 */
+}

@@ -1,0 +1,119 @@
+.translation-container {
+  max-width: 1300px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+  background-color: transparent;
+  border: 1px solid #e0e0e0;
+  height: 421px;
+  overflow: hidden; /* 오버플로우 제어를 위해 선택적으로 추가 */
+  border-bottom: none;
+}
+
+.language-select-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.language-select-container span {
+  font-size: 1.1rem;
+  color: #333;
+  width: 100px; /* Fixed width */
+  text-align: center; /* Center align text within the span */
+  padding: 10px; /* Adjust padding as necessary */
+  padding-right: 250px;
+  padding-left: 250px;
+}
+
+.language-switch-button {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s;
+  padding: 0 15px; /* Adjust the padding for a balanced look */
+  margin-left: 30px;
+}
+.translation-textarea-container {
+  display: flex; /* 플렉스 레이아웃 유지 */
+  justify-content: stretch; /* 자식 요소가 전체 공간을 사용할 수 있도록 */
+}
+
+.input-container, .output-container {
+  flex: 1; /* 두 컨테이너가 균등하게 성장하도록 설정 */
+  position: relative;
+  margin: 0; /* 기본 마진 제거 */
+}
+
+.input-text {
+  width: 650px;
+  height: 300px;
+  padding: 15px 0 0 10px;
+  font-size: 1rem;
+  border: 1px solid #e0e0e0; /* Transparent border to keep layout consistent */
+  border-left: none;
+  resize: none;
+  outline: none;
+}
+
+.output-text {
+  width: 650px;
+  height: 300px;
+  padding: 15px 0 0 10px;
+  font-size: 1rem;
+  border: 1px solid #e0e0e0;
+  border-left: none;
+  border-right: none;
+  background-color: #ebebeb;
+  pointer-events: none;
+}
+
+/* 아이콘 버튼 스타일 */
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.icon-button img {
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+}
+.input-text{
+  padding-right: 4.5px;
+}
+.box{
+  height: 10000px;
+}
+
+/* 번역 버튼 스타일 */
+.translate-button {
+  padding: 10px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #3f92d7;
+  border: none;
+  cursor: pointer;
+  width: 101px;
+  height: 61px;
+  margin-left: 456px;
+}
+.left-buttons, .right-buttons {
+  display: flex;
+  gap: 10px; /* 버튼 간 간격 */
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  height: 60px;
+  border-left: none;
+}
+
+.left-buttons, .right-buttons {
+  margin-top: -5px; /* 마진 제거 */
+}
+

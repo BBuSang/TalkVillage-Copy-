@@ -1,0 +1,94 @@
+@charset "UTF-8";
+html {
+  font-size: 16px;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.selection {
+  border-top-right-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  background-color: #e0eefa;
+  color: #083349;
+}
+.selection.active {
+  background-color: #e0eefa;
+  border-top: 0.1875rem solid rgb(60, 76, 95) !important;
+  border-right: 0.1875rem solid rgb(60, 76, 95) !important;
+  border-bottom: 0.1875rem solid rgb(60, 76, 95) !important;
+  border-bottom: 0.1875rem solid #507FB2;
+  border-left: none;
+  background-color: #507FB2;
+  color: rgb(249, 253, 255);
+  z-index: 200;
+}
+.selection .mainSelection {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto; /* 텍스트와 아이콘의 칸 비율을 설정 */
+  align-items: center;
+}
+.selection .mainSelection .AccordionButton {
+  font-weight: bold;
+  width: 100%;
+  font-size: 14 !important;
+  display: grid;
+  grid-template-columns: 1fr auto; /* 텍스트와 아이콘을 분리하는 두 개의 칸 생성 */
+  align-items: center;
+  padding: 0.625rem !important; /* 필요에 따라 0으로 고정 */
+  margin: 0 !important; /* 필요에 따라 0으로 고정 */
+}
+.selection .sideSelection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 !important; /* 필요에 따라 0으로 고정 */
+  margin: 0 !important; /* 필요에 따라 0으로 고정 */
+}
+.selection .sideSelection .secondSelections {
+  padding-bottom: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+.selection .sideSelection .secondSelections .secondSelection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.375rem;
+  background-color: rgba(249, 253, 255, 0.2);
+  padding: 0.3125rem;
+  border-radius: 2.5rem;
+  cursor: pointer;
+}
+.selection .sideSelection .secondSelections .secondSelection:hover, .selection .sideSelection .secondSelections .secondSelection.hovered {
+  background-color: #083349;
+  font-weight: bold;
+}
+
+/* 반응형 스타일 추가 */
+@media (max-width: 1000px) or (max-height: 720px) {
+  .selection {
+    border-top-right-radius: 0.9375rem; /* 크기 축소 */
+    border-bottom-right-radius: 0.9375rem;
+  }
+  .selection .mainSelection .AccordionButton {
+    font-size: 0.5rem !important; /* 폰트 크기 축소 */
+    padding: 0.5rem !important;
+  }
+  .selection .sideSelection .secondSelections {
+    gap: 0.5rem; /* 간격 축소 */
+  }
+  .selection .sideSelection .secondSelections .secondSelection {
+    width: 4.375rem; /* 크기 축소 */
+    padding: 0.25rem;
+  }
+}

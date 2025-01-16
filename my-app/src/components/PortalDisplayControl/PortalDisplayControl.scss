@@ -1,0 +1,41 @@
+.studyPortalBeginner,
+.studyPortalIntermediate,
+.studyPortalAdvanced,
+.studyPortalMedia,
+.studyPortalTheme,
+.gamePortal1,
+.gamePortal2,
+.gamePortal3,
+.dictionaryPortal,
+.myPagePortal,
+.storePortal,
+.testPortal{
+  display:none;
+  // animation: fadeIn 0.5s ease-in-out;
+}
+
+.studyPortalBeginner.active,
+.studyPortalIntermediate.active,
+.studyPortalAdvanced.active,
+.studyPortalMedia.active,
+.studyPortalTheme.active,
+.gamePortal1.active,
+.gamePortal2.active,
+.gamePortal3.active,
+.dictionaryPortal.active,
+.myPagePortal.active,
+.storePortal.active,
+.testPortal.active {
+  display:block;
+  
+}
+
+// @keyframes fadeIn {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+

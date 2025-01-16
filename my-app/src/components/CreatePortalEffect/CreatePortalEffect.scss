@@ -1,0 +1,50 @@
+@import '../ScssSetting/default';
+
+@keyframes portal-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+  }
+
+.portalFrame {
+--portal-color: white;
+width: 220%;
+position : absolute;
+aspect-ratio: 1;
+--portal-browserbugfix: perspective(20px) translateZ(-0.1px);
+transform: var(--portal-browserbugfix) scaleY(0.4) ;
+// filter: contrast(5.75);
+filter: contrast(5.75)
+            drop-shadow(0 0 ptr(2) $lightColorOpacity)
+            drop-shadow(0 0 ptr(5) $lightColorOpacity)
+            drop-shadow(0 0 ptr(15) $lightColorOpacity);
+overflow: hidden;
+
+}
+
+.portal,
+.portal::before {
+  position: absolute;
+  inset: 0;
+  animation: portal-spin 8s infinite linear;
+}
+
+.portal {
+  --portal-img: url(../../image/Portal/Portal.png);
+  --portal-mask: var(--portal-img) top left / 100% 100% no-repeat;
+  -webkit-mask: var(--portal-mask);
+  mask: var(--portal-mask);
+}
+
+.portal::before {
+content: "";
+animation-direction: reverse;
+background: linear-gradient($lightColor 35%, transparent 50%, $lightColor 75%), var(--portal-color);
+mix-blend-mode: overlay; /* 포털 효과를 돋보이게 */
+}
+
+
+

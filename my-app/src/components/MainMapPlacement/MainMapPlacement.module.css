@@ -1,0 +1,446 @@
+@charset "UTF-8";
+html {
+  font-size: 16px;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.mapImage {
+  width: 100%;
+  height: 100%;
+}
+
+.birdAnimationContainer {
+  position: absolute; /* 필요에 따라 relative로 변경 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.cloudAnimationContainer {
+  position: absolute; /* 필요에 따라 relative로 변경 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 300;
+  pointer-events: none;
+}
+
+.MainMapCanvas {
+  width: 100%;
+  position: relative;
+}
+
+.buildings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.buildings .mapGrid {
+  width: 100%;
+  padding-top: 1.46875rem;
+  padding-left: 3.125rem;
+  padding-right: 2.1875rem;
+  padding-bottom: 1.875rem;
+}
+.buildings .mapGrid .buildingsMap {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(110, 1fr);
+  grid-template-rows: repeat(50, 1fr);
+}
+.buildings .mapGrid .buildingsMap .boat1AnimationContainer {
+  grid-column: 93/span 6;
+  grid-row: 25/span 5;
+  width: 270%;
+  position: relative;
+  z-index: 100;
+  transform: scaleX(-1) rotate(-5deg);
+}
+.buildings .mapGrid .buildingsMap .boat2AnimationContainer {
+  grid-column: 10/span 6;
+  grid-row: 28/span 5;
+  width: 480%;
+  position: relative;
+  z-index: 100;
+  transform: rotate(-5deg);
+}
+.buildings .mapGrid .buildingsMap .footPrintAnimationContainer {
+  grid-column: 87/span 6;
+  grid-row: 15/span 5;
+  width: 120%;
+  position: relative;
+  z-index: 100;
+  transform: rotate(-90deg);
+}
+.buildings .mapGrid .buildingsMap .wave1AnimationContainer {
+  grid-column: 40/span 6;
+  grid-row: 6/span 5;
+  width: 180%;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .wave2AnimationContainer {
+  grid-column: 35/span 6;
+  grid-row: 33/span 5;
+  width: 180%;
+  position: relative;
+  z-index: 100;
+  transform: scaleX(-1);
+}
+.buildings .mapGrid .buildingsMap .wave3AnimationContainer {
+  grid-column: 78/span 6;
+  grid-row: 25/span 5;
+  width: 180%;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .wave4AnimationContainer {
+  grid-column: 70/span 6;
+  grid-row: 5/span 5;
+  width: 180%;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .wave5AnimationContainer {
+  grid-column: 85/span 6;
+  grid-row: 40/span 5;
+  width: 180%;
+  position: relative;
+  z-index: 100;
+  transform: scaleX(-1);
+}
+.buildings .mapGrid .buildingsMap .studyBuildingBeginner {
+  grid-column: 13/span 6;
+  grid-row: 5/span 5;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingBeginner canvas {
+  width: 200%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingBeginner .studyPopOverBeginner {
+  bottom: 9.0625rem; /* 빌딩 아래에 위치 */
+  right: 2.5rem;
+  width: 200%; /* 필요하면 크기 조정 */
+  height: auto;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingBeginner .studyPortalBeginner {
+  top: -150%; /* 빌딩 아래에 위치 */
+  left: -10%;
+  width: auto; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingIntermediate {
+  grid-column: 17/span 6;
+  grid-row: 17/span 5;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingIntermediate canvas {
+  width: 190%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingIntermediate .studyPopOverIntermediate {
+  bottom: -0.3125rem; /* 빌딩 아래에 위치 */
+  left: 2.5rem;
+  width: 200%; /* 필요하면 크기 조정 */
+  height: auto;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingIntermediate .studyPortalIntermediate {
+  top: -150%; /* 빌딩 아래에 위치 */
+  left: -20%;
+  width: auto; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingAdvanced {
+  grid-column: 31/span 4;
+  grid-row: 10/span 4;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingAdvanced canvas {
+  width: 200%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingAdvanced .studyPopOverAdvanced {
+  bottom: 0.9375rem; /* 빌딩 아래에 위치 */
+  left: 5.3125rem;
+  width: 300%; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: 50;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingAdvanced .studyPortalAdvanced {
+  top: -180%; /* 빌딩 아래에 위치 */
+  left: -30%;
+  width: auto; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+  transform: scale(1.4); /* 크기 비율로 확대 */
+}
+.buildings .mapGrid .buildingsMap .studyBuildingMedia {
+  grid-column: 10/span 4;
+  grid-row: 21/span 4;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingMedia canvas {
+  width: 200%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingMedia .studyPopOverMedia {
+  bottom: 6.875rem; /* 빌딩 아래에 위치 */
+  left: -3.75rem;
+  width: 300%; /* 필요하면 크기 조정 */
+  height: auto;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingMedia .studyPortalMedia {
+  top: -110%; /* 빌딩 아래에 위치 */
+  left: -10%;
+  width: auto; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingTheme {
+  grid-column: 25/span 4;
+  grid-row: 4/span 4;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingTheme canvas {
+  width: 200%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingTheme .studyPopOverTheme {
+  bottom: 6.875rem; /* 빌딩 아래에 위치 */
+  left: 1.25rem;
+  width: 300%; /* 필요하면 크기 조정 */
+  height: auto;
+}
+.buildings .mapGrid .buildingsMap .studyBuildingTheme .studyPortalTheme {
+  top: -110%; /* 빌딩 아래에 위치 */
+  left: -10%;
+  width: auto; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding1 {
+  grid-column: 81/span 4;
+  grid-row: 12/span 4;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding1 canvas {
+  width: 200%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding1 .gamePopOver1 {
+  bottom: 6.875rem; /* 빌딩 아래에 위치 */
+  left: -4.375rem;
+  width: 300%; /* 필요하면 크기 조정 */
+  height: auto;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding1 .gamePortal1 {
+  top: -190%; /* 빌딩 아래에 위치 */
+  left: -60%;
+  width: 140%; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding2 {
+  grid-column: 92/span 4;
+  grid-row: 13/span 4;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding2 canvas {
+  width: 200%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding2 .gamePopOver2 {
+  bottom: -1.25rem; /* 빌딩 아래에 위치 */
+  left: 0.625rem;
+  width: 300%; /* 필요하면 크기 조정 */
+  height: auto;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding2 .gamePortal2 {
+  top: -130%; /* 빌딩 아래에 위치 */
+  left: -40%;
+  width: 120%; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding3 {
+  grid-column: 88/span 4;
+  grid-row: 6/span 4;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding3 canvas {
+  width: 200%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding3 .gamePopOver3 {
+  bottom: 7.1875rem; /* 빌딩 아래에 위치 */
+  left: 0.625rem;
+  width: 300%; /* 필요하면 크기 조정 */
+  height: auto;
+}
+.buildings .mapGrid .buildingsMap .gameBuilding3 .gamePortal3 {
+  top: -165%; /* 빌딩 아래에 위치 */
+  left: -50%;
+  width: 135%; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+}
+.buildings .mapGrid .buildingsMap .dictionaryBuilding {
+  grid-column: 48/span 4;
+  grid-row: 29/span 4;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .dictionaryBuilding canvas {
+  width: 240%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .dictionaryBuilding .dictionaryPopOver {
+  bottom: 8.125rem; /* 빌딩 아래에 위치 */
+  left: -2.1875rem;
+  width: 300%; /* 필요하면 크기 조정 */
+  height: auto;
+}
+.buildings .mapGrid .buildingsMap .dictionaryBuilding .dictionaryPortal {
+  top: -215%; /* 빌딩 아래에 위치 */
+  left: -50%;
+  width: 145%; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+}
+.buildings .mapGrid .buildingsMap .myPageBuilding {
+  grid-column: 58/span 4;
+  grid-row: 33/span 4;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .myPageBuilding canvas {
+  width: 240%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .myPageBuilding .myPagePopOver {
+  bottom: -0.3125rem; /* 빌딩 아래에 위치 */
+  left: -2.8125rem;
+  width: 300%; /* 필요하면 크기 조정 */
+  height: auto;
+}
+.buildings .mapGrid .buildingsMap .myPageBuilding .myPagePortal {
+  top: -230%; /* 빌딩 아래에 위치 */
+  left: -50%;
+  width: 155%; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+}
+.buildings .mapGrid .buildingsMap .storeBuilding {
+  grid-column: 68/span 4;
+  grid-row: 35/span 4;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .storeBuilding canvas {
+  width: 240%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .storeBuilding .storePopOver {
+  bottom: 1.875rem; /* 빌딩 아래에 위치 */
+  left: 6.25rem;
+  width: 300%; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: 50;
+}
+.buildings .mapGrid .buildingsMap .storeBuilding .storePortal {
+  top: -175%; /* 빌딩 아래에 위치 */
+  left: -45%;
+  width: 145%; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+}
+.buildings .mapGrid .buildingsMap .testBuilding {
+  grid-column: 66/span 4;
+  grid-row: 26/span 4;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+}
+.buildings .mapGrid .buildingsMap .testBuilding canvas {
+  width: 220%;
+  height: auto;
+  cursor: pointer;
+}
+.buildings .mapGrid .buildingsMap .testBuilding .testPopOver {
+  bottom: 7.8125rem; /* 빌딩 아래에 위치 */
+  left: 1.25rem;
+  width: 300%; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: 50;
+}
+.buildings .mapGrid .buildingsMap .testBuilding .testPortal {
+  top: -180%; /* 빌딩 아래에 위치 */
+  left: -55%;
+  width: 155%; /* 필요하면 크기 조정 */
+  height: auto;
+  z-index: -50;
+}
+
+/* 빌딩 hover 효과 */
+.studyBuildingBeginner.hovered,
+.studyBuildingIntermediate.hovered,
+.studyBuildingAdvanced.hovered,
+.studyBuildingMedia.hovered,
+.studyBuildingTheme.hovered,
+.gameBuilding1.hovered,
+.gameBuilding2.hovered,
+.gameBuilding3.hovered,
+.dictionaryBuilding.hovered,
+.myPageBuilding.hovered,
+.storeBuilding.hovered,
+.testBuilding.hovered {
+  transform: scale(1.06);
+  transition: transform 0.5s ease;
+}

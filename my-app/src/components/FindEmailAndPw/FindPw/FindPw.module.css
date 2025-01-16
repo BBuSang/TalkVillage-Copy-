@@ -1,0 +1,111 @@
+.verifyButton {
+    padding: 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #86B9E1;
+    color: #083349;
+    font-weight: bold;
+    cursor: pointer;
+}
+.verifyButton1 {
+    padding: 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #86B9E1;
+    color: #083349;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+}
+.verifyButton3 {
+    padding: 10px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #86B9E1;
+    color: #083349;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.verifyButton:hover {
+    background-color: #598DC4;
+}
+.verifyButton1:hover {
+    background-color: #598DC4;
+}
+.verifyButton2:hover {
+    background-color: #598DC4;
+}
+.verifyButton3:hover {
+    background-color: #598DC4;
+}
+.signupContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* 수직 중앙 정렬 */
+    margin: 0; /* 기본 마진 제거 */
+}
+
+.Input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    width: 400px;
+    margin-bottom: 10px;
+}
+.Input1{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    width: 400px;
+}
+
+.inputGroup{
+    display: flex;
+    align-items: center;
+    width: 520px;
+}
+.inputGroup1{
+    display: flex;
+    align-items: center;
+    width: 520px;
+}
+.inputGroup2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+}
+.inputGroup3{
+    display: flex;
+    align-items: self-start;
+    width: 400px;
+    height: 70px;
+    flex-direction: column
+}
+
+.signupTitle{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 70px;
+}
+
+.errorInput {
+    border: 2px solid red;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
