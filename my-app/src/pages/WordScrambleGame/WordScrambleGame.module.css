@@ -1,118 +1,209 @@
-.body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-  }
-  
-  .container {
-    text-align: center;
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 600px;
-    min-height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .title {
-    font-size: 2.8rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .worddisplay {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-  
-  .scrambledWord {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    letter-spacing: 8px;
-  }
-  
-  .inputContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .inputDisplay{
-    height: 20px;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-  }
-  
-  .inputfield {
-    padding: 15px;
-    font-size: 1.2rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 80%;
-    margin-bottom: 15px;
-  }
-  
-  .button {
-    padding: 15px 25px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.4rem;
-    width: 70%;
-    margin: 12px 0;
-  }
-  
-  .button:hover {
-    background-color: #45a049;
-  }
-  
-  .hintContainer {
-    margin-bottom: 20px;
-  }
-  
-  .hintDisplay {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-  }
-  
-  .hintText {
-    flex: 1;
-    height: 80px;
-    overflow-y: auto;
-    white-space: normal;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    text-align: center;
-  }
-  
-  .score {
-    font-size: 1.8rem;
-    color: #333;
-    font-weight: bold;
-  }
-  .backButton{
-    background-color: gray;
-    border-radius: 15px;
-    color: aliceblue;
-    font-size: 12px;
-    padding: 10px 20px;
-    margin-top: 20px;
-    align-self: center;
-  }
-  .backButton:hover{
-    background-color: darkgray;
-  }
-  
+.outsidecontainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #507fb2;
+  padding: 1rem;
+}
 
+.body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #34495e;
+  border: 0.25rem solid #fff;  /* 픽셀형 테두리 */
+  border-radius: 20px;  /* 각진 모서리 */
+  image-rendering: pixelated;
+}
+@font-face {
+  font-family: 'neodgm';
+  src: url('../../font/neodgm.ttf') format('truetype');
+}
+
+.container {
+  background: #2c3e50;
+  border: 0.25rem solid #fff;
+  padding: 2rem;
+  width: 40rem;
+  height: 39rem;
+  border-radius: 20px;
+  box-shadow: 0.5rem 0.5rem 0 #000;  /* 픽셀형 그림자 */
+}
+
+.scrambledWord {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.scrambledWord span {
+  background: #3498db;
+  padding: 0.7rem;
+  border: 0.2rem solid #fff;
+  color: #fff;
+  font-family: neodgm;
+  font-size: 2.4rem;
+  margin: 0 0.5rem;
+  box-shadow: 0.25rem 0.25rem 0 #000;
+  transition: transform 0.1s;  /* 빠른 전환 효과 */
+  text-transform: uppercase;
+}
+
+.scrambledWord span:hover {
+  transform: translateY(-0.25rem);
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputfield {
+  background: #34495e;
+  border: 0.25rem solid #fff;
+  color: #fff;
+  padding: 0.7rem;
+  font-family: neodgm;
+  font-size: 1.6rem;
+  width: 100%;
+  max-width: 25rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+.answer {
+  font-size: 1.6rem;
+  font-family: neodgm;
+  color: #fff;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  height: 2rem;
+  letter-spacing: 0.1rem;
+}
+
+.button {
+  background: #e74c3c;
+  border: 0.25rem solid #fff;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-family: neodgm;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0.25rem 0.25rem 0 #000;
+  transition: transform 0.1s;
+  letter-spacing: 0.1rem;
+}
+
+.button:hover {
+  transform: translateY(-0.25rem);
+  background: #c0392b;
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0.125rem 0.125rem 0 #000;
+}
+
+.buttonedu {
+  font-size: 1.2rem;
+  font-family: neodgm;
+  color: #8f8f8f;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  height: 1rem;
+}
+
+.hintContainer {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 100%;
+}
+.hintDisplay {
+  display: flex;
+  height: 2rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+.hintText {
+  font-family: neodgm;
+  font-size: 2rem;
+  color: #bdc3c7;
+  text-align: center;
+  height: 9rem;
+  width: 100%;
+}
+
+.inputDisplay {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: neodgm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+
+.startContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: #2c3e50;
+  padding: 3rem;
+  border: 0.25rem solid #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0.5rem 0.5rem 0 #000;
+  position: relative;
+}
+
+.gameTitle {
+  font-family: neodgm;
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 0.25rem 0.25rem 0 #000;
+  letter-spacing: 0.25rem;
+}
+
+.startButton {
+  background: #e74c3c;
+  border: 0.25rem solid #fff;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-family: neodgm;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0.25rem 0.25rem 0 #000;
+  transition: transform 0.1s;
+  letter-spacing: 0.125rem;
+}
+
+.startButton:hover {
+  transform: translateY(-0.25rem);
+  background: #c0392b;
+}
+.pixel {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #fff;
+  opacity: 1;
+  transition: all 0.5s ease-out;
+}
+
+.explode .pixel {
+  opacity: 0;
+  transform: translate(var(--tx), var(--ty)) rotate(var(--rot));
+}

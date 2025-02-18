@@ -273,3 +273,43 @@
 .stateButton:hover {
   opacity: 0.9;
 }
+
+.stagePreview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+.stageInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stageInfo h4 {
+  margin: 0;
+  color: #333;
+  font-size: 1.1em;
+}
+
+.stageInfo p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.stageImage {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.stageImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

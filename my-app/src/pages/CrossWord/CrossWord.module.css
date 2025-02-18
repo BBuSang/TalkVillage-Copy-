@@ -1,49 +1,41 @@
-/* App.module.css */
-.pageContainer {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.outsidecontainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding : 1rem;
+  background-color: #507fb2;
+  border-radius: 20px;
 }
 
-.pageTitle {
-  text-align: center;
-  color: #2c3e50;
-  font-size: 2rem;
-  font-weight: 700;
+.pageContainer {
   position: relative;
-  padding-bottom: 1rem;
-  letter-spacing: 0.2rem;
-}
-.backButton {
-  position: absolute;
-  top: 2rem;
-  right: -16vw;
-  font-size: 1rem;
-  color: #2c3e50;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  z-index: 1000;
-}
-.backButton:hover {
-  background-color: #e0e0e0;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: #f0f8fd;
+  border-radius: 20px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
 .gameContainer {
   display: flex;
-  gap: 2rem;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #d7dbe0;
 }
 
 .gridContainer {
   flex: 0 0 auto;
   padding: 1rem;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  height: 43.6vw;
+  height: 42rem;
+  width: 42rem;
 }
 
 .grid {
@@ -56,8 +48,8 @@
 }
 
 .gridCell {
-  width: 2.1vw;
-  height: 2.1vw;
+  width: 2rem;
+  height: 2rem;
   border: 1px solid #ddd;
   display: flex;
   align-items: center;
@@ -69,8 +61,8 @@
 
 .cellNumber {
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: 0.02rem;
+  left: 0.02rem;
   font-size: 0.7rem;
   font-weight: bold;
   color: #333;
@@ -82,7 +74,7 @@
 
 .cellNumber.right {
   left: auto;
-  right: 2px;
+  right: 0.02rem;
 }
 
 .emptyCell {
@@ -103,24 +95,45 @@
 }
 
 .sidePanel {
-  flex: 0 0 50vw;
   padding: 15px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 43.6vw;
-  min-width: 800px;
+  height: 42rem;
+}
+@font-face {
+  font-family: 'digitalclock';
+  src: url('../../font/LAB디지털.ttf') format('truetype');
 }
 
-.sidePanelTitle {
+.headerContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #eee;
+  gap: 2rem;
+}
+
+.sidePanelTitle {
   color: #333;
-  font-size: 1.1rem;
+  font-size: 1rem;
+}
+
+.timerBox {
+  padding: 0.25rem 0.5rem;
+  background: #2c3e50;
+  border-radius: 0.25rem;
+}
+
+.timer {
+  font-family: 'digitalclock';
+  color: #e6e6e6;
+  font-size: 0.875rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
 }
 
 .wordListWrapper {
@@ -129,7 +142,7 @@
   padding-right: 8px;
   margin-top: 10px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   padding: 10px;
 }
@@ -190,20 +203,8 @@
   background-color: #FFEBEE;
 }
 
-@media (max-width: 768px) {
-  .gameContainer {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sidePanel {
-    width: 100%;
-    margin-top: 2rem;
-  }
-}
-
 .wordListWrapper::-webkit-scrollbar {
-  width: 6px;
+  width: 0.4rem;
 }
 
 .wordListWrapper::-webkit-scrollbar-track {
@@ -221,38 +222,42 @@
 }
 
 .successOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  inset: 1rem 1rem 1rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  flex-direction: column;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
 }
 
 .successMessage {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  height: 25rem;
-  width: 25rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 100;
+  background-color: rgba(49, 49, 49, 0.96);
+  height: 20rem;
+  width: 30rem;
+  border-radius: 15px;
 }
 
 .successTitle {
   font-size: 5rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  margin-top: 4rem;
+  margin-top: 1rem;
   background: linear-gradient(to top, #d6b600, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
   -webkit-text-stroke: 2px rgba(0, 0, 0, 0.164);
+  font-family: 'neodgm';
+  letter-spacing: 0.3rem;
 }
 
 .successTime {
@@ -265,18 +270,101 @@
   color: transparent;
   -webkit-text-stroke: 1px black;
 }
-
+.isretry{
+  color: rgb(239, 239, 239);
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-family: 'neodgm';
+}
+.retryButtons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .retryButton {
-  margin-top: auto;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  border-radius: 15px;
+  color: aliceblue;
+  font-size: 30px;
+  margin: 20px;
+  position: relative;
+  font-family: 'neodgm';
+}
+.retryButton:hover::before {
+  content: "* ";
+  position: absolute;
+  right: 100%;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+.retryButton:hover::after {
+  content: " *";
+  position: absolute;
+  left: 100%;
+  margin-left: 5px;
+  margin-top: 2px;
+}
+.startbackground{
+  background-color: #324e61;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.startContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: white;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem 0 #000;
+}
+.gameTitle{
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.startButton{
   font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  text-shadow: 0.1rem 0.1rem 0 #6b6b6b;
+  animation: pulse 1.5s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+.startButton:hover{
+  animation: none;
+  transform: scale(1.1);
+}
+.curtain {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transition: top 0.8s ease-in-out;
+  z-index: 10;
+  border-radius: 20px;
 }
 
-.retryButton:hover {
-  background-color: #0056b3;
+.curtain.down {
+  top: 0;
 }

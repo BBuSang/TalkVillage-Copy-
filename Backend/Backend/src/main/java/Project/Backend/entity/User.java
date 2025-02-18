@@ -51,6 +51,8 @@ public class User {
 	Integer point; // 게임머니
 	Integer grade; // 레벨인데 삭제할거임
 	String role; // ROLE_USER, ROLE_ADMIN
+	LocalDate firstsignup; // 최초가입일
+	LocalDate editinfo; // 정보 수정일
 	
 	@Transient
 	Map<String, Object> attributes = new HashMap<String, Object>();

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-import './Home.css';
+import styles from './Home.module.css';
 import CreateUserPanel from '../../components/CreateUserPanel/CreateUserPanel';
 import FindUUIDPanel from '../../components/FindUUIDPanel/FindUUIDPanel';
 

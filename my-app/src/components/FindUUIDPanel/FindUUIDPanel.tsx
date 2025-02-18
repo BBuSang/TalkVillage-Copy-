@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-import './FindUUIDPanel.css';
+import styles from './FindUUIDPanel.module.css';
 
 export default function FindUUIDPanel() {
     const [retrievedUUID, setRetrievdUUID] = useState<string>("");

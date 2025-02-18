@@ -6,6 +6,7 @@ import UserInfo from '../../components/Admin/UserInfo/UserInfo';
 import AddScrambledWord from '../../components/Admin/Games/AddScrambledWord/AddScrambledWord';
 import Store from '../../components/Admin/Store/AddStore';
 import CrossWordAdmin from '../../components/Admin/Games/AddCrossWordAdmin/AddCrossWordAdmin';
+import FileManager from '../../components/ThemePanel/QuesionManager/FileUploadAndView';
 
 const AdminPage: React.FC = () => {
     const [currentView, setCurrentView] = useState<string>('default');
@@ -51,8 +52,8 @@ const AdminPage: React.FC = () => {
                 return <Store />;
             case 'CrosswordAdmin':
                 return <CrossWordAdmin/>;
-            case '1':
-                return <div>1</div>;
+            case 'filemanager':
+                return <FileManager/>;
             case '2':
                 return <div>2</div>;
             case '3':
@@ -93,15 +94,15 @@ const AdminPage: React.FC = () => {
                 </button>
                 <button
                     className={styles.navButton}
-                    onClick={() => setCurrentView('Store')}
+                    onClick={() => setCurrentView('filemanager')}
                 >
-                    Store
+                    filemanager
                 </button>
                 <button
                     className={styles.navButton}
-                    onClick={() => setCurrentView('1')}
+                    onClick={() => setCurrentView('Store')}
                 >
-                    1
+                    Store
                 </button>
                 <button
                     className={styles.navButton}

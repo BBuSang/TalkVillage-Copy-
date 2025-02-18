@@ -20,8 +20,8 @@ const NamePlate0: React.FC<NamePlate0Props> = ({ name }) => {
                     glowEffect={false}
                     cursor="pointer"
                     fontWeight="bold"
-                    fontSize="1.3em"
-                    name="로그인하러가기"
+                    fontSize="0.6rem"
+                    name="sign in"
                 />
             </div>
         );
@@ -29,12 +29,16 @@ const NamePlate0: React.FC<NamePlate0Props> = ({ name }) => {
 
     return (
         <NamePlateItem 
-            backgroundColor="#ffffff"
-            borderColor="#e0e0e0"
+            backgroundColor=" rgba(224, 238, 250, 0.8)"
+            borderColor="#507FB2"
             style="solid"
-            textColor="black"
+            // textColor="black"
             glowEffect={false}
             name={name}
+            textColor = "#083349"
+            textShadow = "none"
+            fontWeight ="600"
+
         />
     );
 };

@@ -1,0 +1,45 @@
+.tableContainer {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin: 20px 0;
+  min-width: 800px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  background-color: #f5f9fd;
+  border-bottom: 2px solid #d1e4f7;
+}
+
+.header th {
+  padding: 1px 4px;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #2c5282;
+}
+
+.row td {
+  padding: 1px 4px;
+  vertical-align: middle;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.row:hover {
+  background-color: #f8fafd;
+}
+
+.starIcon {
+  transition: all 0.2s;
+  color: #90cdf4;
+}
+
+.starIcon.active {
+  color: #3182ce;
+}
+
+.starIcon:hover {
+  transform: scale(1.2);
+  color: #3182ce;
+}

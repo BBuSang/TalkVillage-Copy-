@@ -1,22 +1,20 @@
 package Project.Backend.controller.api;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import Project.Backend.classes.UD;
-import Project.Backend.entity.Inventory;
-import Project.Backend.entity.MyStage;
 import Project.Backend.entity.Store;
 import Project.Backend.repository.InventoryRepository;
 import Project.Backend.repository.MyStageRepository;
 import Project.Backend.repository.StoreRepository;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -154,6 +152,12 @@ public class AdminController {
 		Background5.setItemName("크리스탈 배경");
 		Background5.setPrice(500000);
 		storeRep.save(Background5);
+		
+		Store Background6 = new Store();
+		Background6.setItemCategory("Background-6");
+		Background6.setItemName("얼불 배경");
+		Background6.setPrice(1000000);
+		storeRep.save(Background6);
 
 		// 이름표 아이템 생성
 		Store NamePlate0 = new Store();

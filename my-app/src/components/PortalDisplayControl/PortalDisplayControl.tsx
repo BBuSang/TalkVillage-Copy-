@@ -36,11 +36,11 @@ const PortalDisplayControl: React.FC<PortalDisplayControlProps> = ({ title, sele
 
     if (title === '게임하기') {
       switch (selection) {
-        case '게임1':
+        case 'HangMan':
           return styles.gamePortal1;
-        case '게임2':
+        case 'Scramble':
           return styles.gamePortal2;
-        case '게임3':
+        case 'CrossWord':
           return styles.gamePortal3;
         default:
           return null;

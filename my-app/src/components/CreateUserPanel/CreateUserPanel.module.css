@@ -1,0 +1,21 @@
+.createUserContainer {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 60px;
+    width: 450px;
+}
+
+.usernameTextarea {
+    resize: none;
+    height: 30px;
+    width: 150px;
+    margin-left: 10px;
+}
+
+.submitUsernameButton {
+    resize: none;
+    height: 30px;
+    width: 150px;
+    margin-left: 10px;
+}

@@ -1,11 +1,11 @@
 .namePlate {
-    height: 60px;
+    height: 20px;
     border-radius: 8px;
     position: relative;
     transition: transform 0.2s ease;
     border: 2px solid;
     color: white;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
     display: flex;
     align-items: center;

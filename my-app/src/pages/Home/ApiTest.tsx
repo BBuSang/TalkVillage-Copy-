@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './ApiTest.css';
+import styles from './ApiTest.module.css';
 import DictionaryComponent from '../../components/Apis/DictionaryComponent';
 import TranslationComponent from '../../components/Apis/TranslationComponent';
 

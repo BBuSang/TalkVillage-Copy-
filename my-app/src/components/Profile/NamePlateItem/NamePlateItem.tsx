@@ -26,7 +26,7 @@ const NamePlateItem: React.FC<NamePlateItemProps> = ({
     textColor = '#ffffff',
     fontWeight = 'normal',
     borderWidth = '2px',
-    fontSize = '1.7em',
+    fontSize = '1em',
     name,
     cursor,
     boxShadow,

@@ -1,7 +1,13 @@
 package Project.Backend.services;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import org.springframework.stereotype.Service;
-import java.io.*;
 
 @Service
 public class WordTranslationService {
@@ -18,7 +24,6 @@ public class WordTranslationService {
              OutputStream outputStream = new FileOutputStream(outputFile)) {
              
             // 번역 로직 추가 (여기에서 DeepL API 호출)
-            System.out.println("Translating file: " + inputFilePath);
 
             // 실제 번역 로직을 호출하고 결과를 outputStream에 작성해야 합니다.
             // 예시: byte[] data = callTranslationApi(inputStream, targetLang);
@@ -31,7 +36,6 @@ public class WordTranslationService {
                 outputStream.write(buffer, 0, bytesRead);
             }
 
-            System.out.println("Translation completed, file saved to: " + outputFilePath);
         } catch (Exception e) {
             e.printStackTrace();
             throw new IOException("Error during file processing: " + e.getMessage());

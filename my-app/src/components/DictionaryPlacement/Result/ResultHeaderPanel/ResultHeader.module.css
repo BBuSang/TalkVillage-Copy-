@@ -1,0 +1,108 @@
+.header {
+  display: block;
+  width: 100%;
+  height: 88px;
+  background: #fff;
+  border-bottom: 1px solid #e1e1e1;
+  margin: 0;
+  padding: 0;
+}
+
+.dictionaryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 70%;
+  height: 63px;
+  margin: 0 auto;
+  padding-top: 15px;
+  background-color: white;
+  font-family: Arial, sans-serif;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.logoImg {
+  width: 60px;
+  height: 50px;
+  margin-right: 8px;
+}
+
+.headerTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.txtBar {
+  color: #ccc;
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+.userActions {
+  margin-left: auto;
+}
+
+.loginButton {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: #333;
+  padding: 6px 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.loginButton:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.searchContainer {
+  position: relative;
+}
+
+.searchBar {
+  padding: 5px 30px 5px 10px;
+  margin: 0 10px;
+  border: 1px solid #ccc;
+  width: 300px;
+  height: 35px;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  padding-right: 10px;
+}
+
+.textHead {
+  color: #333;
+  font-size: 19px;
+  text-decoration: none;
+  padding: 0 8px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.textHead:hover {
+  text-decoration: underline;
+}

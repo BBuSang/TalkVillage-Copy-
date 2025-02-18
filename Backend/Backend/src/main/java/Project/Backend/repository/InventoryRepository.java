@@ -1,5 +1,7 @@
 package Project.Backend.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -8,8 +10,6 @@ import org.springframework.stereotype.Repository;
 import Project.Backend.entity.Inventory;
 import Project.Backend.entity.Store;
 import Project.Backend.entity.User;
-
-import java.util.List;
 
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
@@ -25,5 +25,7 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 	List<Inventory> findByUserIdAndCategory(@Param("userId") Long userId, @Param("category") String category);
 
 	List<Inventory> findByUserAndStateTrue(User user);
+
+	List<Inventory> findByUserAndStateIsTrue(User user);
 
 }

@@ -33,9 +33,6 @@ public class ImageController {
     @Autowired
     private QuestionListRepository questionListRepository;
 
-    /**
-     * 저장된 이미지 정보를 반환하는 엔드포인트
-     */
     @GetMapping("/storedImages")
     public ResponseEntity<?> getStoredImages(@RequestParam("themeId") String themeId) {
         if (themeId == null || themeId.isEmpty()) {
@@ -67,11 +64,9 @@ public class ImageController {
     }
 
     private String sanitizeFileName(String input) {
-        return input.replaceAll("[\\\\/:*?\"<>|]", ""); // 파일 이름에 사용할 수 없는 문자를 제거
+        return input.replaceAll("[\\\\/:*?\"<>|]", ""); 
     }
-    /**
-     * 개별 이미지를 로드하는 엔드포인트
-     */
+    
     @GetMapping("/images/{filename}")
     public ResponseEntity<Resource> getImage(@PathVariable String filename) {
         try {

@@ -1,0 +1,319 @@
+// Resultmain.module.scss - Part 1
+.resultWrapper {
+  overflow: hidden;
+  width: 100%;
+  outline: 0;
+}
+
+.subtop {
+  overflow: hidden;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #eeeff0;
+}
+
+.innertop {
+  width: 68%;
+  margin: 0 auto;
+  min-height: 80px;
+  padding: 25px 40px 25px 30px;
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+.textbox {
+  flex: 1;
+}
+
+.text {
+  font-size: 40px;
+  line-height: 44px;
+}
+
+.pronunciation {
+  color: #666;
+  font-size: 24px;
+  margin-left: 10px;
+  font-weight: normal;
+}
+
+.answer {
+  padding-top: 18px;
+  font-size: 21px;
+  line-height: 1.5;
+  font-family: 'Spoqa Han Sans', Apple SD Gothic Neo, MS PGothic, 'Nanum Barun Gothic YetHangul', sans-serif;
+  color: #000;
+  font-weight: 600;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  margin-left: 20px;
+}
+
+.up, .down {
+  width: 200px;
+  height: 45px;
+  background-color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.up {
+  border: 1px solid #90cdfc;
+  &:hover {
+    border: 1px solid #0090ff;
+  }
+}
+
+.down {
+  border: 1px solid #bdbdbd;
+  &:hover {
+    border: 1px solid #000;
+  }
+}
+
+.buttonText {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 160px;
+  height: 100%;
+  padding-left: 25px;
+}
+
+.plus {
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  padding-right: 25px;
+}
+
+.textUp {
+  font-size: 16px;
+  line-height: normal;
+  font-family: 'Spoqa Han Sans', Apple SD Gothic Neo, MS PGothic, 'Nanum Barun Gothic YetHangul', sans-serif;
+  color: #000;
+}
+// Resultmain.module.scss - Part 2
+.subbottom {
+  background: #f4f5f7;
+  padding-bottom: 30px;
+}
+
+.innerbottom {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  overflow: hidden;
+  gap: 15px;
+}
+
+.left {
+  flex: 3;
+}
+
+.right {
+  flex: 2;
+}
+
+.cardTitle {
+  display: block;
+  padding: 20px 0 10px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 20px;
+  background: #f4f5f7;
+}
+
+.oneBox,
+.twoBox,
+.threeBox,
+.fourBox {
+  display: block;
+  overflow: auto;
+  background-color: #fff;
+  border: 1px solid #eeeff0;
+}
+
+.oneBoxText {
+  margin: 20px 30px;
+}
+
+.mainNoun {
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.title {
+  float: left;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.nounOne {
+  padding-top: 10px;
+  display: flex;
+}
+
+.numberOne {
+  font-size: 20px;
+  font-weight: normal;
+  width: 25px;
+}
+
+.numberOneAnswer {
+  padding-left: 10px;
+  font-size: 20px;
+  padding-bottom: 10px;
+  flex: 1;
+}
+
+.definitionHeader {
+  margin-bottom: 8px;
+}
+
+.typeLabel {
+  font-size: 16px;
+  color: #0090ff;
+}
+
+.englishMeaning {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #000;
+  margin-top: 5px;
+}
+
+.koreanMeaning {
+  color: #666;
+  font-size: 16px;
+  margin-top: 8px;
+  line-height: 1.4;
+  font-family: 'Spoqa Han Sans', Apple SD Gothic Neo, MS PGothic, 'Nanum Barun Gothic YetHangul', sans-serif;
+  padding-left: 10px;
+  border-left: 2px solid #e0e0e0;
+}
+
+.twoTextAnswer {
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.twoTextAnswerTitle {
+  padding-top: 10px;
+  font-size: 20px;
+  padding-bottom: 10px;
+  color: #0090ff;
+}
+
+.boxBo {
+  border-bottom: 1px solid #bdbdbd;
+}
+
+.Exam {
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #bdbdbd;
+}
+
+.koreanExample {
+  color: #666;
+  font-size: 16px;
+  margin-top: 8px;
+  font-weight: normal;
+  line-height: 1.4;
+  font-family: 'Spoqa Han Sans', Apple SD Gothic Neo, MS PGothic, 'Nanum Barun Gothic YetHangul', sans-serif;
+  padding-left: 10px;
+  border-left: 2px solid #e0e0e0;
+}
+
+.highlight {
+  color: #0090ff;
+  font-weight: bold;
+}
+
+.downButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin-top: 10px;
+  border-top: 1px solid #eeeff0;
+}
+
+
+.arrowButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(2px);
+  }
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+}
+
+.oneBoxTextTwo {
+  margin: 0 30px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+  color: #666;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #dc3545;
+  font-size: 18px;
+}
+
+.noData {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #666;
+  font-size: 18px;
+}
+
+.saveStatus {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1000;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}

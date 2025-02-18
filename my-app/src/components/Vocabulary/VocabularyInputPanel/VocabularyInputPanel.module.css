@@ -1,0 +1,16 @@
+.inputPanel {
+  padding: 0.75rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.container {
+  gap: 0.5rem !important;
+}
+
+.inputGroup {
+  gap: 0.5rem !important;
+}
+
+.input {
+  padding: 0.25rem 0.5rem !important;
+}

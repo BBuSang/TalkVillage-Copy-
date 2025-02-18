@@ -21,6 +21,13 @@ const ProfileSetting: React.FC = () => {
     const [userInfo, setUserInfo] = useState<any>(null);
     const [isComposing, setIsComposing] = useState(false); // 한글 조합 상태 체크
     const [isLoading, setIsLoading] = useState(false);
+    const [isDuplicateChecked, setIsDuplicateChecked] = useState(false);
+    const [statusMessage, setStatusMessage] = useState<{
+        skin?: string;
+        nickname?: string;
+        birthday?: string;
+        type: 'error' | 'success';
+    } | null>(null);
     const navigate = useNavigate();
 
     // 스킨 매핑 객체에 타입 적용
@@ -33,14 +40,20 @@ const ProfileSetting: React.FC = () => {
 
     // 프로필 저장 함수
     const handleSave = async () => {
+        setStatusMessage(null);
+        
         if (basicSkin === null) {
-            alert('캐릭터 설정이 되어있지 않습니다');
+            setStatusMessage({skin: '캐릭터 설정이 되어있지 않습니다.', type: 'error'});
             return;
         } else if (!nickname) {
-            alert("닉네임을 입력해 주세요.")
+            setStatusMessage({nickname: '닉네임을 입력해 주세요.', type: 'error'});
             return;
+        }else if (!isDuplicateChecked) {
+                setStatusMessage({nickname: '닉네임 중복 확인을 해주세요.', type: 'error'});
+                return;
+            
         } else if (!year || !month || !day) {
-            alert("생년월일을 입력해 주세요.")
+            setStatusMessage({birthday: '생년월일을 입력해 주세요.', type: 'error'});
             return;
         }
 
@@ -61,16 +74,12 @@ const ProfileSetting: React.FC = () => {
             });
 
             if (response.ok) {
-                sessionStorage.setItem('userNickname', nickname);
-                navigate('/mainmap');
+                setTimeout(() => navigate('/mainmap'), 1000);
             } else {
-                const errorData = await response.text();
-                console.error('Failed to save profile:', errorData);
-                alert('프로필 저장에 실패했습니다.');
+                setStatusMessage({nickname: '프로필 저장에 실패했습니다.', type: 'error'});
             }
         } catch (error) {
-            console.error('Error saving profile:', error);
-            alert('서버에 연결할 수 없습니다.');
+            setStatusMessage({nickname: '서버에 연결할 수 없습니다.', type: 'error'});
         }
     };
 
@@ -116,6 +125,7 @@ const ProfileSetting: React.FC = () => {
 
     // 닉네임 변경 처리
     const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsDuplicateChecked(false);  // 닉네임 변경시 중복검사 초기화
         const value = e.target.value;
 
         if (!isComposing) { // 조합 완료 후에만 유효성 검사
@@ -129,6 +139,46 @@ const ProfileSetting: React.FC = () => {
             }
         } else {
             setNickname(value); // 조합 중일 때는 유효성 검사를 하지 않음
+        }
+    };
+
+    // 중복 검사 함수 추가
+    const handleDuplicateCheck = async () => {
+        if (!nickname.trim() || nicknameError) {
+            return;
+        }
+
+        const filteredNickname = preventSpecialCharsAndJamo(nickname);
+        if (filteredNickname !== nickname) {
+            setNicknameError('특수문자나 자음, 모음은 사용할 수 없습니다.');
+            return;
+        }
+
+        if (filteredNickname.length < 2) {
+            setNicknameError('닉네임은 2글자 이상이어야 합니다.');
+            return;
+        }
+        if (filteredNickname.length > 10) {
+            setNicknameError('닉네임은 10글자 이하이어야 합니다.');
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:9999/api/user/check-name/${nickname}`, {
+                method: 'GET',
+                credentials: 'include',
+            });
+
+            if (response.status === 200) {
+                setNicknameError('');
+                setStatusMessage({nickname: '', type: 'success'});
+                setIsDuplicateChecked(true);
+            } else if (response.status === 201) {
+                setStatusMessage({nickname: '이미 사용 중인 닉네임입니다.', type: 'error'});
+                setIsDuplicateChecked(false);
+            }
+        } catch (error) {
+            console.error('Error:', error);
         }
     };
 
@@ -154,18 +204,35 @@ const ProfileSetting: React.FC = () => {
                             </div>
                         ))}
                     </div>
+                        {statusMessage?.skin && (
+                            <span className={`${styles.errorText} ${styles.skinstatus}`}>{statusMessage.skin}</span>
+                        )}
                     <div className={styles.inputGroup}>
                         <label>닉네임</label>
-                        <input
-                            type="text"
-                            value={nickname}
-                            onChange={handleNicknameChange}
-                            onCompositionStart={() => setIsComposing(true)} // 한글 조합 시작
-                            onCompositionEnd={() => setIsComposing(false)} // 한글 조합 완료
-                            className={`${styles.inputField} ${nicknameError ? styles.errorInput : ''}`}
-                            placeholder="닉네임 입력"
-                        />
+                        <div className={styles.nicknameInputGroup}>
+                            <input
+                                type="text"
+                                value={nickname}
+                                onChange={handleNicknameChange}
+                                onCompositionStart={() => setIsComposing(true)}
+                                onCompositionEnd={() => setIsComposing(false)}
+                                className={`${styles.inputField} ${nicknameError ? styles.errorInput : ''}`}
+                                placeholder="닉네임 입력"
+                            />
+                            <button 
+                                type="button" 
+                                onClick={handleDuplicateCheck}
+                                className={styles.duplicateCheckButton}
+                                disabled={!nickname.trim() || !!nicknameError}
+                            >
+                                중복확인
+                            </button>
+                        </div>
                         {nicknameError && <span className={styles.errorText}>{nicknameError}</span>}
+                        {isDuplicateChecked && <span className={styles.successText}>사용 가능한 닉네임입니다.</span>}
+                        {statusMessage?.nickname && (
+                            <span className={styles.errorText}>{statusMessage.nickname}</span>
+                        )}
                     </div>
                     <div className={styles.inputGroup}>
                         <label>생년월일</label>
@@ -189,6 +256,9 @@ const ProfileSetting: React.FC = () => {
                                 ))}
                             </select>
                         </div>
+                        {statusMessage?.birthday && (
+                            <span className={styles.errorText}>{statusMessage.birthday}</span>
+                        )}
                     </div>
                     <button className={styles.saveButton} onClick={handleSave}>
                         저장

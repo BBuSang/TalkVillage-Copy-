@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import Project.Backend.entity.User;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -59,4 +58,5 @@ public class UD implements UserDetails, OAuth2User {
     public String getName() {
         return user.getName();
     }
+
 }

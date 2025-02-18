@@ -1,8 +1,5 @@
 package Project.Backend.entity;
 
-import java.util.List;
-import java.util.Map;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;

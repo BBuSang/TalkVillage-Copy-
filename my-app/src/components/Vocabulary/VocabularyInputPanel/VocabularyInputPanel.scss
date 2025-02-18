@@ -1,0 +1,17 @@
+// VocabularyInputPanel.module.scss
+.inputPanel {
+  padding: 0.75rem !important; // 패딩 축소 (기존 1.5rem)
+  margin-bottom: 0.5rem !important; // 하단 마진 축소
+}
+
+.container {
+  gap: 0.5rem !important; // gap 축소 (기존 1rem)
+}
+
+.inputGroup {
+  gap: 0.5rem !important; // gap 축소
+}
+
+.input {
+  padding: 0.25rem 0.5rem !important; // 입력창 패딩 축소
+}

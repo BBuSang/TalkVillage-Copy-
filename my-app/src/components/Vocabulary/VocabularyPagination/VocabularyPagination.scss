@@ -1,0 +1,37 @@
+.paginationContainer {
+  padding: 0.5rem;  // 1rem에서 0.5rem으로 축소
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;  // 세로 중앙 정렬
+  gap: 0.5rem;  // 요소들 사이 간격 조절
+}
+
+.pageButton {
+  transition: all 0.2s ease;
+  padding: 0.25rem 0.5rem;  // 버튼 패딩 축소
+  min-height: 24px;  // 버튼 높이 축소
+  display: flex;
+  align-items: center;
+}
+
+.pageButton:hover {
+  background-color: #e0eefa;
+}
+
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pageInfo {
+  background: white;
+  padding: 0.25rem 0.5rem;  // 0.5rem 1rem에서 축소
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  height: 24px;  // 높이 지정
+}

@@ -15,7 +15,7 @@ const ProfileComposition: React.FC = () => {
   const fetchUsingItems = async () => {
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5초 타임아웃
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
 
       const response = await fetch('http://localhost:9999/api/user/useingprofile', {
         credentials: 'include',
@@ -28,8 +28,11 @@ const ProfileComposition: React.FC = () => {
         const data = await response.json();
         const uniqueData = Array.from(new Set(data)) as string[];
         
+        // 스토리지에서 닉네임 확인
+        const storedNickname = sessionStorage.getItem('userNickname');
+        
         setUsingItems({
-          name: uniqueData[0],
+          name: storedNickname || uniqueData[0], // 저장된 닉네임이 있으면 사용, 없으면 API 응답 사용
           background: uniqueData.find((item: string) => item.includes('Background-'))?.split('Background-')[1] || '0',
           nameplate: uniqueData.find((item: string) => item.includes('NamePlate-'))?.split('NamePlate-')[1] || '0',
           skin: uniqueData.find((item: string) => 
@@ -39,6 +42,16 @@ const ProfileComposition: React.FC = () => {
       }
     } catch (error) {
       console.error('Error fetching using items:', error);
+      // 에러가 발생해도 기본값으로 설정
+      const storedNickname = sessionStorage.getItem('userNickname');
+      if (storedNickname) {
+        setUsingItems({
+          name: storedNickname,
+          background: '0',
+          nameplate: '0',
+          skin: '/basicSkin/Login.png'
+        });
+      }
     } finally {
       setIsLoading(false);
     }
@@ -48,6 +61,7 @@ const ProfileComposition: React.FC = () => {
     fetchUsingItems();
   }, []);
 
+  // profileUpdate 이벤트 리스너만 유지
   useEffect(() => {
     const handleProfileUpdate = () => {
       fetchUsingItems();

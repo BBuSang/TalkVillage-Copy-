@@ -11,6 +11,7 @@ body * {
 }
 
 .mainMapView {
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
   font-size: 0.875rem;
@@ -18,9 +19,20 @@ body * {
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-user-select: none;  /* Safari */
+  -moz-user-select: none;     /* Firefox */
+  -ms-user-select: none;      /* IE/Edge */
+  user-select: none;          /* 표준 문법 */
+}
+.mainMapView .viewSize {
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
 }
 .mainMapView .viewSize .insideView {
-  width: 95%;
+  width: 100%;
   padding: 1.875rem;
 }
 .mainMapView .viewSize .insideView .header {
@@ -71,6 +83,7 @@ body * {
   display: flex;
   justify-content: center;
   align-items: center;
+  left: 9rem;
 }
 .mainMapView .viewSize .insideView .header .topSelections .backgroundSoundButton div,
 .mainMapView .viewSize .insideView .header .topSelections .languageButton div,
@@ -100,7 +113,7 @@ body * {
 .mainMapView .viewSize .insideView .body .inside .mapImageBorder {
   flex: 1;
   height: calc(100vh - 12.5rem); /* 고정 높이 계산 */
-  min-height: 600px; /* 최소 높이 강제 */
+  min-height: 700px; /* 최소 높이 강제 */
   border-radius: 2.5rem;
   overflow: hidden;
   display: flex;
@@ -117,6 +130,7 @@ body * {
   outline: 0.1875rem solid rgb(60, 76, 95);
   z-index: 100;
   position: relative;
+  /* background-color: #507FB2; */
 }
 .mainMapView .viewSize .insideView .body .inside .mapImageBorder .mapImageInside .exp {
   position: absolute;
@@ -130,30 +144,29 @@ body * {
   bottom: 3.875rem;
   left: 14.0625rem;
 }
-.mainMapView .viewSize .insideView .body .inside .mapImageBorder .questionMarkContainer {
+.questionMarkContainer {
   width: 100%;
   height: auto;
   position: absolute;
   display: flex;
-  justify-content: end;
+  left: 12rem;
   bottom: 0;
-  right: 0.1875rem;
 }
-.mainMapView .viewSize .insideView .body .inside .mapImageBorder .questionMarkContainer .questionMark {
-  width: 1.875rem;
-  height: 1.875rem;
+ .questionMarkContainer .questionMark {
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 3.125rem;
-  outline: 0.15625rem solid rgb(41, 85, 132);
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  background-color: rgb(249, 253, 255);
 }
-.mainMapView .viewSize .insideView .body .inside .mapImageBorder .questionMarkContainer .questionMark button {
+.questionMarkContainer .questionMark button {
   font-weight: 600;
   color: rgb(41, 85, 132);
-  font-size: 1.25rem;
+  font-size: 1.7rem;
 }
 .mainMapView .viewSize .insideView footer {
   padding-top: 0.625rem;
@@ -167,5 +180,4 @@ body * {
 html, .body {
   min-width: 1280px; /* 뷰포트 최소 너비 */
   min-height: 700px; /* 뷰포트 최소 높이 */
-  overflow: hidden; /* 뷰포트가 작아지면 스크롤 없이 잘리게 설정 */
 }

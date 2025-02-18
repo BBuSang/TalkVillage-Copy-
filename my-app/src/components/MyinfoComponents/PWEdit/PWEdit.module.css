@@ -1,0 +1,185 @@
+.passwordContainer {
+    padding: 2rem;
+    background: rgb(205, 220, 237);
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.passwordContainerContent{
+    width: 30rem;
+    height: 100%;
+    padding-top: 2rem;
+}
+
+
+.passwordChangeContainer {
+    width: 100%;
+    max-width: 400px;
+    min-height: 200px; /* 최소 높이 설정 */
+    position: relative;
+}
+
+.passwordChangeTitleContainer {
+    margin-bottom: 30px;
+}
+
+.passwordChangeTitle {
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.passwordChangeText {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.inputGroup {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    height: 40px; /* 입력 필드 높이 고정 */
+    display: flex;
+    gap: 10px;
+}
+
+.input {
+    flex: 1;
+    height: 100%;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+}
+
+.verifyButton {
+    width: 120px; /* 버튼 너비 고정 */
+    height: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.verifyButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.passwordStatus {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.errorMessage {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    color: #dc3545;
+    font-size: 14px;
+    margin-left: 0.1rem;
+}
+.passwordStatus{
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    color: #1d9631;
+    font-size: 14px;
+    margin-left: 0.1rem;
+}
+.changeButton{
+    width: 100%;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+.socialLoginContainer {
+    width: 100%;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 6rem;
+}
+
+.socialLoginIcon {
+    width: 24px;
+    height: 24px;
+    background-color: #ffc107;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+}
+
+.socialLoginTextContainer {
+    flex: 1;
+}
+
+.socialLoginTextTitle p {
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.socialLoginText p {
+    margin: 5px 0 0 0;
+    color: #666;
+}
+
+.warningContainer {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: rgba(80, 127, 178, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.warningIcon {
+    width: 24px;
+    height: 24px;
+    background: #507fb2;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.warningTextContainer {
+    flex: 1;
+}
+
+.warningTitle {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.8rem;
+}
+
+.warningText {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.warningText p {
+    margin: 0.5rem 0;
+}

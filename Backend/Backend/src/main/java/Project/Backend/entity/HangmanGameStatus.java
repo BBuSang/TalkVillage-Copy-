@@ -1,8 +1,5 @@
 package Project.Backend.entity;
 
-import java.util.List;
-import java.util.Map;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +21,7 @@ import lombok.Setter;
 	sequenceName = "HangmanGameStatusSeq"
 )
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter

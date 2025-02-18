@@ -10,13 +10,14 @@
   align-items: center;
   
   .viewSize {
-    // display : flex;
-    // min-height: 100%;
-    // align-items: center;
-    // width: 80%;
+    display : flex;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
     .insideView {
       // width: calc(100vw - ptr(40)); /* 양쪽 50px씩 제외 */
-      width: 95%;
+      width: 100%;
       // height: calc(100vh - ptr(40)); /* 양쪽 50px씩 제외 */
       padding : ptr(30);
       .header {

@@ -1,18 +1,49 @@
-.gameContainer {
-  background-color: #e0eefa;
+.gameContainerOutside{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
-  padding: 20px;
+  padding : 1rem;
+  background-color: #507fb2;
 }
-.startContainer{
+.gameContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: #f0f8fd;
+  border-radius: 20px;
+}
+
+.leftSection {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding: 1rem;
+  padding-left: 3rem;
+  padding-top: 10rem;
+  position: relative;
+}
+
+.rightSection {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  padding-top: 8rem;
+  padding-right: 3rem;
+}
+
+.startContainer{
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #383838;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 12rem;
+  margin: 0 auto;
 }
 
 .hangmantitle1 {
@@ -20,38 +51,55 @@
   height: 5vw;
   justify-content: center;
   align-items: center;
-  font-size: 60px;
-  color: red;
-  -webkit-text-stroke: 1px black; 
+  font-size: 100px;
+  color: rgb(245, 224, 64);
+  -webkit-text-stroke: 1px rgb(142, 130, 39); 
+  font-family: 'neodgm';
+  text-shadow: 2px 3px 8px rgb(255, 75, 75);
+  transition: all 0.8s cubic-bezier(0.5, 0.8, 0.4, 1);
+  transform-origin: center;
+  position: relative;
+  z-index: 100;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.zoomEffect {
+  transform: scale(7);
+  opacity: 0;
+  filter: blur(1px);
 }
 
-.hangmantitle2 {
+.startButton {
   display: flex;
-  height: 3vw;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-  color: red;
-  -webkit-text-stroke: 1px black; 
-  margin-bottom: 5vw;
-}
-
-.startButton{
-  display: flex;
-  height: 100px;
-  width: 200px;
-  background-color: gray;
   border-radius: 15px;
   font-size: 40px;
-  color: aliceblue;
-  -webkit-text-stroke: 2px black; 
-  margin-top: 5vw;
+  color: rgb(195, 195, 195);
+  -webkit-text-stroke: 1px black; 
+  margin-top: 5rem;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  animation: pulse 1.5s ease-in-out infinite;
+  transition: all 0.5s ease;
 }
-.startButton:hover{
-  background-color: darkgray;
+
+.startButton:hover {
+  animation: none;
+  transform: scale(1.1);
+}
+
+.hideButton {
+  opacity: 0;
+  transform: scale(0.5);
 }
 
 .displayBox {
@@ -62,11 +110,10 @@
 }
 
 .remainingBox {
-  position: absolute;
+  position: static;
   display: flex;
   align-items: center;
-  left: 25vw;
-  top: 20vh;
+  margin-top: 2rem;
 }
 
 .displayWord {
@@ -97,12 +144,35 @@
   font-size: 20px;
   cursor: pointer;
   border-radius: 5px;
-  background-color: skyblue;
+  background-color: rgb(223, 223, 223);
   height: 60px;
   width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(2px);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.gameOverBoxoutside {
+  position: absolute;
+  inset: 1rem 1rem 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
 }
 .gameOverBox{
   position: absolute;
@@ -110,21 +180,61 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  top: 15vw;
-  right: 7vw;
+  z-index: 100;
+  background-color: rgba(49, 49, 49, 0.96);
+  height: 20rem;
+  width: 30rem;
+  border-radius: 15px;
 }
+@font-face {
+  font-family: 'neodgm';
+  src: url('../../font/neodgm.ttf') format('truetype');
+}
+
 .gameOver {
-  color: red;
+  color: rgb(255, 0, 0);
+  font-size: 50px;
+  font-family: 'neodgm';
+  margin-bottom: 1rem;
+}
+.gameOverword{
+  color: rgb(173, 173, 173);
   font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.gameOveragain{
+  color: rgb(239, 239, 239);
+  font-size: 40px;
+  text-transform: uppercase;
+  font-family: 'neodgm';
+}
+.gameOveragainbutton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .newbutton {
-  height: 40px;
-  width: 90px;
-  background-color: gray;
   border-radius: 15px;
   color: aliceblue;
-  font-size: 16px;
+  font-size: 30px;
   margin: 20px;
+  position: relative;
+  font-family: 'neodgm';
+}
+.newbutton:hover::before {
+  content: "* ";
+  position: absolute;
+  right: 100%;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+.newbutton:hover::after {
+  content: " *";
+  position: absolute;
+  left: 100%;
+  margin-left: 5px;
+  margin-top: 2px;
 }
 .disnewbutton{
   display: none;
@@ -134,31 +244,24 @@
   color: #818181;
 }
 
-.newbutton:hover {
-  background-color: darkgray;
-}
-
 .button:disabled {
   cursor: not-allowed;
 }
 
 .usedLetter {
-  background-color: green;
+  background-color: rgb(121, 242, 121);
 }
 
 .clickedLetter {
-  background-color: red;
+  background-color: rgb(255, 141, 141);
 }
 
-
-
 .wordbox {
-  width: 100%;
-  max-width: 900px;
-  height: 350px;
+  width: 80%;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 0.5rem;
 }
 
 .wordbox .buttonRow {
@@ -166,13 +269,13 @@
 }
 
 .buttonRow .button {
-  font-size: 18px;
+  font-size: 25px;
+  font-weight: 600;
   width: 55px;
   height: 55px;
 }
 
 @media (max-width: 768px) {
-
   /* 작은 화면에서 버튼 크기 및 레이아웃 조정 */
   .buttonRow .button {
     font-size: 14px;

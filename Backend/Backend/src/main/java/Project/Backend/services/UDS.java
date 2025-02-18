@@ -1,16 +1,12 @@
 package Project.Backend.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import Project.Backend.classes.UD;
-import Project.Backend.entity.User;
-import Project.Backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,6 +15,10 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+
+import Project.Backend.classes.UD;
+import Project.Backend.entity.User;
+import Project.Backend.repository.UserRepository;
 
 @Service
 public class UDS extends DefaultOAuth2UserService implements UserDetailsService {
@@ -60,6 +60,7 @@ public class UDS extends DefaultOAuth2UserService implements UserDetailsService 
 			user.setPoint(0);
 			user.setProvider(provider); // 프로바이더를 넣어야 함
 			user.setRole(userAuth);
+			user.setFirstsignup(LocalDate.now());
 			userRep.save(user);
 		}
 		return new UD(user);
@@ -91,28 +92,50 @@ public class UDS extends DefaultOAuth2UserService implements UserDetailsService 
 			return new ArrayList<>();
 		}
 	}
-	
+
 	public User updateUser(Long userId, User updatedUser) {
-	    // 해당 ID의 사용자 조회
-	    User user = userRep.findById(userId).orElse(null);
+		// 해당 ID의 사용자 조회
+		User user = userRep.findById(userId).orElse(null);
+		// 사용자 정보가 없으면 null 반환
+		if (user == null) {
+			return null;
+		}
+		// 유저 정보 업데이트
+		user.setEmail(updatedUser.getEmail());
+		user.setName(updatedUser.getName());
+		user.setBirthdate(updatedUser.getBirthdate());
+		user.setRole(updatedUser.getRole());
+		user.setPoint(updatedUser.getPoint());
+		user.setExp(updatedUser.getExp());
+		user.setGrade(updatedUser.getGrade());
+		user.setEditinfo(updatedUser.getEditinfo());
 
-	    // 사용자 정보가 없으면 null 반환
-	    if (user == null) {
-	        return null;
-	    }
-
-	    // 유저 정보 업데이트
-	    user.setEmail(updatedUser.getEmail());
-	    user.setName(updatedUser.getName());
-	    user.setBirthdate(updatedUser.getBirthdate());
-	    user.setRole(updatedUser.getRole());
-	    user.setPoint(updatedUser.getPoint());
-	    user.setExp(updatedUser.getExp());
-	    user.setGrade(updatedUser.getGrade());
-
-	    // 업데이트된 유저 저장
-	    return userRep.save(user);
+		// 업데이트된 유저 저장
+		return userRep.save(user);
 	}
 
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

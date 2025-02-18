@@ -265,7 +265,7 @@ body * {
 .buildings .mapGrid .buildingsMap .gameBuilding1 .gamePopOver1 {
   bottom: 6.875rem; /* 빌딩 아래에 위치 */
   left: -4.375rem;
-  width: 300%; /* 필요하면 크기 조정 */
+  width: 320%; /* 필요하면 크기 조정 */
   height: auto;
 }
 .buildings .mapGrid .buildingsMap .gameBuilding1 .gamePortal1 {
@@ -290,7 +290,7 @@ body * {
 .buildings .mapGrid .buildingsMap .gameBuilding2 .gamePopOver2 {
   bottom: -1.25rem; /* 빌딩 아래에 위치 */
   left: 0.625rem;
-  width: 300%; /* 필요하면 크기 조정 */
+  width: 320%; /* 필요하면 크기 조정 */
   height: auto;
 }
 .buildings .mapGrid .buildingsMap .gameBuilding2 .gamePortal2 {
@@ -315,7 +315,7 @@ body * {
 .buildings .mapGrid .buildingsMap .gameBuilding3 .gamePopOver3 {
   bottom: 7.1875rem; /* 빌딩 아래에 위치 */
   left: 0.625rem;
-  width: 300%; /* 필요하면 크기 조정 */
+  width: 340%; /* 필요하면 크기 조정 */
   height: auto;
 }
 .buildings .mapGrid .buildingsMap .gameBuilding3 .gamePortal3 {

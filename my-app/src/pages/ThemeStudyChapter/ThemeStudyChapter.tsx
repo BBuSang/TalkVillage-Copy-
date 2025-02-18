@@ -1,5 +1,5 @@
-// ThemeStudyChapter.tsx - Part 1
 import React, { useState, useEffect, useCallback } from "react";
+import { useLocation } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -14,7 +14,7 @@ import BlankSpaceQuestion from "../../components/ThemePanel/BlankSpaceQuestion/B
 import { QuestionType } from "../../components/ThemePanel/Types";
 import StagePanel from "../../components/ThemePanel/StagePanel/StagePanel";
 import TextToSpeechPanel from "../../components/ThemePanel/TextToSpeechPanel/TextToSpeechPanel";
-import translationService from "../../components/Apis/TranslationService";
+import TranslationService from "../../components/Apis/TranslationService";
 import WrongAnswerNote, { WrongAnswer } from "../../components/ThemePanel/WrongAnswerNote/WrongAnswerNote";
 
 interface Question {
@@ -33,7 +33,17 @@ interface ImageData {
   questionListId: number;
 }
 
+interface LocationState {
+  mode: 'theme' | 'stage';
+  identifier: string;
+  level?: 'beginner' | 'intermediate' | 'advanced';
+}
+
 const ThemeStudyChapter: React.FC = () => {
+  const location = useLocation();
+  const locationState = location.state as LocationState;
+  const toast = useToast();
+
   const [isThemeSelected, setIsThemeSelected] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -54,8 +64,39 @@ const ThemeStudyChapter: React.FC = () => {
   const [correctAnswers, setCorrectAnswers] = useState<number>(0);
   const [wrongAnswers, setWrongAnswers] = useState<WrongAnswer[]>([]);
   const [isReviewMode, setIsReviewMode] = useState(false);
-  const toast = useToast();
-  // ThemeStudyChapter.tsx - Part 2
+
+  useEffect(() => {
+    if (locationState?.mode === 'stage') {
+      setThemeId(locationState.identifier);
+      setIsThemeSelected(true);
+      fetchQuestions(locationState.identifier);
+    }
+  }, [locationState]);
+  const handleInitialQuestion = (question: Question) => {
+    let initialQuestionType: QuestionType;
+
+    if (question.type === "word") {
+      initialQuestionType = "typeC";
+      setSentence(question.question);
+      setCorrectAnswer(question.result);
+    } else if (question.type === "blank") {
+      initialQuestionType = "typeB";
+      const blankSentence = createBlankSentence(question.question, question.result);
+      setSentence(blankSentence);
+      setCorrectAnswer(question.result);
+      setCurrentOptions([
+        question.result,
+        ...(question.wrongData?.split(',') || [])
+      ].sort(() => Math.random() - 0.5));
+      setBlankIndex(findBlankIndex(blankSentence));
+    } else {
+      initialQuestionType = "dragAndDrop";
+      setSentence(question.question);
+      setCorrectAnswer(question.question);
+    }
+
+    setQuestionType(initialQuestionType);
+  };
 
   const generateOptions = (correctAnswer: string) => {
     const options = ["apple", "banana", correctAnswer];
@@ -75,13 +116,12 @@ const ThemeStudyChapter: React.FC = () => {
     const wrongAnswer: WrongAnswer = {
       questionType: questionType,
       question: question,
-      userAnswer: userAnswer || "답변 없음",  // 사용자 답변이 없는 경우 처리
+      userAnswer: userAnswer || "답변 없음",
       correctAnswer: correctAnswer,
       themeId: themeId,
       timestamp: new Date()
     };
-  
-    // 이전 동일 문제의 오답을 제거하고 새로운 오답 추가
+
     setWrongAnswers(prev => [
       ...prev.filter(w => w.question !== question),
       wrongAnswer
@@ -106,7 +146,6 @@ const ThemeStudyChapter: React.FC = () => {
 
     if (isCorrect) {
       setCorrectAnswers(prev => prev + 1);
-      // 정답인 경우 이전 오답 제거
       setWrongAnswers(prev =>
         prev.filter(w => w.question !== currentQuestion.question)
       );
@@ -126,7 +165,6 @@ const ThemeStudyChapter: React.FC = () => {
 
     if (isCorrect) {
       setCorrectAnswers(prev => prev + 1);
-      // 정답인 경우 이전 오답 제거
       setWrongAnswers(prev =>
         prev.filter(w => w.question !== currentQuestion.question)
       );
@@ -138,12 +176,10 @@ const ThemeStudyChapter: React.FC = () => {
       );
     }
   };
-  // ThemeStudyChapter.tsx - Part 3
 
   const handleNextSentence = () => {
     const currentQuestion = questions[currentQuestionIndex];
-    
-    // 현재 문제를 풀지 않고 넘어갈 경우 오답으로 처리
+
     if (questionType === "typeB" && !filledWord) {
       saveWrongAnswer(
         "답변 없음",
@@ -159,17 +195,15 @@ const ThemeStudyChapter: React.FC = () => {
     } else if (questionType === "dragAndDrop") {
       const normalize = (str: string) =>
         str.trim().toLowerCase().replace(/[^\w\s]/g, "");
-      
-      // 문장이 비어있거나 원래 문제와 동일한 경우 (드래그하지 않은 경우) 미응답으로 처리
+
       if (!sentence || sentence === currentQuestion.question) {
         saveWrongAnswer(
           "답변 없음",
           currentQuestion.question,
-          currentQuestion.question  // 드래그 유형은 전체 문장이 정답
+          currentQuestion.question
         );
       }
     }
-  
     if (currentQuestionIndex >= questions.length - 1) {
       setIsQuizComplete(true);
       if (isReviewMode) {
@@ -178,15 +212,15 @@ const ThemeStudyChapter: React.FC = () => {
       }
       return;
     }
-  
+
     const newIndex = currentQuestionIndex + 1;
     const nextQuestion = questions[newIndex];
-  
+
     setFilledWord(null);
     setSelectedWord(null);
     setCurrentQuestionIndex(newIndex);
     setAnswerMessage("");
-  
+
     let nextQuestionType: QuestionType;
     if (nextQuestion?.type === "word") {
       nextQuestionType = "typeC";
@@ -207,11 +241,12 @@ const ThemeStudyChapter: React.FC = () => {
     } else {
       nextQuestionType = "dragAndDrop";
       setSentence(nextQuestion.question);
-      setCorrectAnswer(nextQuestion.question);  // 드래그 유형은 전체 문장이 정답
+      setCorrectAnswer(nextQuestion.question);
     }
-  
+
     setQuestionType(nextQuestionType);
   };
+
   const handleThemeSelect = (newThemeId: string) => {
     // 모든 상태 초기화
     setQuestions([]);
@@ -228,68 +263,34 @@ const ThemeStudyChapter: React.FC = () => {
     setBlankIndex(-1);
     setCurrentImageSetIndex(0);
     setTranslatedWord("");
-    
-    // 새로운 테마 설정
+    setIsQuizComplete(false);
+    setIsReviewMode(false);
+
+    // 새로운 테마 설정 및 문제 가져오기
     setThemeId(newThemeId);
     setIsThemeSelected(true);
     fetchQuestions(newThemeId);
   };
 
-  const startReview = useCallback(() => {
-    console.log("복습 시작", wrongAnswers);
-    
-    // wrongAnswers의 순서 그대로 문제들을 매칭
-    const wrongQuestions = wrongAnswers.map(wrongAnswer => {
-      return questions.find(q => q.question === wrongAnswer.question);
-    }).filter((q): q is Question => q !== undefined);
-  
-    console.log("틀린 문제들:", wrongQuestions);
-  
-    if (wrongQuestions.length > 0) {
-      // 먼저 모든 상태를 초기화
-      setCurrentQuestionIndex(0);
-      setCurrentStep(0);
-      setCorrectAnswers(0);
-      setWrongAnswers([]);
-      setFilledWord(null);
-      setSelectedWord(null);
-      setSentence(wrongQuestions[0].question);  // 첫 번째 문제의 문장으로 초기화
-      
-      // 첫 번째 문제의 타입에 따라 questionType 설정
-      let initialQuestionType: QuestionType;
-      if (wrongQuestions[0].type === "word") {
-        initialQuestionType = "typeC";
-      } else if (wrongQuestions[0].type === "blank") {
-        initialQuestionType = "typeB";
-      } else {
-        initialQuestionType = "dragAndDrop";
-      }
-      setQuestionType(initialQuestionType);
-      
-      // 마지막으로 questions 배열 업데이트
-      setQuestions(wrongQuestions);
-      setIsReviewMode(true);
-      setIsQuizComplete(false);
-    }
-  }, [wrongAnswers, questions]);
-  // ThemeStudyChapter.tsx - Part 4
-
-  const fetchQuestions = useCallback(async (themeId: string) => {
-    setQuestions([]);
-    setCurrentQuestionIndex(0);
-    setCurrentStep(0);
-    setSentence("");
-    setCurrentOptions([]);
-    setBlankIndex(-1);
-
-    if (!themeId) {
-      console.error("themeId가 설정되지 않았습니다.");
-      return;
-    }
-
+  const fetchQuestions = useCallback(async (id: string) => {
     try {
+      const endpoint = locationState?.mode === 'stage'
+        ? '/api/LevelQuestions'
+        : '/api/questionsByTheme';
+
+      // 난이도 파라미터 추가
+      const params = new URLSearchParams();
+      if (locationState?.mode === 'stage') {
+        params.append('stageId', id);
+        if (locationState?.level) {
+          params.append('level', locationState.level);
+        }
+      } else {
+        params.append('themeId', id);
+      }
+
       const response = await fetch(
-        `http://localhost:9999/api/questionsByTheme?themeId=${themeId}`,
+        `http://localhost:9999${endpoint}?${params.toString()}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -326,33 +327,26 @@ const ThemeStudyChapter: React.FC = () => {
         console.log("Final questions array:", finalQuestions);
         setQuestions(finalQuestions);
 
-        const firstQuestion = finalQuestions[0];
-        if (firstQuestion?.type === "sentence") {
-          setSentence(firstQuestion.question);
-          setCorrectAnswer(firstQuestion.result);
-          setCurrentOptions(generateOptions(firstQuestion.result));
-        } else if (firstQuestion?.type === "blank") {
-          const blankSentence = createBlankSentence(firstQuestion.question, firstQuestion.result);
-          setSentence(blankSentence);
-          setCorrectAnswer(firstQuestion.result);
-          setCurrentOptions([
-            firstQuestion.result,
-            ...(firstQuestion.wrongData?.split(',') || [])
-          ].sort(() => Math.random() - 0.5));
-          setBlankIndex(findBlankIndex(blankSentence));
+        if (finalQuestions.length > 0) {
+          handleInitialQuestion(finalQuestions[0]);
         }
 
         await preloadTypeCImage(
           finalQuestions.filter((q) => q.type === "word"),
-          themeId
+          id
         );
-      } else {
-        console.error("Failed to fetch data from server.");
       }
     } catch (error) {
       console.error("Error:", error);
+      toast({
+        title: "오류 발생",
+        description: "문제를 불러오는데 실패했습니다.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
-  }, [findBlankIndex]);
+  }, [locationState?.mode, locationState?.level, toast, handleInitialQuestion]);
 
   const preloadTypeCImage = async (wordQuestions: Question[], themeId: string) => {
     try {
@@ -384,44 +378,94 @@ const ThemeStudyChapter: React.FC = () => {
       console.error("이미지 로드 중 에러 발생:", error);
     }
   };
-  // ThemeStudyChapter.tsx - Part 5
 
-  useEffect(() => {
-    if (themeId) {
-      fetchQuestions(themeId);
-    }
-  }, [themeId, fetchQuestions]);
+  const startReview = useCallback(() => {
+    console.log("복습 시작", wrongAnswers);
 
-  useEffect(() => {
-    const preloadTranslations = async () => {
-      if (questions.length > 0) {
-        const wordTypeAnswers = questions
-          .filter(q => q.type === "word")
-          .map(q => q.result);
+    const wrongQuestions = wrongAnswers.map(wrongAnswer => {
+      return questions.find(q => q.question === wrongAnswer.question);
+    }).filter((q): q is Question => q !== undefined);
 
-        await translationService.preloadTranslations(wordTypeAnswers);
+    console.log("틀린 문제들:", wrongQuestions);
+
+    if (wrongQuestions.length > 0) {
+      setCurrentQuestionIndex(0);
+      setCurrentStep(0);
+      setCorrectAnswers(0);
+      setWrongAnswers([]);
+      setFilledWord(null);
+      setSelectedWord(null);
+      setSentence(wrongQuestions[0].question);
+
+      let initialQuestionType: QuestionType;
+      if (wrongQuestions[0].type === "word") {
+        initialQuestionType = "typeC";
+      } else if (wrongQuestions[0].type === "blank") {
+        initialQuestionType = "typeB";
+      } else {
+        initialQuestionType = "dragAndDrop";
       }
-    };
+      setQuestionType(initialQuestionType);
 
-    preloadTranslations();
-  }, [questions]);
+      setQuestions(wrongQuestions);
+      setIsReviewMode(true);
+      setIsQuizComplete(false);
+    }
+  }, [wrongAnswers, questions]);
 
   useEffect(() => {
     const translateCurrentWord = async () => {
       if (questionType === "typeC" && questions[currentQuestionIndex]?.result) {
         try {
-          const translated = await translationService.translateWord(
-            questions[currentQuestionIndex].result
-          );
-          setTranslatedWord(translated);
+          const response = await fetch('http://localhost:9999/api/translate', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              text: questions[currentQuestionIndex].result.trim(),
+              target_lang: 'KO'
+            })
+          });
+
+          if (!response.ok) {
+            console.error('Translation failed:', response.status);
+            return;
+          }
+
+          const responseText = await response.text();
+          try {
+            const result = JSON.parse(responseText);
+            // 따옴표 제거 후 설정
+            const cleanTranslation = result.translatedText.replace(/['"]+/g, '');
+            setTranslatedWord(cleanTranslation);
+          } catch (parseError) {
+            console.error('Failed to parse response:', responseText);
+          }
         } catch (error) {
-          console.error("Translation error:", error);
+          console.error('Translation request failed:', error);
         }
       }
     };
 
     translateCurrentWord();
   }, [currentQuestionIndex, questionType, questions]);
+
+
+  const getReturnPath = (level?: string) => {
+    if (!level) return '/mainmap';
+
+    switch (level) {
+      case 'beginner':
+        return '/mainmap/beginnerStudymap';
+      case 'intermediate':
+        return '/mainmap/intermediateStudymap';
+      case 'advanced':
+        return '/mainmap/advancedStudymap';
+      default:
+        return '/mainmap';
+    }
+  };
 
   return (
     <Box className={styles.container}>
@@ -440,12 +484,10 @@ const ThemeStudyChapter: React.FC = () => {
                 </Text>
               </Flex>
             ) : (
-              <StagePanel 
-                currentStep={currentQuestionIndex}
-              />
+              <StagePanel currentStep={currentQuestionIndex} />
             )}
           </Box>
-  
+
           <Box className={styles.problemContainer}>
             <DetailThemePanel
               sentence={sentence}
@@ -469,20 +511,7 @@ const ThemeStudyChapter: React.FC = () => {
                         setFilledWord={setFilledWord}
                         setAnswerMessage={setAnswerMessage}
                         answerMessage={answerMessage}
-                        onAnswer={(word, isCorrect) => {
-                          if (!isCorrect) {
-                            saveWrongAnswer(
-                              word,
-                              questions[currentQuestionIndex].question,
-                              questions[currentQuestionIndex].result
-                            );
-                          } else {
-                            setCorrectAnswers(prev => prev + 1);
-                            setWrongAnswers(prev =>
-                              prev.filter(w => w.question !== questions[currentQuestionIndex].question)
-                            );
-                          }
-                        }}
+                        onAnswer={handleBlankAnswer}
                       />
                       <TextToSpeechPanel
                         text={sentence.replace('___', filledWord || '')}
@@ -493,7 +522,7 @@ const ThemeStudyChapter: React.FC = () => {
                   ) : questionType === "typeC" && preloadedTypeCImages.length > 0 ? (
                     <Box className={styles.imageContainer}>
                       <Text className={styles.QuestionText}>
-                        "{translatedWord}" 에 해당하는 이미지를 선택하세요
+                        {translatedWord ? `"${translatedWord}" 에 해당하는 이미지를 선택하세요` : '이미지를 선택하세요'}
                       </Text>
                       <Flex className={styles.images}>
                         {preloadedTypeCImages
@@ -516,13 +545,7 @@ const ThemeStudyChapter: React.FC = () => {
                                   alt={item.word || "Generated"}
                                   className={styles.imageBox}
                                 />
-                                <Text
-                                  mt={4}
-                                  textAlign="center"
-                                  fontSize="24px"
-                                  color="#241B10"
-                                  fontWeight="bold"
-                                >
+                                <Text mt={4} textAlign="center" fontSize="24px" color="#241B10" fontWeight="bold">
                                   {item.word}
                                 </Text>
                               </Button>
@@ -552,45 +575,35 @@ const ThemeStudyChapter: React.FC = () => {
               }
               onDragAnswer={(userSentence, isCorrect) => {
                 const currentQuestion = questions[currentQuestionIndex];
-                
-                // 이전 오답이 있다면 제거
-                setWrongAnswers(prev => 
-                  prev.filter(w => w.question !== currentQuestion.question)
-                );
-                
-                if (!isCorrect) {
-                  // 사용자가 구성한 문장을 오답으로 저장
-                  saveWrongAnswer(
-                    userSentence,  // 사용자가 드래그로 만든 문장
-                    currentQuestion.question,  // 원래 문제
-                    currentQuestion.question   // 드래그 유형은 전체 문장이 정답
+                if (isCorrect) {
+                  setCorrectAnswers(prev => prev + 1);
+                  setWrongAnswers(prev =>
+                    prev.filter(w => w.question !== currentQuestion.question)
                   );
                 } else {
-                  setCorrectAnswers(prev => prev + 1);
+                  saveWrongAnswer(
+                    userSentence,
+                    currentQuestion.question,
+                    currentQuestion.question
+                  );
                 }
               }}
             />
           </Box>
         </>
       )}
-  
+
       <WrongAnswerNote
         isOpen={isQuizComplete}
         onClose={() => {
           setIsQuizComplete(false);
-          setIsThemeSelected(false);  // 테마 선택 화면으로 돌아가기 위해 추가
-          if (isReviewMode) {
-            setIsReviewMode(false);
+          if (locationState?.mode === 'stage') {
+            // 난이도에 따른 적절한 경로로 이동
+            const returnPath = getReturnPath(locationState.level);
+            window.location.href = returnPath;
+          } else if (!isReviewMode) {
+            setIsThemeSelected(false);
           }
-          // 모든 상태 초기화
-          setQuestions([]);
-          setCurrentQuestionIndex(0);
-          setCurrentStep(0);
-          setCorrectAnswers(0);
-          setWrongAnswers([]);
-          setFilledWord(null);
-          setSelectedWord(null);
-          setSentence("");
         }}
         wrongAnswers={wrongAnswers}
         correctAnswers={correctAnswers}

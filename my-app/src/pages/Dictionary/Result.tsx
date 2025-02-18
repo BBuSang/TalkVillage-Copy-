@@ -1,7 +1,7 @@
 import React from 'react';
-import ResultHeader from '../../components/Result/ResultHeader';
-import Resultmain from '../../components/Result/Resultmain';
-import TranslationFooter from '../../components/Translation/TranslationFooter';
+import ResultHeader from '../../components/DictionaryPlacement/Result/ResultHeaderPanel/ResultHeader';
+import Resultmain from '../../components/DictionaryPlacement/Result/ResultMainPanel/Resultmain';
+import TranslationFooter from '../../components/DictionaryPlacement/Translation/TranslationFooterPanel/TranslationFooter';
 
 const Result: React.FC = () => {
   return (

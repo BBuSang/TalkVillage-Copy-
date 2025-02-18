@@ -8,6 +8,7 @@ import PortalDisplayControl from '../../components/PortalDisplayControl/PortalDi
 import CreatePopOver from '../../components/CreatePopOver/CreatePopOver';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { useMainMap } from '../../components/MainMapProvider/MainMapProvider';
+import LoginDropdown from '../LoginDropdown/LoginDropdown';
 
 // Images
 import MainMapImage from '../../image/Maps/MainMap.png';
@@ -63,14 +64,32 @@ const MainMapPlacement: React.FC = () => {
         case '고급':
           navigate('/mainmap/advancedStudymap'); // 고급 맵으로 이동 (예시)
           break;
+        case '미디어':
+          navigate('/clip');
+          break;
+        case '테마':
+          navigate('/tsc');
+          break;
+        case '상점':
+          navigate('/mainmap/store');
+          break;
         case 'HangMan':
-          navigate('/hangman');
+          navigate('/mainmap/hangman');
           break;
         case 'Scramble':
-          navigate('/WordScrambleGame');
+          navigate('/mainmap/WordScrambleGame');
           break;
         case 'CrossWord':
-          navigate('/CrossWord');
+          navigate('/mainmap/CrossWord');
+          break;
+        case '영어사전':
+          navigate('/dictionary');
+          break;
+        case '상점':
+          navigate('/mainmap/store');
+          break;
+        case '시험':
+          navigate('/mainmap/voca');
           break;
         default:
           navigate('/mainmap'); // 기본 맵으로 이동
@@ -80,10 +99,9 @@ const MainMapPlacement: React.FC = () => {
   
     return (
       <div>
-          <div  className={styles.mapImage}>
+          <div className={styles.mapImage}>
             <CreateCanvasMap imagePath={MainMapImage} />
           </div>
-
           <div className={styles.birdAnimationContainer}>
               <Player
               autoplay
@@ -98,7 +116,7 @@ const MainMapPlacement: React.FC = () => {
               src={cloudAnimationData}
             />
           </div>
-
+        
           <div className={styles.buildings}>
             <div className={styles.mapGrid}>
               <div className={styles.buildingsMap}>
@@ -209,6 +227,7 @@ const MainMapPlacement: React.FC = () => {
                     setOpenAccordionIndex(0); // 첫 번째 패널 열기
                   }}
                   onMouseLeave={() => setHoveredSelection(null)}
+                  onClick={() => handleBuildingClick('중급')}
                 >
                   <CreateCanvasMap imagePath={BrownHouseImage} />
                   {activeButton === '학습하기' && (
@@ -240,6 +259,7 @@ const MainMapPlacement: React.FC = () => {
                     setOpenAccordionIndex(0); // 첫 번째 패널 열기
                   }}
                   onMouseLeave={() => setHoveredSelection(null)}
+                  onClick={() => handleBuildingClick('고급')}
                 >
                   <CreateCanvasMap imagePath={ForestImage} />
                   {activeButton === '학습하기' && (
@@ -272,6 +292,7 @@ const MainMapPlacement: React.FC = () => {
                     setOpenAccordionIndex(0); // 첫 번째 패널 열기
                   }}
                   onMouseLeave={() => setHoveredSelection(null)}
+                  onClick={() => handleBuildingClick('미디어')}
                 >
                   <CreateCanvasMap imagePath={BlueLightHouseImage} />
                   {activeButton === '학습하기' && (
@@ -303,6 +324,7 @@ const MainMapPlacement: React.FC = () => {
                     setOpenAccordionIndex(0); // 첫 번째 패널 열기
                   }}
                   onMouseLeave={() => setHoveredSelection(null)}
+                  onClick={() => handleBuildingClick('테마')}
                 >
                   <CreateCanvasMap imagePath={RedLightHouseImage} />
                   {activeButton === '학습하기' && (
@@ -432,6 +454,7 @@ const MainMapPlacement: React.FC = () => {
                     setOpenAccordionIndex(2); // 첫 번째 패널 열기
                   }}
                   onMouseLeave={() => setHoveredSelection(null)}
+                  onClick={() => handleBuildingClick('영어사전')}
                 >
                   <CreateCanvasMap imagePath={CaveImage} />
                   {activeButton === '영어사전' && (
@@ -463,6 +486,7 @@ const MainMapPlacement: React.FC = () => {
                     setOpenAccordionIndex(3); // 첫 번째 패널 열기
                   }}
                   onMouseLeave={() => setHoveredSelection(null)}
+                  onClick={() => handleBuildingClick('마이페이지')}
                 >
                   <CreateCanvasMap imagePath={ForestWithRoundTreeImage} />
                   {activeButton === '마이페이지' && (
@@ -478,6 +502,7 @@ const MainMapPlacement: React.FC = () => {
                           content=""
                           selection={hoveredSelection === '마이페이지' ? '마이페이지' : selectedSelection || activeButton}
                           direction="top"
+                          isReversed={true}
                         />
                       </div>
                     </>
@@ -494,6 +519,7 @@ const MainMapPlacement: React.FC = () => {
                     setOpenAccordionIndex(4); // 첫 번째 패널 열기
                   }}
                   onMouseLeave={() => setHoveredSelection(null)}
+                  onClick={() => handleBuildingClick('상점')}
                 >
                   <CreateCanvasMap imagePath={RedHouseImage} />
                   {activeButton === '상점' && (
@@ -526,6 +552,7 @@ const MainMapPlacement: React.FC = () => {
                     setOpenAccordionIndex(5); // 첫 번째 패널 열기
                   }}
                   onMouseLeave={() => setHoveredSelection(null)}
+                  onClick={() => handleBuildingClick('시험')}
                 >
                   <CreateCanvasMap imagePath={WaterFallImage} />
                   {activeButton === '시험' && (

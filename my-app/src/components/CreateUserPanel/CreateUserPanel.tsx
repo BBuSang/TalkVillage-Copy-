@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-import './CreateUserPanel.css';
+import styles from './CreateUserPanel.module.css';
 
 export default function CreateUserPanel() {
     const [retrievedUUID, setRetrievdUUID] = useState<string>("");

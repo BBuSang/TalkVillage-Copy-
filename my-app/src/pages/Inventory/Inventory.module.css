@@ -1,0 +1,515 @@
+.outsidecontainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #507fb2;
+  padding: 1rem;
+}
+
+.mainMapView {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f8fd;
+  border-radius: 20px;
+}
+
+.viewSize {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0.125rem 1.25rem rgba(0, 0, 0, 0.1);
+}
+
+.insideView {
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 0;
+  height: 36px;
+}
+
+.logoBorder {
+  border-bottom: 0.125rem solid #eee;
+  padding-bottom: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 2px 0;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 20vw), 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.productCard {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.productCard:hover {
+  transform: translateY(-5px);
+}
+
+.imageWrapper {
+  width: 100%;
+  height: min(150px, 15vw);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+}
+
+.imageWrapper img,
+.imageWrapper svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.imageWrapper canvas {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain;
+}
+
+.imageWrapper[data-type="background"] > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageWrapper[data-type="background"] > div > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageWrapper[data-type="background"] canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.productInfo {
+  padding: 15px;
+}
+
+.productName {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+  color: #666;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: red;
+  font-size: 18px;
+}
+
+.storeLayout {
+  display: flex;
+  gap: 2rem;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.previewContainer {
+  flex: 0.6;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.storeContainer {
+  flex: 1.4;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.previewSection {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.previewArea {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: 
+    linear-gradient(45deg, #e2e8f0 25%, transparent 25%),
+    linear-gradient(-45deg, #e2e8f0 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e2e8f0 75%),
+    linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.backgroundPreview {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  max-width: 375px;
+  max-height: 500px;
+  aspect-ratio: 3/4;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.backgroundPreview > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.characterWrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.characterBox {
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transform: scale(0.85);
+}
+
+.characterBox > div:first-child {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.characterBox > div:first-child canvas {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  transform: none !important;
+  transform-origin: center center;
+}
+
+.nameBox {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%) scale(1.18);
+  width: 240px;
+  text-align: center;
+  z-index: 3;
+}
+
+.noBackground {
+  background: none !important;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.previewButton {
+  padding: 6px 12px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.previewButton:hover {
+  background-color: #5a6268;
+}
+
+.activeButton {
+  padding: 6px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: not-allowed;
+  flex: 1;
+  opacity: 0.65;
+}
+
+.activeButton:hover {
+  background-color: #28a745;
+}
+
+.inactiveButton {
+  padding: 6px 12px;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.inactiveButton:hover {
+  background-color: #3182ce;
+}
+
+.storeCard {
+  background: linear-gradient(135deg, #f8fafc 0%, #e8f4ff 100%);
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.storeCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(66, 153, 225, 0.1) 0%, rgba(49, 130, 206, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.storeCard:hover {
+  border-color: #4299e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.15);
+}
+
+.storeCard:hover::before {
+  opacity: 1;
+}
+
+.storeImageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  padding: 20px;
+}
+
+.storeIcon {
+  color: #4299e1;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.storeCard:hover .storeIcon {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.storeName {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 8px;
+}
+
+.storeDescription {
+  font-size: 14px;
+  color: #718096;
+  margin-bottom: 16px;
+}
+
+.storeButton {
+  width: 100%;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.storeButton:hover {
+  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2);
+}
+
+.storeButtonText {
+  position: relative;
+  z-index: 1;
+}
+
+.storeButtonIcon {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+  font-size: 18px;
+}
+
+.storeButton:hover .storeButtonIcon {
+  transform: translateX(4px);
+}
+
+/* 탭 스타일 */
+:global(.chakra-tabs) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+:global(.chakra-tabs__tablist) {
+  position: relative;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+:global(.chakra-tabs__tab) {
+  font-weight: bold;
+  font-size: 16px;
+  position: relative;
+  color: #718096;
+  transition: color 0.3s ease;
+}
+
+:global(.chakra-tabs__tab[aria-selected="true"]) {
+  background-color: transparent;
+  color: #4299e1;
+}
+
+:global(.chakra-tabs__tab[aria-selected="true"])::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #4299e1;
+  transition: all 0.3s ease;
+}
+
+:global(.chakra-tabs__tab:hover) {
+  color: #4299e1;
+}
+
+:global(.chakra-tabs__tab-panels) {
+  flex: 1;
+  overflow: hidden;
+}
+
+:global(.chakra-tabs__tab-panel) {
+  height: 100%;
+  overflow-y: auto;
+  padding-top: 10px;
+  max-height: calc(100vh - 265px);
+}
+
+.filterOption {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+}
+
+:global(.chakra-tabs__tab) {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+:global(.chakra-tabs__tab[aria-selected="true"]) {
+  background-color: #4299e1;
+  color: white;
+} 

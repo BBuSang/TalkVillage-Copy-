@@ -28,7 +28,7 @@ const Background3: React.FC = () => {
         const stars: { x: number; y: number; size: number; speed: number }[] = [];
         
         // 초기 별 생성
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 15; i++) {
             stars.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,

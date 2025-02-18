@@ -29,26 +29,56 @@ const AccordionMenu: React.FC = () => {
         navigate('/mainmap/advancedStudymap');
         break;
       case '미디어':
-        navigate('/mainmap/media');
+        navigate('/clip');
         break;
       case '테마':
-        navigate('/mainmap/theme');
+        navigate('/tsc');
         break;
       case 'HangMan':
-        navigate('/hangman');
+        navigate('/mainmap/hangman');
         break;
       case 'Scramble':
-        navigate('/WordScrambleGame');
+        navigate('/mainmap/WordScrambleGame');
         break;
       case 'CrossWord':
-        navigate('/CrossWord');
+        navigate('/mainmap/CrossWord');
+        break;
+      case '단어장':
+        navigate('/mainmap/voca');
         break;
       default:
         navigate('/mainmap');
         break;
     }
   };
-  
+  const handleNavigation2 = (selection: string) => {
+    switch (selection) {
+      case '상점':
+        navigate('/mainmap/store');
+        break;
+      case '시험':
+        navigate('/mainmap/exam');
+        break;
+      case '마이페이지':
+        navigate('/mainmap/mypage');
+        break;
+      case '영어사전':
+        navigate('/dictionary');
+        break;
+      case '커뮤니티':
+        navigate('/mainmap/community');
+        break;
+      default:
+        navigate('/mainmap');
+        break;
+    }
+  };
+
+  const handleNavigationforMainMap = (selection: string) => {
+    if (selection === '공부하기' || '게임하기') {
+      navigate('/mainmap');
+    }
+  }
 
   return (
     <div className={styles.insideMiddle}>
@@ -68,6 +98,7 @@ const AccordionMenu: React.FC = () => {
             onClick={() => {
               setOpenAccordionIndex(0); // 패널 열기
               setActiveButton('학습하기'); // '학습하기' 활성화
+              handleNavigationforMainMap('학습하기'); // 타이틀버튼 눌렀을때 메인맵으로
             }}
             onSelection={(selection) => {
               setHoveredSelection(selection);
@@ -80,15 +111,16 @@ const AccordionMenu: React.FC = () => {
             hoveredSelection={hoveredSelection}
           />
         </div>
-        
+
         <div>
-           <CreateAccordionItem
+          <CreateAccordionItem
             title="게임하기"
             content={['HangMan', 'Scramble', 'CrossWord']}
             isActive={activeButton === '게임하기'}
             onClick={() => {
               setOpenAccordionIndex(1);
               setActiveButton('게임하기');
+              handleNavigationforMainMap('게임하기'); // 타이틀버튼 눌렀을때 메인맵으로
             }}
             onSelection={(selection) => {
               setHoveredSelection(selection);
@@ -109,7 +141,7 @@ const AccordionMenu: React.FC = () => {
             isActive={activeButton === '영어사전'}
             onClick={() => {
               setOpenAccordionIndex(2);
-              setActiveButton('영어사전');
+              handleNavigation2('영어사전');
             }}
             onSelection={(selection) => {
               setHoveredSelection(selection);
@@ -119,21 +151,21 @@ const AccordionMenu: React.FC = () => {
         </div>
 
         {/* 마이페이지 */}
-        <div>
+        {/* <div>
           <CreateAccordionItem
             title="마이페이지"
             content={[]}
             isActive={activeButton === '마이페이지'}
             onClick={() => {
               setOpenAccordionIndex(3);
-              setActiveButton('마이페이지');
+              handleNavigation2('마이페이지');
             }}
             onSelection={(selection) => {
               setHoveredSelection(selection);
               setActiveButton('마이페이지');
             }}
           />
-        </div>
+        </div> */}
 
         {/* 상점 */}
         <div>
@@ -143,12 +175,13 @@ const AccordionMenu: React.FC = () => {
             isActive={activeButton === '상점'}
             onClick={() => {
               setOpenAccordionIndex(4);
-              setActiveButton('상점');
+              handleNavigation2('상점');
             }}
             onSelection={(selection) => {
               setHoveredSelection(selection);
               setActiveButton('상점');
             }}
+            hoveredSelection={hoveredSelection}
           />
         </div>
 
@@ -160,7 +193,7 @@ const AccordionMenu: React.FC = () => {
             isActive={activeButton === '시험'}
             onClick={() => {
               setOpenAccordionIndex(5);
-              setActiveButton('시험');
+              handleNavigation2('시험');
             }}
             onSelection={(selection) => {
               setHoveredSelection(selection);
@@ -168,6 +201,40 @@ const AccordionMenu: React.FC = () => {
             }}
           />
         </div>
+
+        <div>
+          <CreateAccordionItem
+            title="단어장"
+            content={[]}
+            isActive={activeButton === '단어장'}
+            onClick={() => {
+              setOpenAccordionIndex(6);
+              handleNavigation('단어장');
+            }}
+            onSelection={(selection) => {
+              setHoveredSelection(selection);
+              setActiveButton('단어장');
+            }}
+            hoveredSelection={hoveredSelection}
+          />
+        </div>
+
+        <div>
+          <CreateAccordionItem
+            title="커뮤니티"
+            content={[]}
+            isActive={activeButton === '커뮤니티'}
+            onClick={() => {
+              setOpenAccordionIndex(7);
+              setActiveButton('커뮤니티');
+            }}
+            onSelection={(selection) => {
+              setHoveredSelection(selection);
+              setActiveButton('커뮤니티');
+            }}
+          />
+        </div>
+
       </Accordion>
     </div>
   );

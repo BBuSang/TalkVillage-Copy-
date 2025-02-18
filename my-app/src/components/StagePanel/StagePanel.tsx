@@ -65,7 +65,7 @@ export default function StagePanel() {
           }}
         />
       </div>
-      <div>
+      <div className={styles.profileComposition}>
         <ProfileComposition />
       </div>
     </div>

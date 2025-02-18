@@ -1,0 +1,12 @@
+// pages/VocabularyPage/VocabularyPage.module.scss
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #e0eefa;
+  min-height: 100vh;
+
+  > div:first-child {  // InputPanel을 직접 선택
+    margin-bottom: 1rem;
+  }
+}

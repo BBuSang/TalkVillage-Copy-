@@ -19,12 +19,10 @@ import com.opencsv.exceptions.CsvValidationException;
 import Project.Backend.classes.CsvData;
 import Project.Backend.services.CsvReaderService;
 import Project.Backend.services.ExcelToCsvService;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/files")
 @CrossOrigin(origins = "http://localhost:3000")
-@Slf4j
 public class FileController {
 
     private final ExcelToCsvService excelToCsvService;
@@ -44,7 +42,6 @@ public class FileController {
                 "sheets", sheets
             ));
         } catch (Exception e) {
-            log.error("엑셀 변환 실패", e);
             return ResponseEntity.internalServerError()
                 .body(Map.of("error", e.getMessage()));
         }
@@ -60,7 +57,6 @@ public class FileController {
                 "sheets", sheetNames
             ));
         } catch (Exception e) {
-            log.error("동기화 실패", e);
             return ResponseEntity.internalServerError()
                 .body(Map.of("error", e.getMessage()));
         }
@@ -81,7 +77,6 @@ public class FileController {
             List<Map<String, String>> data = csvReaderService.readCsvFile(sheetName);
             return ResponseEntity.ok(data);
         } catch (IOException | CsvValidationException e) {
-            log.error("CSV 파일 읽기 실패", e);
             return ResponseEntity.internalServerError()
                 .body(Map.of("error", e.getMessage()));
         }
@@ -93,7 +88,6 @@ public class FileController {
             excelToCsvService.updateExcelWithWrongData(sheetName, updatedData);
             return ResponseEntity.ok(Map.of("message", "엑셀 파일이 성공적으로 업데이트되었습니다."));
         } catch (Exception e) {
-            log.error("엑셀 업데이트 실패", e);
             return ResponseEntity.internalServerError()
                 .body(Map.of("error", e.getMessage()));
         }
@@ -105,7 +99,6 @@ public class FileController {
             excelToCsvService.saveAllToDatabase();
             return ResponseEntity.ok(Map.of("message", "모든 데이터가 성공적으로 저장되었습니다."));
         } catch (Exception e) {
-            log.error("데이터베이스 저장 실패", e);
             return ResponseEntity.internalServerError()
                 .body(Map.of("error", e.getMessage()));
         }

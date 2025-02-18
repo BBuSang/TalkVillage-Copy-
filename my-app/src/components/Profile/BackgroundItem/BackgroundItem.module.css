@@ -1,6 +1,5 @@
 .background {
-    width: 300px;
-    height: 400px;
+    aspect-ratio: 3 / 4;
     border-radius: 15px;
     position: relative;
     overflow: hidden;

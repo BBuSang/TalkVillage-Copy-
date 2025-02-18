@@ -58,12 +58,13 @@ body * {
   justify-content: center;
   align-items: center;
   font-weight: 600;
+  font-size: 0.75rem !important;
 }
 .selection .sideSelection .secondSelections .secondSelection {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 4.375rem;
+  width: 4.875rem;
   background-color: rgba(249, 253, 255, 0.2);
   padding: 0.3125rem;
   border-radius: 2.5rem;

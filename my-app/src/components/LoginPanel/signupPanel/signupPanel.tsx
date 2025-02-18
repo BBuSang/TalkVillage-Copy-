@@ -35,7 +35,6 @@ function Login() {
 
             if (response.ok) {
                 const data = await response.json();
-                alert('로그인 성공! ');
                 // console.log('유저 이메일: ' + data.email);
                 // console.log('권한: ' + data.authorities);
                 navigate('/ProfileSettings', { state: { userData: data } });

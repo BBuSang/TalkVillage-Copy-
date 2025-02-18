@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import DictionaryHeader from '../../components/Dictionary/DictionaryHeader';
-import DictionarySearch from '../../components/Dictionary/DictionarySearch';
-import DictionaryFooter from '../../components/Dictionary/DictionaryFooter';
+import DictionaryHeader from '../../components/DictionaryPlacement/Dictionary/DIctionaryHeaderPanel/DictionaryHeader';
+import DictionarySearch from '../../components/DictionaryPlacement/Dictionary/DictionarySearchPanel/DictionarySearch';
+import DictionaryFooter from '../../components/DictionaryPlacement/Dictionary/DictionaryFooterPanel/DictionaryFooter';
 
 const Dictionary: React.FC = () => {
   const navigate = useNavigate();

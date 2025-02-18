@@ -1,13 +1,28 @@
 package Project.Backend.controller.api;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import Project.Backend.classes.UD;
@@ -15,12 +30,6 @@ import Project.Backend.entity.ScrambledWord;
 import Project.Backend.entity.User;
 import Project.Backend.repository.ScrambledWordRepository;
 import Project.Backend.repository.UserRepository;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.util.*;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/ScrambledWord")
@@ -147,12 +156,11 @@ public class ScrambledWordController {
     	if (user == null) {
             return ResponseEntity.status(205).build(); // 인증되지 않은 경우
         }
-        System.out.println(user.getEmail());
         try {
             User userinfo = userRep.findByEmail(user.getEmail());
             Integer score = scoreData.get("score");
-            Integer points = userinfo.getPoint() + (score * 10);
-            Integer exp = userinfo.getExp() + (score * 1);
+            Integer points = userinfo.getPoint() + (score);
+            Integer exp = userinfo.getExp() + (score / 2);
 
             userinfo.setPoint(points);
             userinfo.setExp(exp);
@@ -189,7 +197,7 @@ public class ScrambledWordController {
 
                 // CSV 파일에서 각 단어와 힌트를 추출
                 String[] parts = line.split(",");
-                if (parts.length >= 2) {
+                if (parts.length >= 2 && parts.length <= 10) {
                     String hint = parts[1].trim(); // 단어 (두 번째 컬럼)
                     String word = parts[0].trim(); // 힌트 (첫 번째 컬럼)
 

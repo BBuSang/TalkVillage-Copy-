@@ -1,7 +1,7 @@
 import React from 'react';
-import TranslationPanel from '../../components/Translation/TranslationPanel';
-import TranslationFooter from '../../components/Translation/TranslationFooter';
-import TranslationHeader from '../../components/Translation/TranslationHeader';
+import TranslationPanel from '../../components/DictionaryPlacement/Translation/TranslationPanel/TranslationPanel';
+import TranslationFooter from '../../components/DictionaryPlacement/Translation/TranslationFooterPanel/TranslationFooter';
+import TranslationHeader from '../../components/DictionaryPlacement/Translation/TranslationHeaderPanel/TranslationHeader';
 
 const Translation: React.FC = () => {
   return (

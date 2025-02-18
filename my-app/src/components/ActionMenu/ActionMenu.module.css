@@ -29,7 +29,7 @@ body * {
   display: flex; /* Flexbox로 설정하여 아이템 간 gap을 적용할 수 있게 함 */
   flex-direction: column; /* 아이템을 세로로 배치 */
   top: 0.625rem;
-  width: 7.625rem;
+  width: 7.375rem;
   min-width: 100% !important;
   outline: 0.15625rem solid rgba(224, 238, 250, 0.4) !important;
   background-color: rgba(255, 255, 255, 0) !important;

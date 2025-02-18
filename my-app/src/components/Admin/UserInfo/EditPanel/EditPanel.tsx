@@ -19,6 +19,8 @@ interface User {
   point: number;
   grade: number;
   role: string;
+  firstsignup: string;
+  editinfo: string;
 }
 
 const defaultUser: User = {
@@ -32,6 +34,8 @@ const defaultUser: User = {
   point: 0,
   grade: 0,
   role: 'ROLE_USER',
+  firstsignup: '',
+  editinfo: '',
 };
 
 const EditPanel: React.FC<EditPanelProps> = ({ selectedUser, onUserUpdate, onRefresh }) => {
@@ -49,26 +53,39 @@ const EditPanel: React.FC<EditPanelProps> = ({ selectedUser, onUserUpdate, onRef
   const handleUserUpdate = async () => {
     if (!selectedUser) return;
     setError(null);
+
     try {
-      await axios.put(`http://localhost:9999/api/user/update/${selectedUser.userId}`, selectedUser);
+      const response = await fetch(`http://localhost:9999/api/user/update/${selectedUser.userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(selectedUser)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || '사용자 정보를 업데이트하는 중 오류가 발생했습니다.');
+      }
+
+      const updatedData = await response.json();
+
       alert('사용자 정보가 성공적으로 업데이트되었습니다!');
       onRefresh();
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        setError(error.response?.data?.message || '사용자 정보를 업데이트하는 중 오류가 발생했습니다.');
-      } else {
-        setError('사용자 정보를 업데이트하는 중 알 수 없는 오류가 발생했습니다.');
-      }
+      setError(error instanceof Error ? error.message : '사용자 정보를 업데이트하는 중 알 수 없는 오류가 발생했습니다.');
       console.error('Error updating user:', error);
     }
-    
   };
-
+  const today = new Date().toISOString().split('T')[0];
+  const nottoday = new Date();
+  nottoday.setDate(nottoday.getDate() - 30);
+  const nottodayString = nottoday.toISOString().split('T')[0];
   return (
     <div className={styles.rightSection}>
       <div className={styles.userInfoEditSection}>
         <h2>유저 정보 수정</h2>
-        
+
         <div className={styles.formGrid}>
           <label>
             이메일:
@@ -100,7 +117,15 @@ const EditPanel: React.FC<EditPanelProps> = ({ selectedUser, onUserUpdate, onRef
             />
           </label>
 
-
+          <label>
+            정보수정일 (현재일로부터 30일 이내 수정 가능):
+            <input
+              type="date"
+              value={selectedUser?.editinfo|| defaultUser.editinfo}
+              onChange={(e) => onUserUpdate({ ...(selectedUser || defaultUser), editinfo: e.target.value })}
+              className={styles.userInfoEditInput}
+            />
+          </label>
 
           <label>
             경험치:
@@ -132,6 +157,15 @@ const EditPanel: React.FC<EditPanelProps> = ({ selectedUser, onUserUpdate, onRef
               <option value="ROLE_USER">일반 사용자</option>
               <option value="ROLE_ADMIN">관리자</option>
             </select>
+          </label>
+          <label>
+            최초가입일:
+            <input
+              type="date"
+              value={selectedUser?.firstsignup || defaultUser.firstsignup}
+              className={styles.userInfoEditInput}
+              disabled
+            />
           </label>
           <label>
             가입 경로:

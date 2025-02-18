@@ -43,7 +43,7 @@ public class StageUserProfileController {
 
 	@GetMapping("/getUserInfo")
 	public ResponseEntity<List<String>> GetUserInfo(@AuthenticationPrincipal UD user, String Difficulty) {
-		if (user.getUser() == null) {
+		if (user == null) {
             return ResponseEntity.status(250).body(null); // 인증되지 않은 경우
         }
 		User userInfo = user.getUser();

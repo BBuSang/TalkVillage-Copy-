@@ -1,10 +1,5 @@
 package Project.Backend.services;
 
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvValidationException;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,8 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+
 @Service
-@Slf4j
 public class CsvReaderService {
     
     public List<Map<String, String>> readCsvFile(String sheetName) throws IOException, CsvValidationException {
@@ -40,8 +39,6 @@ public class CsvReaderService {
                 }
                 records.add(record);
             }
-            
-            log.info("CSV 파일 읽기 완료: {}, {} 레코드", sheetName, records.size());
         }
         
         return records;

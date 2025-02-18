@@ -9,4 +9,6 @@ export interface User {
   point: number;
   grade: number;
   role: string;
+  firstsignup: string;
+  editinfo: string;
 } 

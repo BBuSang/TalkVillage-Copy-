@@ -1,105 +1,132 @@
-Word,Description (English)
-apple,A sweet fruit that is typically red green or yellow in color
-banana,A long yellow fruit that is sweet and rich in potassium
-cat,A small domesticated animal often kept as a pet for companionship
-dog,A loyal animal often kept as a pet and known for its companionship
-elephant,A large mammal known for its trunk and intelligence
-fish,A cold-blooded aquatic animal with gills and fins for swimming
-grape,A small round fruit often used to make wine or eaten fresh
-house,A building that serves as a home for people or animals
-iceberg,A large mass of ice floating in the water often seen in the ocean
-jungle,A dense tropical forest filled with wildlife and plants
-kite,A lightweight object flown in the wind using a string for control
-lemon,A sour yellow citrus fruit often used in drinks or cooking
-moon,A natural satellite that orbits Earth and reflects sunlight at night
-night,A period of darkness between sunset and sunrise
-orange,A bright orange fruit that is juicy and sweet rich in vitamin C
-pencil,A tool used for writing or drawing typically made of wood and lead
-queen,A female ruler or the wife of a king often associated with royalty
-rose,A fragrant flower often associated with love and romance
-star,A luminous celestial object visible from Earth often in the night sky
-tree,A tall plant with a trunk branches and leaves that provides shade
-umbrella,A portable device used to protect from rain or sunlight
-vase,A decorative container used to hold flowers or other items
-water,A transparent liquid essential for life covering much of Earth's surface
-xylophone,A musical instrument consisting of wooden bars played with mallets
-yellow,A bright color often associated with warmth sunlight and cheerfulness
-zebra,A striped black-and-white herbivorous animal found in Africa
-airplane,A vehicle that flies in the sky typically used for transportation
-balloon,A large flexible bag filled with air or gas used for decoration
-carrot,A long orange vegetable that is crunchy and rich in vitamin A
-dolphin,A highly intelligent marine mammal known for its playful behavior
-eggplant,A purple vegetable often used in Mediterranean cuisine
-fox,A small carnivorous mammal with reddish fur and a bushy tail
-guitar,A stringed musical instrument typically played by strumming or plucking
-hat,A piece of clothing worn on the head for protection or fashion
-ink,A liquid used for writing or printing often contained in a pen or bottle
-jelly,A sweet translucent spread made from fruit juice and sugar
-key,A small tool used to open locks or start machinery
-lamp,A device that provides light typically powered by electricity or gas
-mango,A tropical fruit known for its sweet juicy flesh and large pit
-nut,A hard-shelled fruit or seed often eaten as a snack or used in cooking
-octopus,A marine animal with eight tentacles and high intelligence
-parrot,A colorful bird known for its ability to mimic human speech
-quilt,A bed cover made of layers of fabric sewn together in patterns
-rosebud,A young flower that is yet to bloom but is often fragrant
-sunflower,A large yellow flower that turns to face the sun and produces seeds
-tulip,A brightly colored flower with a smooth petal shape often spring-blooming
-unicorn,A mythical horse-like creature with a single horn on its forehead
-vulture,A scavenger bird that feeds on the remains of dead animals
-whale,A large marine mammal known for its size and ability to swim in oceans
-xenon,A rare colorless gas found in Earth's atmosphere and used in lighting
-yacht,A luxury boat used for private recreation or travel on water
-zeppelin,A large rigid airship used for transport often filled with gas
-avocado,A green fruit with a large seed known for its creamy texture and taste
-bear,A large mammal known for its strength and often lives in forests
-clover,A small plant with three or four leaves often seen as a symbol of luck
-dinosaur,An extinct group of reptiles that once roamed the Earth millions of years ago
-eagle,A large bird of prey with sharp talons and keen eyesight
-flame,A hot glowing gas produced by burning a substance
-grizzly,A large bear species found in North America known for its strength
-hippopotamus,A large herbivorous mammal that lives in rivers and lakes
-icecream,A frozen dessert made from dairy products sugar and flavorings
-jungle,A thick forest in tropical regions home to diverse plant and animal life
-kiwi,A small fruit with brown skin and green flesh known for its tangy taste
-lighthouse,A tower with a light that helps ships navigate safely at sea
-monkey,A small primate known for its agility and intelligence
-nightlight,A small light used at night to provide soft illumination in dark rooms
-ocean,A vast body of saltwater that covers over 70% of Earth's surface
-pineapple,A tropical fruit with a tough skin and sweet juicy flesh
-queenbee,A female bee that is the leader of a hive and responsible for reproduction
-rainbow,A colorful arc of light formed after rain caused by the dispersion of light
-snowflake,A unique ice crystal that forms when water vapor freezes in the air
-tiger,A large wild cat with orange fur and black stripes native to Asia
-umbrella,A portable tool used for shielding from rain or sun
-violet,A small purple flower and also a color in the violet range
-waterfall,A flow of water cascading over a vertical drop or cliff
-xenophobia,The fear or dislike of people from other countries or cultures
-yellowbird,A small bird with bright yellow feathers often found in gardens
-zodiac,A system of twelve astrological signs based on the position of celestial bodies
-ant,A small insect that lives in colonies and is known for its strength
-bubble,A small sphere of air trapped in a liquid often rising to the surface
-cloud,A visible mass of water vapor suspended in the sky often causing rain
-dove,A small bird symbolizing peace often white in color
-elephant,A massive mammal with large ears and a long trunk used for grasping
-flame,The visible hot glowing part of a fire that produces light and heat
-goose,A large waterfowl known for its honking sound and migratory behavior
-honey,A sweet golden substance produced by bees from nectar
-igloo,A dome-shaped shelter made of compacted snow used by Arctic people
-jellyfish,A soft-bodied marine animal with tentacles that can sting
-koala,A tree-dwelling marsupial native to Australia known for its fuzzy ears
-lemon,A yellow citrus fruit known for its tart and tangy taste
-moose,A large herbivorous mammal native to North America and northern Europe
-nutmeg,A spice derived from a seed often used in baking and cooking
-octagon,A shape with eight sides and eight angles
-pumpkin,A round orange fruit often used in cooking and as a Halloween decoration
-quill,A writing instrument made from the feather of a bird often used historically
-rabbit,A small herbivorous mammal known for its long ears and fluffy tail
-snowman,A figure made of snow typically with a carrot nose and coal eyes
-turtle,A slow-moving reptile with a hard shell that protects its body
-universe,All of space and everything it contains including stars planets and galaxies
-violet,A purple flower and a color in the visible spectrum
-windmill,A structure with rotating blades used to generate power from the wind
-xylophone,A musical instrument made of a series of wooden bars played with mallets
-yellowstone,A famous national park in the U.S. known for its geothermal features
-zebra,A black-and-white striped horse-like animal native to Africa
+Word,Description
+apple,붉거나 초록색의 달콤한 과일
+banana,길고 노란색이며 칼륨이 풍부한 과일
+grape,작고 둥글며 보라색이나 초록색인 과일
+melon,크고 달콤한 과일로 여름에 자주 먹음
+lemon,노란색이며 신맛이 강한 감귤류 과일
+peach,부드러운 털이 있고 달콤한 씨가 있는 과일
+plum,작고 둥글며 보라색이거나 붉은색인 과일
+cherry,작고 둥글며 씨가 있는 빨간색 과일
+berry,작고 즙이 많으며 다양한 색상의 과일
+mango,열대 지방에서 자라는 달콤하고 부드러운 과일
+carrot,주황색 뿌리채소로 비타민 A가 풍부함
+potato,흙에서 자라며 삶거나 튀겨 먹는 채소
+tomato,빨갛고 즙이 많으며 샐러드에 자주 사용됨
+cabbage,잎이 겹겹이 쌓여있는 녹색 채소
+lettuce,샐러드에 많이 사용되는 연한 녹색 잎채소
+onion,맵고 자를 때 눈물이 나는 채소
+garlic,강한 향이 있으며 요리에 감칠맛을 더함
+pepper,빨강 초록 노랑 등 다양한 색상의 채소
+corn,노란색 알갱이로 이루어진 곡물
+broccoli,짙은 녹색이며 나무처럼 생긴 채소
+rabbit,긴 귀를 가진 작은 초식 동물
+tiger,줄무늬가 있는 대형 육식 동물
+zebra,검은색과 흰색 줄무늬가 있는 동물
+lion,갈기가 있고 강한 힘을 가진 육식 동물
+elephant,긴 코와 큰 귀를 가진 초식 동물
+giraffe,목이 길고 키가 매우 큰 초식 동물
+fox,작고 날렵하며 붉은 털을 가진 동물
+deer,긴 뿔이 있으며 초식성인 동물
+whale,바다에서 사는 거대한 포유류
+shark,예리한 이빨을 가진 무서운 바다 동물
+dolphin,똑똑하고 물에서 뛰어오를 수 있는 해양 동물
+eagle,날개가 크고 시력이 좋은 맹금류
+parrot,알록달록한 깃털을 가지고 말을 흉내 내는 새
+penguin,날지 못하지만 수영을 잘하는 남극의 새
+crow,검은색이며 지능이 높은 새
+sparrow,작고 흔히 볼 수 있는 갈색 새
+chair,앉을 수 있도록 만든 가구
+table,물건을 놓거나 식사를 할 때 사용하는 가구
+bed,잠을 잘 때 사용하는 가구
+sofa,여러 사람이 함께 앉을 수 있는 가구
+desk,공부나 일을 할 때 사용하는 가구
+lamp,빛을 내는 전등이나 조명 기구
+mirror,모습을 반사하는 유리판
+clock,시간을 알려주는 기계 장치
+window,빛과 공기가 드나드는 유리문
+door,방이나 건물의 출입구를 여닫는 구조물
+school,학생들이 공부하는 곳
+teacher,학생들을 가르치는 사람
+book,글자가 적혀 있는 종이 묶음
+pencil,필기를 할 때 사용하는 도구
+eraser,잘못 쓴 글씨를 지울 때 사용하는 도구
+bag,물건을 넣어 가지고 다닐 수 있는 물건
+shoes,발을 보호하고 편하게 해주는 신발
+hat,머리에 쓰는 보호구 또는 장식
+gloves,손을 따뜻하게 보호하는 용품
+coat,추운 날씨에 입는 두꺼운 옷
+scarf,목을 감싸 따뜻하게 하는 천
+music,소리와 리듬을 조합한 예술
+dance,음악에 맞춰 몸을 움직이는 활동
+game,규칙을 따라 즐기는 오락 활동
+movie,영상과 소리로 이루어진 이야기
+pizza,반죽 위에 치즈와 토핑을 올려 구운 음식
+bread,밀가루로 만들어 구운 기본적인 음식
+cheese,우유로 만든 부드럽고 짭짤한 식품
+butter,우유에서 추출한 크림성 식품
+honey,벌이 꽃에서 만든 달콤한 액체
+sugar,음식을 달게 만드는 하얀 가루
+salt,음식의 맛을 내는 하얀 가루
+car,바퀴가 달린 이동 수단
+bus,여러 사람이 함께 타는 대형 차량
+train,철로 위를 달리는 긴 이동 수단
+plane,하늘을 나는 교통수단
+boat,물을 떠서 이동하는 교통수단
+pilot,비행기를 조종하는 사람
+doctor,환자를 치료하는 전문가
+nurse,환자를 돕는 의료 종사자
+police,법을 집행하고 질서를 유지하는 사람
+fireman,불을 끄고 구조하는 사람
+chef,음식을 조리하는 전문가
+writer,책이나 글을 쓰는 사람
+artist,그림을 그리거나 예술을 창조하는 사람
+actor,영화나 연극에서 연기하는 사람
+singer,노래를 부르는 직업
+scientist,자연과학을 연구하는 사람
+engineer,기계를 설계하고 만드는 직업
+lawyer,법률을 다루는 전문가
+puppy,아직 어린 개
+kitten,어린 고양이
+bear,산에 사는 커다란 동물
+panda,대나무를 먹고 사는 귀여운 동물
+wolf,무리를 이루어 사냥하는 동물
+squirrel,나무를 타고 다니는 작은 동물
+butterfly,날개가 아름다운 곤충
+bee,꽃에서 꿀을 만드는 곤충
+ant,무리 지어 생활하는 작은 곤충
+mosquito,사람의 피를 빠는 해충
+house,사람이 사는 공간
+apartment,여러 가구가 함께 사는 건물
+library,책을 빌릴 수 있는 조용한 공간
+hospital,아픈 사람을 치료하는 시설
+bicycle,두 바퀴로 움직이는 탈것
+airplane,하늘을 나는 비행 수단
+helicopter,공중에서 회전하며 나는 기체
+television,영상과 소리를 제공하는 기기
+computer,정보를 처리하는 전자 기기
+keyboard,컴퓨터 입력을 위한 도구
+camera,사진을 찍는 기기
+violin,줄을 문질러 소리를 내는 악기
+piano,건반을 눌러 연주하는 악기
+guitar,현을 튕겨서 연주하는 악기
+drum,두드려서 연주하는 악기
+flute,입으로 부는 관악기
+soccer,발로 공을 차며 경기하는 스포츠
+tennis,라켓으로 공을 치는 스포츠
+basketball,손으로 공을 던져 골을 넣는 경기
+baseball,배트로 공을 치는 스포츠
+volleyball,네트를 사이에 두고 공을 넘기는 경기
+swimming,물을 이용하여 이동하는 스포츠
+running,빠르게 이동하는 운동
+cycling,자전거를 타는 스포츠
+hiking,산을 오르는 야외 활동
+skiing,눈 위를 미끄러지듯 이동하는 스포츠
+camping,야외에서 텐트를 치고 머무는 활동
+reading,책을 읽는 활동
+writing,글을 쓰는 활동
+drawing,그림을 그리는 활동
+cooking,음식을 만드는 활동
+gardening,식물을 기르는 활동
+knitting,실을 엮어 옷을 만드는 활동
+singing,목소리로 노래하는 활동
+dancing,음악에 맞춰 움직이는 활동

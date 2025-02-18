@@ -1,10 +1,12 @@
 package Project.Backend.controller.app;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +18,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,8 +38,6 @@ import Project.Backend.repository.QuestionListRepository;
 public class QuestionManagerController {
 
     private final String API_KEY = "FPSXbe549cff4adf4ee794603a4abc858373";
-//    		"FPSX8cee6649715f4308bfc8493d9ced1e77";
-//    		"FPSX3ad727cbbbcc4a7faa0cfb43cb1bd314"; 
     private final String TEXT_TO_IMAGE_URL = "https://api.freepik.com/v1/ai/text-to-image";
     private final String imageStoragePath = "src/main/resources/static/images/";
 
@@ -47,13 +46,11 @@ public class QuestionManagerController {
     
     @PostMapping("/generate-images")
     public ResponseEntity<?> generateImages(@RequestParam("words") String words, @RequestParam("stageLevel") String stageLevel) {
-        
-    	String[] wordArray = words.split(",");
-        String question = String.join(",", wordArray); // question 필드 값
-        String result = wordArray[0].trim();           // 첫 번째 단어를 result 필드에 저장
+        String[] wordArray = words.split(",");
+        String question = String.join(",", wordArray);
+        String result = wordArray[0].trim();
         String type = "word";
 
-       
         QuestionList questionList = new QuestionList();
         questionList.setQuestion(question);
         questionList.setResult(result);
@@ -83,7 +80,7 @@ public class QuestionManagerController {
                     if (!dataList.isEmpty() && dataList.get(0).containsKey("base64")) {
                         String base64Image = (String) dataList.get(0).get("base64");
 
-                        byte[] decodedBytes = Base64Utils.decodeFromString(base64Image);
+                        byte[] decodedBytes = Base64.getDecoder().decode(base64Image);
                         Path imagePath = Paths.get(imageStoragePath + word.trim() + ".png");
                         try (FileOutputStream fos = new FileOutputStream(imagePath.toFile())) {
                             fos.write(decodedBytes);
@@ -93,10 +90,8 @@ public class QuestionManagerController {
                     }
                 }
             } catch (HttpClientErrorException e) {
-                e.printStackTrace();
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("인증 오류: API 키가 유효하지 않습니다.");
             } catch (Exception e) {
-                e.printStackTrace();
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("이미지 생성 오류: " + e.getMessage());
             }
         }
@@ -117,7 +112,6 @@ public class QuestionManagerController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
@@ -142,6 +136,7 @@ public class QuestionManagerController {
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("저장된 이미지가 없습니다.");
     }
+
     @PostMapping("/save-blank-question")
     public ResponseEntity<?> saveBlankQuestion(@RequestBody Map<String, Object> request) {
         try {
@@ -151,7 +146,6 @@ public class QuestionManagerController {
             questionList.setResult((String) request.get("answer"));
             questionList.setType("blank");
 
-            // 오답 리스트를 콤마로 구분된 문자열로 변환
             @SuppressWarnings("unchecked")
             List<String> wrongOptions = (List<String>) request.get("wrongOptions");
             String wrongData = String.join(",", wrongOptions);
@@ -159,7 +153,6 @@ public class QuestionManagerController {
             
             QuestionList savedQuestion = questionListRepository.save(questionList);
 
-            // 응답 데이터 구성
             Map<String, Object> response = Map.of(
                 "questionListId", savedQuestion.getQuestionListId(),
                 "stageLevel", savedQuestion.getStageLevel(),
@@ -172,7 +165,6 @@ public class QuestionManagerController {
             return ResponseEntity.ok(response);
             
         } catch (Exception e) {
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("문제 저장 중 오류가 발생했습니다: " + e.getMessage());
         }
@@ -188,7 +180,6 @@ public class QuestionManagerController {
                         .body("해당 ID의 문제를 찾을 수 없습니다: " + questionId);
             }
             
-            // 오답 문자열을 리스트로 변환
             List<String> wrongOptions = Arrays.asList(question.getWrongData().split(","));
             
             Map<String, Object> response = Map.of(
@@ -203,7 +194,6 @@ public class QuestionManagerController {
             return ResponseEntity.ok(response);
             
         } catch (Exception e) {
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("문제 조회 중 오류가 발생했습니다: " + e.getMessage());
         }
