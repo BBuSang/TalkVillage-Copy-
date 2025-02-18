@@ -29,6 +29,12 @@ TalkVillage는 실용적인 영어 학습을 위한 온라인 플랫폼입니다
 - 영상을 통한 실용 영어 표현 학습
 - 오디오 발음 가이드
 
+### 5. 관리자 기능
+- 회원 관리 및 권한 설정
+- 학습 콘텐츠 등록/수정/삭제
+- 사용자 학습 현황 모니터링
+- 서비스 운영 통계 확인
+
 ## 🛠 기술 스택
 
 ### Frontend
@@ -76,26 +82,50 @@ TalkVillage는 실용적인 영어 학습을 위한 온라인 플랫폼입니다
 - 개발 진행 (2024.10.22 ~ 현재)
 
 ## 📁 프로젝트 구조
-tree
-project-root/
-├── frontend/
-│ ├── src/
-│ │ ├── components/
-│ │ ├── pages/
-│ │ └── services/
-└── backend/
-├── src/
-│ ├── main/
-│ │ ├── java/
-│ │ └── resources/
-└── test/
-
+프로젝트 루트
+├─Backend (백엔드)
+│  └─src
+│      └─main
+│          ├─java
+│          │  └─Project/Backend
+│          │      ├─controller
+│          │      ├─entity
+│          │      ├─repository
+│          │      └─services
+│          └─resources
+│
+└─my-app (프론트엔드)
+    ├─public
+    │  ├─Background
+    │  ├─basicSkin
+    │  └─cha_skins
+    │
+    └─src
+        ├─components
+        │  ├─Admin (관리자 기능)
+        │  ├─Dictionary (사전 기능)
+        │  ├─LoginPanel (로그인 관련)
+        │  ├─Profile (프로필 관련)
+        │  ├─ThemePanel (테마 학습)
+        │  └─Vocabulary (단어장)
+        │
+        ├─pages (페이지 컴포넌트)
+        │  ├─Admin
+        │  ├─Dictionary
+        │  ├─Login
+        │  ├─MainMap
+        │  └─VocabularyPage
+        │
+        └─image (이미지 리소스)
+            ├─Buildings
+            ├─Dictionary
+            ├─Icons
+            └─Maps
 
 ## 🔗 참고 링크
 - [프로젝트 일정 관리](https://docs.google.com/spreadsheets/d/1pQr038dNQv4xL5-0lbYvoPQzIoPM32UMip8qP2c7dy8/edit?gid=341692253#gid=341692253)
 - [트리 맵 & DB 구조](https://www.figma.com/board/koUMxarF5n0mSxBSjatcTu/ABproject?node-id=0-1&node-type=canvas&t=skZOlQCGoaTwyJQO-0)
 - [와이어프레임](https://www.figma.com/design/RNqvxakhIIOkpxtgegwMQO/Framer-Wireframe-Web-UI-Kit-Features-by-PanoplyStore-(Community)?node-id=0-1&node-type=canvas&t=fXpAK5f6eLZlS0df-0)
-
 
 ## 📸 프로젝트 스크린샷
 
@@ -129,3 +159,6 @@ project-root/
 ![개인정보 화면](./.github/images/개인정보화면.png)
 > 사용자의 프로필 정보, 학습 통계, 학습 기록 등을 확인하고 관리할 수 있는 마이페이지입니다.
 
+### 관리자 페이지
+![관리자 화면](./.github/images/관리자화면.png)
+> 회원 관리, 콘텐츠 관리, 학습 데이터 통계 등 서비스 운영에 필요한 관리 기능을 제공하는 어드민 페이지입니다.
