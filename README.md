@@ -82,6 +82,7 @@ TalkVillage는 실용적인 영어 학습을 위한 온라인 플랫폼입니다
 - 개발 진행 (2024.10.22 ~ 현재)
 
 ## 📁 프로젝트 구조
+```
 프로젝트 루트
 ├─Backend (백엔드)
 │  └─src
@@ -121,6 +122,7 @@ TalkVillage는 실용적인 영어 학습을 위한 온라인 플랫폼입니다
             ├─Dictionary
             ├─Icons
             └─Maps
+```
 
 ## 🔗 참고 링크
 - [프로젝트 일정 관리](https://docs.google.com/spreadsheets/d/1pQr038dNQv4xL5-0lbYvoPQzIoPM32UMip8qP2c7dy8/edit?gid=341692253#gid=341692253)
