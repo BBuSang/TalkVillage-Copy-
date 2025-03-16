@@ -52,5 +52,5 @@ jobs:
         
     - name: Run Spring Boot
       run: |
-        cd Backend
+        cd Backend/Backend
         ./mvnw spring-boot:run 
