@@ -50,7 +50,12 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         
+    - name: Grant execute permission for mvnw
+      run: |
+        cd Backend/Backend
+        chmod +x mvnw
+        
     - name: Run Spring Boot
       run: |
         cd Backend/Backend
-        ./mvnw spring-boot:run 
+        ./mvnw spring-boot:run -Dserver.port=9999 
