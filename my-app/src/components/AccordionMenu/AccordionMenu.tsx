@@ -57,7 +57,7 @@ const AccordionMenu: React.FC = () => {
         navigate('/mainmap/store');
         break;
       case '시험':
-        navigate('/mainmap/exam');
+        navigate('/exam');
         break;
       case '마이페이지':
         navigate('/mainmap/mypage');

@@ -79,8 +79,9 @@
     border-radius: 0.75rem;
     background: #f8f9fa;
     transition: transform 0.2s ease;
-    height: 4.5rem;
+    height: 12.5%;
 }
+
 
 .infoItem:hover {
     transform: translateX(0.5rem);
@@ -175,6 +176,7 @@
     flex-direction: column;
     gap: 5px;
     padding: 10px;
+    /* bottom:0; */
     border-radius: 20px;
     background: rgba(90,127,174);
 }
@@ -182,7 +184,7 @@
 
 /* 마지막 버튼 그룹(회원탈퇴가 있는 그룹)은 margin-top으로 간격 유지 */
 .buttonGroup:last-child {
-    margin-top: 3rem;
+    margin-top: auto;
 }
 
 .menuButton {

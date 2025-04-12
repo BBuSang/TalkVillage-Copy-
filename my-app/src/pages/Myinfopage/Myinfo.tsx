@@ -73,94 +73,94 @@ const MyInfo = () => {
 
     return (
         <div className={styles.outsidecontainer}>
-                <div className={styles.profileContainer}>
-                    <h1 className={styles.title}>내 정보</h1>
-                    <div className={styles.profile}>
-                        <ProfileComposition />
-                    </div>
-                    <div className={styles.menuButtons}>
-                        <div className={styles.buttonGroup}>
-                            <button
-                                className={`${styles.menuButton} ${activePanel === 'info' ? styles.active : ''}`}
-                                onClick={() => setActivePanel('info')}
-                            >
-                                기본 정보
-                            </button>
-                        </div>
-
-                        <div className={styles.buttonGroup}>
-                            <button
-                                className={`${styles.menuButton} ${activePanel === 'nickname' ? styles.active : ''}`}
-                                onClick={() => setActivePanel('nickname')}
-                            >
-                                닉네임 변경
-                            </button>
-                            <button
-                                className={`${styles.menuButton} ${activePanel === 'password' ? styles.active : ''}`}
-                                onClick={() => setActivePanel('password')}
-                            >
-                                비밀번호 변경
-                            </button>
-                            <button
-                                className={`${styles.menuButton} ${activePanel === 'birthdate' ? styles.active : ''}`}
-                                onClick={() => setActivePanel('birthdate')}
-                            >
-                                생년월일 변경
-                            </button>
-                        </div>
-
-                        <div className={`${styles.buttonGroup} ${styles.danger}`}>
-                            <button
-                                className={`${styles.menuButton} ${styles.danger} ${activePanel === 'withdrawal' ? styles.active : ''}`}
-                                onClick={() => setActivePanel('withdrawal')}
-                            >
-                                회원탈퇴
-                            </button>
-                        </div>
-                    </div>
+            <div className={styles.profileContainer}>
+                <h1 className={styles.title}>내 정보</h1>
+                <div className={styles.profile}>
+                    <ProfileComposition />
                 </div>
-                <div className={styles.infoCard}>
-                    {activePanel === 'info' && (
-                        <div className={styles.infoContainer}>
-                            <div className={styles.infoItem}>
-                                <label className={styles.infoLabel} htmlFor="email">이메일</label>
-                                <p className={styles.infoValue}>{userInfo.email}</p>
-                            </div>
-                            <div className={styles.infoItem}>
-                                <label className={styles.infoLabel} htmlFor="nickname">닉네임</label>
-                                <p className={styles.infoValue}>{userInfo.name}</p>
-                            </div>
-                            <div className={styles.infoItem}>
-                                <label className={styles.infoLabel} htmlFor="birthdate">생년월일</label>
-                                <p className={styles.infoValue}>{birthdateString}</p>
-                            </div>
-                            <div className={styles.infoItem}>
-                                <label className={styles.infoLabel} htmlFor="level">레벨</label>
-                                <p className={styles.infoValue}>
-                                    Lv.{userInfo ? calculateLevel(userInfo.exp) : 1}
-                                    &nbsp;&nbsp;&nbsp;(다음 레벨까지 {userInfo ? getRemainingExp(userInfo.exp) : expTable[0]} exp)
-                                </p>
-                            </div>
-                            <div className={styles.infoItem}>
-                                <label className={styles.infoLabel} htmlFor="exp">누적경험치</label>
-                                <p className={`${styles.infoValue} ${styles.exp}`}>{userInfo.exp} exp</p>
-                            </div>
-                            <div className={styles.infoItem}>
-                                <label className={styles.infoLabel} htmlFor="point">포인트<span className={styles.unit}> (toks)</span></label>
-                                <p className={`${styles.infoValue} ${styles.point}`}>{userInfo.point} toks</p>
-                            </div>
-                            <div className={styles.infoItem}>
-                                <label className={styles.infoLabel} htmlFor="signup">가입일</label>
-                                <p className={styles.infoValue}>{userInfo.firstsignup}</p>
-                            </div>
-                        </div>
-                    )}
-                    {activePanel === 'nickname' && <NicknamePanel userInfo={userInfo} onRefresh={fetchUserInfo} setActivePanel={setActivePanel} />}
-                    {activePanel === 'password' && <PWEdit userInfo={userInfo} onRefresh={fetchUserInfo} setActivePanel={setActivePanel} />}
-                    {activePanel === 'birthdate' && <BirthEdit userInfo={userInfo} onRefresh={fetchUserInfo} setActivePanel={setActivePanel} />}
-                    {activePanel === 'withdrawal' && <DeleteID userInfo={userInfo} />}
+                <div className={styles.menuButtons}>
+                    <div className={styles.buttonGroup}>
+                        <button
+                            className={`${styles.menuButton} ${activePanel === 'info' ? styles.active : ''}`}
+                            onClick={() => setActivePanel('info')}
+                        >
+                            기본 정보
+                        </button>
+                    </div>
+
+                    <div className={styles.buttonGroup}>
+                        <button
+                            className={`${styles.menuButton} ${activePanel === 'nickname' ? styles.active : ''}`}
+                            onClick={() => setActivePanel('nickname')}
+                        >
+                            닉네임 변경
+                        </button>
+                        <button
+                            className={`${styles.menuButton} ${activePanel === 'password' ? styles.active : ''}`}
+                            onClick={() => setActivePanel('password')}
+                        >
+                            비밀번호 변경
+                        </button>
+                        <button
+                            className={`${styles.menuButton} ${activePanel === 'birthdate' ? styles.active : ''}`}
+                            onClick={() => setActivePanel('birthdate')}
+                        >
+                            생년월일 변경
+                        </button>
+                    </div>
+
+                    <div className={`${styles.buttonGroup} ${styles.danger}`}>
+                        <button
+                            className={`${styles.menuButton} ${styles.danger} ${activePanel === 'withdrawal' ? styles.active : ''}`}
+                            onClick={() => setActivePanel('withdrawal')}
+                        >
+                            회원탈퇴
+                        </button>
+                    </div>
                 </div>
             </div>
+            <div className={styles.infoCard}>
+                {activePanel === 'info' && (
+                    <div className={styles.infoContainer}>
+                        <div className={styles.infoItem}>
+                            <label className={styles.infoLabel} htmlFor="email">이메일</label>
+                            <p className={styles.infoValue}>{userInfo.email}</p>
+                        </div>
+                        <div className={styles.infoItem}>
+                            <label className={styles.infoLabel} htmlFor="nickname">닉네임</label>
+                            <p className={styles.infoValue}>{userInfo.name}</p>
+                        </div>
+                        <div className={styles.infoItem}>
+                            <label className={styles.infoLabel} htmlFor="birthdate">생년월일</label>
+                            <p className={styles.infoValue}>{birthdateString}</p>
+                        </div>
+                        <div className={styles.infoItem}>
+                            <label className={styles.infoLabel} htmlFor="level">레벨</label>
+                            <p className={styles.infoValue}>
+                                Lv.{userInfo ? calculateLevel(userInfo.exp) : 1}
+                                &nbsp;&nbsp;&nbsp;(다음 레벨까지 {userInfo ? getRemainingExp(userInfo.exp) : expTable[0]} exp)
+                            </p>
+                        </div>
+                        <div className={styles.infoItem}>
+                            <label className={styles.infoLabel} htmlFor="exp">누적경험치</label>
+                            <p className={`${styles.infoValue} ${styles.exp}`}>{userInfo.exp} exp</p>
+                        </div>
+                        <div className={styles.infoItem}>
+                            <label className={styles.infoLabel} htmlFor="point">포인트<span className={styles.unit}> (toks)</span></label>
+                            <p className={`${styles.infoValue} ${styles.point}`}>{userInfo.point} toks</p>
+                        </div>
+                        <div className={styles.infoItem}>
+                            <label className={styles.infoLabel} htmlFor="signup">가입일</label>
+                            <p className={styles.infoValue}>{userInfo.firstsignup}</p>
+                        </div>
+                    </div>
+                )}
+                {activePanel === 'nickname' && <NicknamePanel userInfo={userInfo} onRefresh={fetchUserInfo} setActivePanel={setActivePanel} />}
+                {activePanel === 'password' && <PWEdit userInfo={userInfo} onRefresh={fetchUserInfo} setActivePanel={setActivePanel} />}
+                {activePanel === 'birthdate' && <BirthEdit userInfo={userInfo} onRefresh={fetchUserInfo} setActivePanel={setActivePanel} />}
+                {activePanel === 'withdrawal' && <DeleteID userInfo={userInfo} />}
+            </div>
+        </div>
     );
 };
 

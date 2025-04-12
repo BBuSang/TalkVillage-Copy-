@@ -1,26 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styles from './EditPanel.module.css';
+import { User } from '../../../../types/user.types';
 
 interface EditPanelProps {
   selectedUser: User | null;
   onUserUpdate: (user: User) => void;
   onRefresh: () => void;
-}
-
-interface User {
-  userId: number;
-  email: string;
-  pw: string;
-  name: string;
-  provider: string;
-  birthdate: string;
-  exp: number;
-  point: number;
-  grade: number;
-  role: string;
-  firstsignup: string;
-  editinfo: string;
 }
 
 const defaultUser: User = {
@@ -36,6 +22,7 @@ const defaultUser: User = {
   role: 'ROLE_USER',
   firstsignup: '',
   editinfo: '',
+  visited_at: '',
 };
 
 const EditPanel: React.FC<EditPanelProps> = ({ selectedUser, onUserUpdate, onRefresh }) => {
@@ -172,6 +159,15 @@ const EditPanel: React.FC<EditPanelProps> = ({ selectedUser, onUserUpdate, onRef
             <input
               type="text"
               value={selectedUser?.provider || defaultUser.provider}
+              className={styles.userInfoEditInput}
+              disabled
+            />
+          </label>
+          <label>
+            최근 접속일:
+            <input
+              type="date"
+              value={selectedUser?.visited_at || defaultUser.visited_at}
               className={styles.userInfoEditInput}
               disabled
             />

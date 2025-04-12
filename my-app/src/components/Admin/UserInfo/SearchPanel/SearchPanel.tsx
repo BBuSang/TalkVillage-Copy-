@@ -1,24 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from './SearchPanel.module.css';
+import { User } from '../../../../types/user.types';
 
 interface SearchPanelProps {
   onUserSelect: (user: User | null) => void;
-  searchTrigger?: number;
-}
-
-interface User {
-  userId: number;
-  email: string;
-  pw: string;
-  name: string;
-  provider: string;
-  birthdate: string;
-  exp: number;
-  point: number;
-  grade: number;
-  role: string;
-  firstsignup: string;
-  editinfo: string;
+  searchTrigger: number;
 }
 
 const SearchPanel: React.FC<SearchPanelProps> = ({ onUserSelect, searchTrigger }) => {

@@ -1,5 +1,8 @@
 package Project.Backend.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -39,5 +42,11 @@ public class MyAchievements {
 	@JoinColumn(name = "achievementId")
 	AchievementsList achievementsList;
 	
-	Integer progress;
+ 	@ManyToOne (fetch = FetchType.EAGER)
+ 	@JoinColumn (name = "userId")
+ 	User user;
+	
+	Integer goal;
+	Boolean isRewardClaimed;
+	LocalDateTime achieved_at;
 }

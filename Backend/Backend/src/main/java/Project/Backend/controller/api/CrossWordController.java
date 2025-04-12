@@ -28,7 +28,9 @@ import Project.Backend.entity.CrossWordGameWord;
 import Project.Backend.entity.User;
 import Project.Backend.repository.CrossWordGameWordRepository;
 import Project.Backend.repository.UserRepository;
+import Project.Backend.services.AchieveService;
 import Project.Backend.services.CrossWordGameWordService;
+import Project.Backend.services.RewardService;
 
 @RestController
 @RequestMapping("/api/puzzle")
@@ -43,6 +45,12 @@ public class CrossWordController {
 
 	@Autowired
 	UserRepository userRep;
+	
+	@Autowired
+	AchieveService achieveService;
+	
+	@Autowired
+	RewardService rewardService;
 
 	// 퍼즐 생성 API
 	@GetMapping("/generate")
@@ -161,29 +169,34 @@ public class CrossWordController {
 	        Integer point = null;
 	        User userinfo = userRep.findByEmail(user.getEmail());
 	        if(score <= 60) {
-	            exp = userinfo.getExp() + 200;
-	            point = userinfo.getPoint() + 10000;
+	            exp = 200;
+	            point = 10000;
 	        } else if(score <= 120) {
-	            exp = userinfo.getExp() + 100;
-	            point = userinfo.getPoint() + 1000;
+	            exp = 100;
+	            point = 1000;
 	        } else if(score <= 180) {
-	            exp = userinfo.getExp() + 50;
-	            point = userinfo.getPoint() + 500;
+	            exp = 50;
+	            point = 500;
 	        } else if(score <= 240) {
-	            exp = userinfo.getExp() + 25;
-	            point = userinfo.getPoint() + 250;
+	            exp = 25;
+	            point = 250;
 	        } else {
-	            exp = userinfo.getExp() + 10;
-	            point = userinfo.getPoint() + 100;
+	            exp = 10;
+	            point =  100;
 	        }
+	       
+	        rewardService.InputReward(userinfo, "exp", exp);
+	        rewardService.InputReward(userinfo, "point", point);
 	        
-	        userinfo.setPoint(point);
-	        userinfo.setExp(exp);
-	        userRep.save(userinfo);    
+	        
+//	        userinfo.setPoint(point);
+//	        userinfo.setExp(exp);
+//	        userRep.save(userinfo);
+	        
+	        achieveService.InputAchieveGoal("Cross Word", userinfo);
 	    } catch (Exception e) {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating user data");
 	    }
-	    
 	    return ResponseEntity.ok().build();
 	}
 

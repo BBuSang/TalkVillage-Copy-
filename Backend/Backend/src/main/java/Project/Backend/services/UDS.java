@@ -26,6 +26,9 @@ public class UDS extends DefaultOAuth2UserService implements UserDetailsService 
 	@Autowired
 	UserRepository userRep;
 
+	@Autowired
+	RewardService rewardService;
+	
 	@Value("${auth.user}")
 	String userAuth;
 
@@ -105,11 +108,14 @@ public class UDS extends DefaultOAuth2UserService implements UserDetailsService 
 		user.setName(updatedUser.getName());
 		user.setBirthdate(updatedUser.getBirthdate());
 		user.setRole(updatedUser.getRole());
-		user.setPoint(updatedUser.getPoint());
-		user.setExp(updatedUser.getExp());
+//		user.setPoint(updatedUser.getPoint());
+//		user.setExp(updatedUser.getExp());
 		user.setGrade(updatedUser.getGrade());
 		user.setEditinfo(updatedUser.getEditinfo());
-
+		
+		rewardService.InputReward(user, "exp", updatedUser.getExp());
+		rewardService.InputReward(user, "point", updatedUser.getPoint());
+		
 		// 업데이트된 유저 저장
 		return userRep.save(user);
 	}

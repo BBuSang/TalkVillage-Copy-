@@ -66,7 +66,7 @@ public class UserController {
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
-	
+
 	@Autowired
 	private EntityManager entityManager;
 
@@ -76,27 +76,24 @@ public class UserController {
 	// 현재 로그인한 유저의 모든 정보를 불러옴
 	@GetMapping("/user")
 	@Transactional
-	public ResponseEntity<User> getUserInfo(@AuthenticationPrincipal UD user)  {
+	public ResponseEntity<User> getUserInfo(@AuthenticationPrincipal UD user) {
 		try {
 			entityManager.clear();
 			if (user == null) {
 				return ResponseEntity.status(401).body(null); // 인증되지 않은 경우
 			}
 			User userInfo = user.getUser(); // 이메일로 사용자 정보 가져오기
-			
-		    UserDetails updatedUserDetails = userService.loadUserByUsername(userInfo.getEmail());
-		    Authentication currentAuth = SecurityContextHolder.getContext().getAuthentication();
-		    Authentication newAuth = new UsernamePasswordAuthenticationToken(
-		        updatedUserDetails, 
-		        currentAuth.getCredentials(), 
-		        updatedUserDetails.getAuthorities()
-		    );
-		    SecurityContextHolder.getContext().setAuthentication(newAuth);
-		    return ResponseEntity.ok(userInfo); // 사용자 정보 반환
+
+			UserDetails updatedUserDetails = userService.loadUserByUsername(userInfo.getEmail());
+			Authentication currentAuth = SecurityContextHolder.getContext().getAuthentication();
+			Authentication newAuth = new UsernamePasswordAuthenticationToken(updatedUserDetails,
+					currentAuth.getCredentials(), updatedUserDetails.getAuthorities());
+			SecurityContextHolder.getContext().setAuthentication(newAuth);
+			return ResponseEntity.ok(userInfo); // 사용자 정보 반환
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
-		
+
 	}
 
 	// 현재 로그인한 유저의 닉네임만 불러옴
@@ -108,14 +105,11 @@ public class UserController {
 		}
 		User userInfo = userService.findByEmail(user.getEmail()); // 이메일로 사용자 정보 가져오기
 		String nickname = userInfo.getName();
-		 UserDetails updatedUserDetails = userService.loadUserByUsername(userInfo.getEmail());
-		    Authentication currentAuth = SecurityContextHolder.getContext().getAuthentication();
-		    Authentication newAuth = new UsernamePasswordAuthenticationToken(
-		        updatedUserDetails, 
-		        currentAuth.getCredentials(), 
-		        updatedUserDetails.getAuthorities()
-		    );
-		    SecurityContextHolder.getContext().setAuthentication(newAuth);
+		UserDetails updatedUserDetails = userService.loadUserByUsername(userInfo.getEmail());
+		Authentication currentAuth = SecurityContextHolder.getContext().getAuthentication();
+		Authentication newAuth = new UsernamePasswordAuthenticationToken(updatedUserDetails,
+				currentAuth.getCredentials(), updatedUserDetails.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(newAuth);
 		return ResponseEntity.ok(nickname);
 	}
 
@@ -293,7 +287,7 @@ public class UserController {
 	public ResponseEntity<List<String>> usingItem(@AuthenticationPrincipal UD user) {
 		// 영속성 컨텍스트 초기화로 최신 데이터 조회
 		entityManager.clear();
-		if(user == null) {
+		if (user == null) {
 			return ResponseEntity.ok().build();
 		}
 
@@ -360,17 +354,16 @@ public class UserController {
 	public ResponseEntity<?> UpdateNickname(@AuthenticationPrincipal UD user, @RequestBody Map<String, String> entity) {
 		try {
 			User userinfo = userRep.findByEmail(user.getEmail());
-			if(user.getUser().getEditinfo() == null) {
+			if (user.getUser().getEditinfo() == null) {
 				String nickname = entity.get("nickname");
 				userinfo.setName(nickname);
 				userinfo.setEditinfo(LocalDate.now()); // 닉네임 수정일
 				userRep.save(userinfo);
 				return ResponseEntity.status(200).build();
-			}
-			else if (LocalDate.now().minusDays(30).isBefore(user.getUser().getEditinfo())) {
+			} else if (LocalDate.now().minusDays(30).isBefore(user.getUser().getEditinfo())) {
 				return ResponseEntity.status(205).build();
 			}
-			
+
 			String nickname = entity.get("nickname");
 			userinfo.setName(nickname);
 			userinfo.setEditinfo(LocalDate.now()); // 닉네임 수정일
@@ -382,71 +375,45 @@ public class UserController {
 
 		return ResponseEntity.status(200).build();
 	}
-	
+
 	@PutMapping("/update/birthdate")
-	public ResponseEntity<?> UpdateBirthdate(@AuthenticationPrincipal UD user ,@RequestBody Map<String, String> entity) {
+	public ResponseEntity<?> UpdateBirthdate(@AuthenticationPrincipal UD user,
+			@RequestBody Map<String, String> entity) {
 		try {
 			User userinfo = userRep.findByEmail(user.getEmail());
 			String birth = entity.get("birthdate");
-			
+
 			LocalDate birthdate = LocalDate.parse(birth);
 			userinfo.setBirthdate(birthdate);
 			userRep.save(userinfo);
-			
+
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().build();
 		}
-		
-		
+
 		return ResponseEntity.ok().build();
 	}
-	
+
 	@PostMapping("/delete")
-	public ResponseEntity<?> DeleteUser(@AuthenticationPrincipal UD user){
+	public ResponseEntity<?> DeleteUser(@AuthenticationPrincipal UD user) {
 		try {
 			User userinfo = userRep.findByEmail(user.getEmail());
 			int number = createNumber();
-			
-			userinfo.setEmail(userinfo.getEmail()+"/"+userinfo.getName()+"/삭제됨");
-			userinfo.setName("삭제된계정"+number);
+
+			userinfo.setEmail(userinfo.getEmail() + "/" + userinfo.getName() + "/삭제됨");
+			userinfo.setName("삭제된계정" + number);
 			userinfo.setPw("deleteduser");
 			userinfo.setEditinfo(LocalDate.now());
 			userRep.save(userinfo);
-			
-			
+
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().build();
 		}
 		return ResponseEntity.ok().build();
 	}
-	
+
 	private int createNumber() {
-	    return (int) (Math.random() * 1000000); // 범위 0 ~ 999999
+		return (int) (Math.random() * 1000000); // 범위 0 ~ 999999
 	}
-	
-	
-	
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

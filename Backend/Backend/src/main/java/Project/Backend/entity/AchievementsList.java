@@ -35,5 +35,7 @@ public class AchievementsList {
 	String title;
 	String content;
 	Integer goal;
-	Integer point;
+	Integer exp; // exp라고 되어있지만 사실상 point
+	String type;
+	String category;
 }

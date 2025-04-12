@@ -4,9 +4,10 @@ import SearchPanel from './SearchPanel/SearchPanel';
 import EditPanel from './EditPanel/EditPanel';
 import InventoryPanel from './InventoryPanel/InventoryPanel';
 import StagePanel from './StagePanel/StagePanel';
+import AchievementPanel from './AchievementPanel/AchievementPanel';
 import { User } from '../../../types/user.types';
 
-type PanelType = 'info' | 'inventory' | 'stage';
+type PanelType = 'info' | 'inventory' | 'stage' | 'achievement';
 
 const UserInfo: React.FC = () => {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
@@ -29,6 +30,8 @@ const UserInfo: React.FC = () => {
         return <InventoryPanel userId={selectedUser?.userId} />;
       case 'stage':
         return <StagePanel userId={selectedUser?.userId} />;
+      case 'achievement':
+        return <AchievementPanel userId={selectedUser?.userId} />;
       default:
         return <EditPanel selectedUser={selectedUser} onUserUpdate={setSelectedUser} onRefresh={handleRefresh} />;
     }
@@ -61,6 +64,13 @@ const UserInfo: React.FC = () => {
             disabled={!selectedUser}
           >
             스테이지 정보
+          </button>
+          <button
+            className={`${styles.panelButton} ${activePanel === 'achievement' ? styles.active : ''}`}
+            onClick={() => setActivePanel('achievement')}
+            disabled={!selectedUser}
+          >
+            업적
           </button>
         </div>
         <div className={styles.panelContainer}>

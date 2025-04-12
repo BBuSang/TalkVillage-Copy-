@@ -9,6 +9,7 @@ export interface User {
   point: number;
   grade: number;
   role: string;
+  visited_at: string;
   firstsignup: string;
   editinfo: string;
 } 

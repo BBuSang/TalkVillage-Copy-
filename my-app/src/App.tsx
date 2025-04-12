@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './App.module.css';
 import HomePage from './pages/Home/Home';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SingupPage from './pages/SignupPage/SignupPage';
@@ -14,6 +13,8 @@ import Store from './pages/Store/Store';
 import ClipPage from './pages/Clip/ClipPage';
 import UserInfoEdit from './pages/Myinfopage/Myinfo';
 import Inventory from './pages/Inventory/Inventory';
+import MyAchievements from './pages/MyAchievements/MyAchievements';
+import MyQuests from './pages/MyQuests/MyQuests';
 
 // Placement
 import MainMap from './pages/MainMap/MainMap';
@@ -41,6 +42,8 @@ import Translation from './pages/Dictionary/Translation';
 import Result from './pages/Dictionary/Result';
 import Apitest from './pages/Home/ApiTest';
 import VocabularyPage from './pages/VocabularyPage/VocabularyPage';
+import { ExamSelectPage } from './pages/ExamPage/ExamSelectPage';
+import { ExamPage } from './pages/ExamPage/ExamPage';
 
 function App() {
   // Chakra 테마 커스터마이징
@@ -73,15 +76,20 @@ function App() {
             <Route path="/findIDandPW" element={<FindIdAndPW />} />
             <Route path="/ProfileSettings" element={<ProfileSetting />} />
             <Route path="/test" element={<Test />} />
+            <Route path="/hangman" element={<HangmanGame />} />
+            <Route path="/WordScrambleGame" element={<WordScrambleGame />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/Crossword" element={<CrossWord />} />
             <Route path="/store" element={<Store />} />
             <Route path="/clip" element={<ClipPage />} />
+            <Route path="/myinfo" element={<UserInfoEdit />} />
 
             {/* 의령 */}
             {/* <Route path="/problem" element={<ProblemPage />} /> */}
 
             <Route path="/mainmap" element={<MainMap />}>
+              <Route path='quest' element={<MyQuests/>}/>
+              <Route path='achievement' element={<MyAchievements/>}/>
               <Route path="myinfo" element={<UserInfoEdit />} />
               <Route path="hangman" element={<HangmanGame />} />
               <Route path="WordScrambleGame" element={<WordScrambleGame />} />
@@ -93,7 +101,7 @@ function App() {
               <Route path="bbs" element={<BBSPlacement />} />
               <Route path="inventory" element={<Inventory />} />
               <Route path="store" element={<Store />} />
-              <Route path="voca" element={<VocabularyPage />} />
+              <Route path="voca" element={<VocabularyPage/>}/>
             </Route>
 
             {/* 용현 */}
@@ -106,7 +114,9 @@ function App() {
             <Route path="/manager" element={<QuestionManager />} />
             <Route path="/apitest" element={<Apitest />} />
             <Route path="/filemanager" element={<FileUploadAndView />} />
-
+            <Route path="/exam" element={<ExamSelectPage />} />
+            <Route path="/exam/sentence" element={<ExamPage examType="sentence" />} />
+            <Route path="/exam/word" element={<ExamPage examType="word" />} />
 
             {/* 404 Not Found 페이지 */}
             <Route path="*" element={<div>404 Not Found</div>} />

@@ -32,9 +32,12 @@ public class Quest {
 			strategy = GenerationType.SEQUENCE
 			)
 	Long questId;
-	String content;
+	String title;
+	String description;
 	Integer goal;
 	Integer exp;
 	Integer point;
+	String type;
+	String category;
 	
 }

@@ -288,36 +288,50 @@ export default function Store() {
   }, []);
 
   // 미리보기 렌더링 컴포넌트
-  const PreviewSection = () => {
+  const PreviewSection = React.memo(() => {
     const previewBackground = currentPreview.background || userCurrentItems.background;
     const previewNameplate = currentPreview.nameplate || userCurrentItems.nameplate;
     const previewSkin = currentPreview.skin || userCurrentItems.skin;
 
+    const MemoizedCreateCanvasMap = React.useMemo(() => {
+      return previewSkin && (
+        <CreateCanvasMap imagePath={images(previewSkin)} />
+      );
+    }, [previewSkin]);
+
+    const MemoizedBackgroundComponent = React.useMemo(() => {
+      return previewBackground && (
+        <ProfileComponent
+          category="Background"
+          number={previewBackground}
+          itemName=""
+        />
+      );
+    }, [previewBackground]);
+
+    const MemoizedNameplateComponent = React.useMemo(() => {
+      return previewNameplate && (
+        <ProfileComponent
+          category="NamePlate"
+          number={previewNameplate}
+          itemName="사용자 이름"
+        />
+      );
+    }, [previewNameplate]);
+
     return (
       <div className={styles.previewSection}>
-        <h2>미리보기</h2>
+       
         <div className={styles.previewArea}>
           <div className={styles.backgroundPreview}>
-            {previewBackground && (
-              <ProfileComponent 
-                category="Background"
-                number={previewBackground}
-                itemName=""
-              />
-            )}
-          </div>
-          <div className={styles.characterWrapper}>
-            <div className={styles.characterBox}>
-              {previewSkin && (
-                <CreateCanvasMap imagePath={images(previewSkin)} />
-              )}
+            {MemoizedBackgroundComponent}
+            <div className={styles.characterWrapper}>
+              <div className={styles.characterBox}>
+                {MemoizedCreateCanvasMap}
+              </div>
               {previewNameplate && (
                 <div className={`${styles.nameBox} ${styles.noBackground}`}>
-                  <ProfileComponent 
-                    category="NamePlate"
-                    number={previewNameplate}
-                    itemName="사용자 이름"
-                  />
+                  {MemoizedNameplateComponent}
                 </div>
               )}
             </div>
@@ -325,7 +339,11 @@ export default function Store() {
         </div>
       </div>
     );
-  };
+  }, (prevProps, nextProps) => {
+    // 실제로는 props가 없으므로 항상 true를 반환하여
+    // currentPreview나 userCurrentItems가 변경될 때만 리렌더링
+    return true;
+  });
 
   // 상품 카드 렌더링 함수 수정
   const renderProductCard = (item: StoreItem) => {
@@ -334,7 +352,7 @@ export default function Store() {
 
     return (
       <div key={item.itemId} className={styles.productCard}>
-        <div className={styles.imageWrapper}>
+        <div className={styles.imageWrapper} data-type={category.toLowerCase()}>
           {isProfileItem ? (
             <ProfileComponent 
               category={category} 
@@ -418,7 +436,6 @@ export default function Store() {
               </Tabs>
             </div>
           </div>
-          <Center><footer>ⓒ TalkVillage Corp.</footer></Center>
         </div>
       </div>
     </div>

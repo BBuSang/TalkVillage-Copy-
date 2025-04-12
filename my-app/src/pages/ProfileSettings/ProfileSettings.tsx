@@ -74,6 +74,10 @@ const ProfileSetting: React.FC = () => {
             });
 
             if (response.ok) {
+                await fetch('http://localhost:9999/api/achievement/attend', {
+                    method: 'GET',
+                    credentials: 'include'
+                })
                 setTimeout(() => navigate('/mainmap'), 1000);
             } else {
                 setStatusMessage({nickname: '프로필 저장에 실패했습니다.', type: 'error'});
@@ -96,6 +100,10 @@ const ProfileSetting: React.FC = () => {
                     setUserInfo(data);
 
                     if (data !== 'Nameisnull') {
+                        await fetch('http://localhost:9999/api/achievement/attend',{
+                            method:'GET',
+                            credentials : 'include'
+                        })
                         navigate('/mainmap');
                     } else {
                         setIsLoading(true); // 닉네임이 없을 때만 로딩 완료

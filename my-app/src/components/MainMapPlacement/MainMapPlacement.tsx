@@ -89,7 +89,7 @@ const MainMapPlacement: React.FC = () => {
           navigate('/mainmap/store');
           break;
         case '시험':
-          navigate('/mainmap/voca');
+          navigate('/exam');
           break;
         default:
           navigate('/mainmap'); // 기본 맵으로 이동

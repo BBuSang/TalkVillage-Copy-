@@ -30,6 +30,8 @@ import Project.Backend.entity.ScrambledWord;
 import Project.Backend.entity.User;
 import Project.Backend.repository.ScrambledWordRepository;
 import Project.Backend.repository.UserRepository;
+import Project.Backend.services.AchieveService;
+import Project.Backend.services.RewardService;
 
 @RestController
 @RequestMapping("/api/ScrambledWord")
@@ -41,6 +43,12 @@ public class ScrambledWordController {
 
     @Autowired
     UserRepository userRep;
+    
+    @Autowired
+    AchieveService achieveService;
+    
+    @Autowired
+    RewardService rewardService;
 
     // 랜덤하게 섞인 단어를 반환 (GET 요청)
     @GetMapping("/scrambled")
@@ -159,13 +167,17 @@ public class ScrambledWordController {
         try {
             User userinfo = userRep.findByEmail(user.getEmail());
             Integer score = scoreData.get("score");
-            Integer points = userinfo.getPoint() + (score);
-            Integer exp = userinfo.getExp() + (score / 2);
+            Integer points = score;
+            Integer exp = (score / 2);
 
-            userinfo.setPoint(points);
-            userinfo.setExp(exp);
-            userRep.save(userinfo);
-
+            rewardService.InputReward(userinfo, "exp", exp);
+            rewardService.InputReward(userinfo, "point", points);
+            
+//            userinfo.setPoint(points);
+//            userinfo.setExp(exp);
+//            userRep.save(userinfo);
+            
+            achieveService.InputAchieveGoal("Scramble", userinfo);
             return ResponseEntity.status(200).build();
         } catch (Exception e) {
             return ResponseEntity.notFound().build();

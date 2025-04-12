@@ -45,5 +45,8 @@ public class MyQuest {
 	Quest quest;
 	
 	Integer progress;
+	Boolean isRewardClaimed;
+	
+	
 	
 }

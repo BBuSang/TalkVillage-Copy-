@@ -1,0 +1,134 @@
+.achievementPanel {
+    padding: 20px;
+    width: 100%;
+}
+
+.controls {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sectionMenu, .categoryMenu {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.sectionMenu button, .categoryMenu button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sectionMenu button.active {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.categoryMenu button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.achievementGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.achievementCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.achievementCard.completed {
+    border-color: #4CAF50;
+    background-color: #f7fff7;
+}
+
+.achievementHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.achievementHeader h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.content {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.progressControl {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.progressButtons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.progressButtons button {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.progressButtons input {
+    width: 50px;
+    padding: 2px 4px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.goalText {
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.progressBar {
+    width: 100%;
+    height: 6px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.points {
+    font-weight: bold;
+    color: #28a745;
+}

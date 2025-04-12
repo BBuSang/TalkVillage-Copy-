@@ -102,7 +102,7 @@ const AdminPage: React.FC = () => {
                     className={styles.navButton}
                     onClick={() => setCurrentView('Store')}
                 >
-                    Store
+                    DB추가
                 </button>
                 <button
                     className={styles.navButton}

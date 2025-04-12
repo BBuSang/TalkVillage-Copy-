@@ -40,11 +40,6 @@ const FileUploadAndView: React.FC = () => {
     const [generatingWrongData, setGeneratingWrongData] = useState<boolean>(false);
     const [savingToDatabase, setSavingToDatabase] = useState<boolean>(false);
     const [syncing, setSyncing] = useState<boolean>(false);
-    const [syncProgress, setSyncProgress] = useState<{
-        totalWords: number;
-        processedWords: number;
-        currentWord: string;
-    }>({ totalWords: 0, processedWords: 0, currentWord: '' });
     
     useEffect(() => {
         handleLoadExcelData();
@@ -101,49 +96,17 @@ const FileUploadAndView: React.FC = () => {
         setError('');
         
         try {
-            // 동기화 시작
-            const syncResponse = await axios.post('http://localhost:9999/api/files/sync');
+            const syncResponse = await axios.post('http://localhost:9999/api/files/sync', null, {
+                params: { fileName: 'TalkVillageQuestions.xlsx' }
+            });
             
-            // 진행도 폴링 시작
-            const progressInterval = setInterval(async () => {
-                try {
-                    const progressResponse = await axios.get('http://localhost:9999/api/files/sync/progress');
-                    setSyncProgress(progressResponse.data);
-                    
-                    // 모든 단어 처리 완료시 폴링 중단
-                    if (progressResponse.data.processedWords === progressResponse.data.totalWords 
-                        && progressResponse.data.totalWords > 0) {
-                        clearInterval(progressInterval);
-                        setSyncing(false);
-                    }
-                } catch (error) {
-                    console.error('Progress check failed:', error);
-                }
-            }, 1000);
-
             if (syncResponse.status === 200) {
-                console.log('Sync response:', syncResponse.data);
-                
-                // 현재 활성 시트 저장
                 const currentSheet = activeSheet;
-                
-                // 새로운 시트 목록 설정
                 const newSheets = syncResponse.data.sheets;
                 setSheets(newSheets);
                 
-                // 모든 시트의 데이터 새로 로드
-                const newData: {[key: string]: CsvData[]} = {};
-                for (const sheet of newSheets) {
-                    const csvResponse = await axios.get(`http://localhost:9999/api/files/csv/${sheet}`);
-                    if (csvResponse.status === 200) {
-                        newData[sheet] = csvResponse.data;
-                    }
-                }
+                await loadCsvData(newSheets);
                 
-                // 새 데이터로 상태 업데이트
-                setCsvData(newData);
-                
-                // 활성 시트 유지 또는 변경
                 if (newSheets.includes(currentSheet)) {
                     setActiveSheet(currentSheet);
                 } else if (newSheets.length > 0) {
@@ -155,6 +118,7 @@ const FileUploadAndView: React.FC = () => {
         } catch (err) {
             console.error('Sync error:', err);
             setError(err instanceof Error ? err.message : '동기화 중 오류가 발생했습니다.');
+        } finally {
             setSyncing(false);
         }
     };
@@ -210,23 +174,7 @@ const FileUploadAndView: React.FC = () => {
     return (
         <div className={styles.fileUploadContainer}>
             {error && <div className={styles.errorMessage}>{error}</div>}
-            
             {loading && <div className={styles.loadingMessage}>데이터 로딩 중...</div>}
-            
-            {syncing && syncProgress.totalWords > 0 && (
-                <div className={styles.progressBar}>
-                    <div className={styles.progressText}>
-                        이미지 생성 중: {syncProgress.processedWords}/{syncProgress.totalWords}
-                        {syncProgress.currentWord && ` - ${syncProgress.currentWord}`}
-                    </div>
-                    <div 
-                        className={styles.progressFill}
-                        style={{
-                            width: `${(syncProgress.processedWords / syncProgress.totalWords) * 100}%`
-                        }}
-                    />
-                </div>
-            )}
             
             {Object.keys(csvData).length > 0 && (
                 <div className={styles.dataViewSection}>
@@ -280,7 +228,7 @@ const FileUploadAndView: React.FC = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {csvData[activeSheet]?.map((row, index) => (
+                                {csvData[activeSheet]?.map((row: CsvData, index) => (
                                     <tr key={index}>
                                         <td>{row.stageLevel}</td>
                                         <td>{row.question}</td>

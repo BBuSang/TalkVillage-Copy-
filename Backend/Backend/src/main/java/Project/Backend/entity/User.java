@@ -53,6 +53,7 @@ public class User {
 	String role; // ROLE_USER, ROLE_ADMIN
 	LocalDate firstsignup; // 최초가입일
 	LocalDate editinfo; // 정보 수정일
+	LocalDate visited_at; // 최근 접속날짜 (로그인 기준)
 	
 	@Transient
 	Map<String, Object> attributes = new HashMap<String, Object>();

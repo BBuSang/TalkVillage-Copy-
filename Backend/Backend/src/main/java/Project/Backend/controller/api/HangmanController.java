@@ -33,6 +33,8 @@ import Project.Backend.entity.HangmanGuess;
 import Project.Backend.entity.User;
 import Project.Backend.repository.HangmanGameWordRepository;
 import Project.Backend.repository.UserRepository;
+import Project.Backend.services.AchieveService;
+import Project.Backend.services.RewardService;
 
 @RestController
 @RequestMapping("/api/hangman")
@@ -44,6 +46,12 @@ public class HangmanController {
 
 	@Autowired
 	UserRepository userRep;
+	
+	@Autowired
+	AchieveService achieveService;
+	
+	@Autowired
+	RewardService rewardService;
 
 	private String currentWord;
 	private String currentCategory; // 카테고리 추가
@@ -190,12 +198,18 @@ public class HangmanController {
 		}
 		try {
 			User userinfo = userRep.findByEmail(user.getEmail());
-			Integer point = userinfo.getPoint() + 10;
-			Integer exp = userinfo.getExp() + 1;
 			
-			userinfo.setPoint(point);
-			userinfo.setExp(exp);
-			userRep.save(userinfo);
+			rewardService.InputReward(userinfo, "exp", 5);
+			rewardService.InputReward(userinfo, "point", 10);
+			
+//			Integer point = userinfo.getPoint() + 10;
+//			Integer exp = userinfo.getExp() + 1;
+			
+//			userinfo.setPoint(point);
+//			userinfo.setExp(exp);
+//			userRep.save(userinfo);
+			
+			achieveService.InputAchieveGoal("hangman", userinfo);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating user data");
 		}
